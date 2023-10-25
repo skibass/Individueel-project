@@ -1,0 +1,16 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @foreach (var item in Model.User_Repository.GetUsers())
+    {
+        <p>@item.Id</p>
+        <p>@item.Name</p>
+        <p>@item.Email</p>
+        <p>@item.RoleId</p>
+    }
+</div>
