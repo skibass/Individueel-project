@@ -16,12 +16,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\Fontys_S2\Projecten\Individueel-project\Umovie\Umovie
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/Fontys_S2/Projecten/Individueel-project/Umovie/Umovie/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Fontys_S2/Projecten/Individueel-project/Umovie/Umovie/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/Fontys_S2/Projecten/Individueel-project/Umovie/Umovie/Pages/ForYou/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9yWW91XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Fontys_S2/Projecten/Individueel-project/Umovie/Umovie/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Fontys_S2/Projecten/Individueel-project/Umovie/Umovie/Pages/Movies/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Fontys_S2/Projecten/Individueel-project/Umovie/Umovie/Pages/Privacy.cshtml]

@@ -1,0 +1,27 @@
+﻿@page
+@model Umovie.Pages.Movies.IndexModel
+@{
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Director</th>
+            <th scope="col">Language</th>
+            <th scope="col">Release date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movie_Repository.GetMovies())
+        {
+            <tr>
+                <th scope="row">@item.Name</th>
+                <td>@item.Description</td>
+                <td>@item.Director</td>
+                <td>@item.Language</td>
+                <td>@item.Release_Date</td>
+            </tr>
+        }      
+    </tbody>
+</table>
