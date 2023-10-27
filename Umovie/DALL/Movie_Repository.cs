@@ -15,7 +15,7 @@ namespace DALL
 
         public List<Movie> GetMovies()
         {
-            List<Movie> movies = context.Movies.Include(e => e.MovieRatings).Include(e => e.UserFavoriteMovies).ToList();
+            List<Movie> movies = context.Movies.Include(e => e.MovieRatings).Include(e => e.UserFavoriteMovies).Include(e => e.MovieCategories).ThenInclude(e => e.Categorie).ToList();
 
             if (movies == null)
             {
@@ -46,7 +46,7 @@ namespace DALL
 
                 context.SaveChanges();
         }
-        public double? GetAvarageRating(int? movieId)
+        public double? GetAverageRating(int? movieId)
         {
             double? avarageRating = context.MovieRatings.Where(r => r.MovieId == movieId).Average(r => r.RatingNumber);
 
@@ -58,6 +58,18 @@ namespace DALL
             double? avarageRating = context.UserFavoriteMovies.Where(r => r.MovieId == movieId).Count();
 
             return avarageRating;
+        }
+
+        public string? GetCategories(int? movieId)
+        {
+            var movieCategories = context.MovieCategories.Where(r => r.MovieId == movieId);
+            string categories = "";
+
+            foreach (var item in movieCategories)
+            {
+                categories += " | " + item.Categorie.Name;
+            }
+            return categories;
         }
     }
 }

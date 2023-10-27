@@ -16,7 +16,11 @@ public partial class UmovieContext : DbContext
     {
     }
 
+    public virtual DbSet<Category> Categories { get; set; }
+
     public virtual DbSet<Movie> Movies { get; set; }
+
+    public virtual DbSet<MovieCategory> MovieCategories { get; set; }
 
     public virtual DbSet<MovieRating> MovieRatings { get; set; }
 
@@ -32,6 +36,21 @@ public partial class UmovieContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Category>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("categories");
+
+            entity.Property(e => e.Id)
+                .HasColumnType("int(11)")
+                .HasColumnName("id");
+            entity.Property(e => e.Name)
+                .HasMaxLength(45)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("name");
+        });
+
         modelBuilder.Entity<Movie>(entity =>
         {
             entity.HasKey(e => e.MovieId).HasName("PRIMARY");
@@ -41,6 +60,10 @@ public partial class UmovieContext : DbContext
             entity.Property(e => e.MovieId)
                 .HasColumnType("int(11)")
                 .HasColumnName("movie_id");
+            entity.Property(e => e.MovieAgeRating)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnType("int(11)")
+                .HasColumnName("movie_age_rating");
             entity.Property(e => e.MovieDescription)
                 .HasMaxLength(45)
                 .HasDefaultValueSql("'''\"\"'''")
@@ -61,6 +84,38 @@ public partial class UmovieContext : DbContext
                 .HasMaxLength(45)
                 .HasDefaultValueSql("'''\"\"'''")
                 .HasColumnName("movie_release_date");
+        });
+
+        modelBuilder.Entity<MovieCategory>(entity =>
+        {
+            entity.HasKey(e => new { e.Id, e.MovieId, e.CategorieId }).HasName("PRIMARY");
+
+            entity.ToTable("movie_categories");
+
+            entity.HasIndex(e => e.CategorieId, "categorie_id_key_idx");
+
+            entity.HasIndex(e => e.MovieId, "movie_id_key_idx");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd()
+                .HasColumnType("int(11)")
+                .HasColumnName("id");
+            entity.Property(e => e.MovieId)
+                .HasColumnType("int(11)")
+                .HasColumnName("movie_id");
+            entity.Property(e => e.CategorieId)
+                .HasColumnType("int(11)")
+                .HasColumnName("categorie_id");
+
+            entity.HasOne(d => d.Categorie).WithMany(p => p.MovieCategories)
+                .HasForeignKey(d => d.CategorieId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("categorie_id_key");
+
+            entity.HasOne(d => d.Movie).WithMany(p => p.MovieCategories)
+                .HasForeignKey(d => d.MovieId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("movie_id_key");
         });
 
         modelBuilder.Entity<MovieRating>(entity =>

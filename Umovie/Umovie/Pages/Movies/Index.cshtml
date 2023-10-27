@@ -12,6 +12,7 @@
             <th scope="col">Release date</th>
             <th scope="col">Rating</th>
             <th scope="col">Favorites</th>
+            <th scope="col">Categories</th>
         </tr>
     </thead>
     <tbody>
@@ -24,12 +25,14 @@
                 <td>@item.MovieLanguage</td>
                 <td>@item.MovieReleaseDate</td>
                 <td>
-                    @Model.Movie_Repository.GetAvarageRating(item.MovieId)
+                    @Model.Movie_Repository.GetAverageRating(item.MovieId)
                 </td>
                 <td>
                     @Model.Movie_Repository.GetAmountOfFavorites(item.MovieId)
                 </td>
-
+                <td>
+                    @Model.Movie_Repository.GetCategories(item.MovieId)
+                </td>
             </tr>
         }
     </tbody>
