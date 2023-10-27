@@ -1,0 +1,16 @@
+User can click on movie and view movie information: save clicked movie ID to movie specific page, 
+(backend) = save clicked movie to clicked movie categories and count them bound to account.
+
+"For you" page shows movies related to most clicked movie categories based on categorie data bound to account in database.
+
+TODO (important):
+    Add authentication.
+    Add user clicked movie categories database data.
+    Add user profile.
+    Add option to favorite movie.
+    Add option to rate movie.
+
+(not important yet)
+    Add admin functionality (CRUD - generalized - specified later).
+    Add for you page (generalized - specified later).
+    General layout.

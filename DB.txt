@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2023 at 07:04 PM
+-- Generation Time: Oct 27, 2023 at 10:07 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -59,7 +59,8 @@ CREATE TABLE `movie_ratings` (
 INSERT INTO `movie_ratings` (`rating_id`, `user_id`, `rating_number`, `movie_id`) VALUES
 (2, 3, 10, 2),
 (3, 3, 9, 3),
-(5, 7, 4, 5);
+(5, 7, 4, 5),
+(7, 7, 9, 5);
 
 -- --------------------------------------------------------
 
@@ -175,7 +176,7 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT for table `movie_ratings`
 --
 ALTER TABLE `movie_ratings`
-  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
