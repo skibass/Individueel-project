@@ -15,7 +15,7 @@ namespace DALL
 
         public List<Movie> GetMovies()
         {
-            List<Movie> movies = context.Movies.Include(e => e.MovieRatings).ToList();
+            List<Movie> movies = context.Movies.Include(e => e.MovieRatings).Include(e => e.UserFavoriteMovies).ToList();
 
             if (movies == null)
             {
@@ -45,6 +45,12 @@ namespace DALL
                 context.Entry(studentbyid).State = EntityState.Deleted;
 
                 context.SaveChanges();
+        }
+        public double? GetAvarageRating(int? movieId)
+        {
+            double? avarageRating = context.MovieRatings.Where(r => r.MovieId == movieId).Average(r => r.RatingNumber);
+
+            return avarageRating;
         }
     }
 }

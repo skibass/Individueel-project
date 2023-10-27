@@ -1,6 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Umovie",
+    "\\Umovie\\BLL\\bin",
+    "\\Umovie\\BLL\\bin\\Release",
+    "\\Umovie\\DALL",
+    "\\Umovie\\DALL\\bin\\Release",
+    "\\Umovie\\DALL\\bin\\Release\\net7.0"
   ],
+  "SelectedNode": "\\Umovie\\Umovie.sln",
   "PreviewInSolutionExplorer": false
 }

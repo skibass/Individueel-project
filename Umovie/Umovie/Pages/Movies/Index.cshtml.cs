@@ -8,9 +8,12 @@ namespace Umovie.Pages.Movies
     public class IndexModel : PageModel
     {
         public Movie_Repository Movie_Repository = new();
+
+
         public void OnGet()
         {
             
         }
+
     }
 }
