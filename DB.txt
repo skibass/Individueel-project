@@ -1,0 +1,215 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Oct 27, 2023 at 07:04 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `umovie`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `movies`
+--
+
+CREATE TABLE `movies` (
+  `movie_id` int(11) NOT NULL,
+  `movie_name` varchar(45) DEFAULT '""',
+  `movie_description` varchar(45) DEFAULT '""',
+  `movie_director` varchar(45) DEFAULT '""',
+  `movie_language` varchar(45) DEFAULT '""',
+  `movie_release_date` varchar(45) DEFAULT '""'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `movies`
+--
+
+INSERT INTO `movies` (`movie_id`, `movie_name`, `movie_description`, `movie_director`, `movie_language`, `movie_release_date`) VALUES
+(2, 'est', 'est', 'daniel', 'NL', '0000-00-00'),
+(3, 'esto', 'esto', 'Hans', 'BE', '0000-00-00'),
+(5, 'pipipipip', 'efefef', 'ef', 'ef', '\"\"');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `movie_ratings`
+--
+
+CREATE TABLE `movie_ratings` (
+  `rating_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `rating_number` int(11) DEFAULT NULL,
+  `movie_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `movie_ratings`
+--
+
+INSERT INTO `movie_ratings` (`rating_id`, `user_id`, `rating_number`, `movie_id`) VALUES
+(2, 3, 10, 2),
+(3, 3, 9, 3),
+(5, 7, 4, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `role_id` int(11) NOT NULL,
+  `role_name` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`role_id`, `role_name`) VALUES
+(0, 'standard'),
+(1, 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(45) DEFAULT NULL,
+  `user_email` varchar(45) DEFAULT NULL,
+  `role_id` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `role_id`) VALUES
+(3, 'thijn', 'testmail', 0),
+(7, 'thijn', 'titititi', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_favorite_movies`
+--
+
+CREATE TABLE `user_favorite_movies` (
+  `favorite_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `movie_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_favorite_movies`
+--
+
+INSERT INTO `user_favorite_movies` (`favorite_id`, `user_id`, `movie_id`) VALUES
+(0, 3, 2),
+(1, 7, 5);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `movies`
+--
+ALTER TABLE `movies`
+  ADD PRIMARY KEY (`movie_id`);
+
+--
+-- Indexes for table `movie_ratings`
+--
+ALTER TABLE `movie_ratings`
+  ADD PRIMARY KEY (`rating_id`,`user_id`,`movie_id`),
+  ADD KEY `user_rating_key_idx` (`user_id`),
+  ADD KEY `rated_movie_key_idx` (`movie_id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`role_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`,`role_id`),
+  ADD UNIQUE KEY `user_id_UNIQUE` (`user_id`),
+  ADD KEY `user_role_key_idx` (`role_id`);
+
+--
+-- Indexes for table `user_favorite_movies`
+--
+ALTER TABLE `user_favorite_movies`
+  ADD PRIMARY KEY (`favorite_id`,`user_id`,`movie_id`),
+  ADD KEY `user_favorite_key_idx` (`user_id`),
+  ADD KEY `favorite_movie_key_idx` (`movie_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `movies`
+--
+ALTER TABLE `movies`
+  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `movie_ratings`
+--
+ALTER TABLE `movie_ratings`
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `user_favorite_movies`
+--
+ALTER TABLE `user_favorite_movies`
+  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `movie_ratings`
+--
+ALTER TABLE `movie_ratings`
+  ADD CONSTRAINT `rated_movie_key` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`movie_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `user_rating_key` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `user_role_key` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `user_favorite_movies`
+--
+ALTER TABLE `user_favorite_movies`
+  ADD CONSTRAINT `favorite_movie_key` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`movie_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `user_favorite_key` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
