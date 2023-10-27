@@ -1,0 +1,4 @@
+User can click on movie and view movie information: save clicked movie ID to movie specific page, 
+(backend) = save clicked movie to clicked movie categories and count them bound to account.
+
+For you page shows movies related to most clicked movie categories based on data bound to account in database.
