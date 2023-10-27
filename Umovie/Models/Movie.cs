@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Models
+namespace Models;
+
+public partial class Movie
 {
-    public class Movie
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Director { get; set; }
-        public string Language { get; set; }
-        public string Release_Date { get; set; }
-    }
+    public int MovieId { get; set; }
+
+    public string? MovieName { get; set; }
+
+    public string? MovieDescription { get; set; }
+
+    public string? MovieDirector { get; set; }
+
+    public string? MovieLanguage { get; set; }
+
+    public string? MovieReleaseDate { get; set; }
+
+    public virtual ICollection<MovieRating> MovieRatings { get; set; } = new List<MovieRating>();
+
+    public virtual ICollection<UserFavoriteMovie> UserFavoriteMovies { get; set; } = new List<UserFavoriteMovie>();
 }
