@@ -52,5 +52,12 @@ namespace DALL
 
             return avarageRating;
         }
+
+        public double? GetAmountOfFavorites(int? movieId)
+        {
+            double? avarageRating = context.UserFavoriteMovies.Where(r => r.MovieId == movieId).Count();
+
+            return avarageRating;
+        }
     }
 }

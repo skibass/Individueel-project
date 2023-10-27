@@ -11,6 +11,7 @@
             <th scope="col">Language</th>
             <th scope="col">Release date</th>
             <th scope="col">Rating</th>
+            <th scope="col">Favorites</th>
         </tr>
     </thead>
     <tbody>
@@ -24,6 +25,9 @@
                 <td>@item.MovieReleaseDate</td>
                 <td>
                     @Model.Movie_Repository.GetAvarageRating(item.MovieId)
+                </td>
+                <td>
+                    @Model.Movie_Repository.GetAmountOfFavorites(item.MovieId)
                 </td>
 
             </tr>
