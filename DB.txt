@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2023 at 10:07 PM
+-- Generation Time: Oct 31, 2023 at 01:19 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,6 +18,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'Horror'),
+(2, 'Drama'),
+(3, 'Science'),
+(4, 'Space'),
+(5, 'Thriller'),
+(6, 'Cyberpunk');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `movies`
 --
 
@@ -27,17 +50,45 @@ CREATE TABLE `movies` (
   `movie_description` varchar(45) DEFAULT '""',
   `movie_director` varchar(45) DEFAULT '""',
   `movie_language` varchar(45) DEFAULT '""',
-  `movie_release_date` varchar(45) DEFAULT '""'
+  `movie_release_date` varchar(45) DEFAULT '""',
+  `movie_age_rating` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `movies`
 --
 
-INSERT INTO `movies` (`movie_id`, `movie_name`, `movie_description`, `movie_director`, `movie_language`, `movie_release_date`) VALUES
-(2, 'est', 'est', 'daniel', 'NL', '0000-00-00'),
-(3, 'esto', 'esto', 'Hans', 'BE', '0000-00-00'),
-(5, 'pipipipip', 'efefef', 'ef', 'ef', '\"\"');
+INSERT INTO `movies` (`movie_id`, `movie_name`, `movie_description`, `movie_director`, `movie_language`, `movie_release_date`, `movie_age_rating`) VALUES
+(2, 'Titanic', 'est', 'James Cameron', 'EN', '2001-01-14', NULL),
+(3, 'Finding Nemo', 'esto', 'Andrew Stanton', 'EN', '2011-04-17', NULL),
+(5, 'God Father', 'efefef', 'Francis Ford Coppola', 'EN', '1981-02-25', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `movie_categories`
+--
+
+CREATE TABLE `movie_categories` (
+  `id` int(11) NOT NULL,
+  `movie_id` int(11) NOT NULL,
+  `categorie_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `movie_categories`
+--
+
+INSERT INTO `movie_categories` (`id`, `movie_id`, `categorie_id`) VALUES
+(1, 2, 1),
+(2, 2, 2),
+(3, 2, 3),
+(4, 2, 4),
+(5, 3, 2),
+(6, 3, 1),
+(7, 5, 5),
+(8, 5, 6),
+(11, 5, 4);
 
 -- --------------------------------------------------------
 
@@ -120,17 +171,32 @@ CREATE TABLE `user_favorite_movies` (
 
 INSERT INTO `user_favorite_movies` (`favorite_id`, `user_id`, `movie_id`) VALUES
 (0, 3, 2),
-(1, 7, 5);
+(1, 7, 5),
+(2, 7, 2);
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `movies`
 --
 ALTER TABLE `movies`
   ADD PRIMARY KEY (`movie_id`);
+
+--
+-- Indexes for table `movie_categories`
+--
+ALTER TABLE `movie_categories`
+  ADD PRIMARY KEY (`id`,`movie_id`,`categorie_id`),
+  ADD KEY `movie_id_key_idx` (`movie_id`),
+  ADD KEY `categorie_id_key_idx` (`categorie_id`);
 
 --
 -- Indexes for table `movie_ratings`
@@ -167,10 +233,22 @@ ALTER TABLE `user_favorite_movies`
 --
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
   MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `movie_categories`
+--
+ALTER TABLE `movie_categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `movie_ratings`
@@ -188,11 +266,18 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_favorite_movies`
 --
 ALTER TABLE `user_favorite_movies`
-  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `movie_categories`
+--
+ALTER TABLE `movie_categories`
+  ADD CONSTRAINT `categorie_id_key` FOREIGN KEY (`categorie_id`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `movie_id_key` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`movie_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `movie_ratings`
