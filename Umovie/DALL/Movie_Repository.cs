@@ -47,9 +47,9 @@ namespace DALL
 
         public double? GetAmountOfFavorites(Movie? movie)
         {
-            double? avarageRating = context.UserFavoriteMovies.Where(r => r.MovieId == movie.MovieId).Count();
+            double? amountOfFavorites = context.UserFavoriteMovies.Where(r => r.MovieId == movie.MovieId).Count();
 
-            return avarageRating;
+            return amountOfFavorites;
         }
 
         public string? GetCategories(Movie? movie)
