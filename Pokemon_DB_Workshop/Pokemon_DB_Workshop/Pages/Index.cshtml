@@ -1,0 +1,29 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<button>
+    <a class="nav-link text-dark" asp-area="" asp-page="/Pokemon/AddPokemon">Show attacks</a>
+</button>
+All pokemon
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Max Hp</th>
+            <th scope="col">Min Hp</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.pokemonRepo.GetPokemon())
+        {
+            <tr>
+                <th scope="row">@item.Name</th>
+                <td>@item.MaxHp</td>
+                <td>@item.MinHp</td>
+            </tr>
+        }
+    </tbody>
+</table>

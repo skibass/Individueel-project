@@ -16,7 +16,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Movie_Repository.GetMovies())
+        @foreach (var item in Model.movieService.TryGetMovies())
         {
             <tr>
                 <th scope="row">@item.MovieName</th>
@@ -25,13 +25,13 @@
                 <td>@item.MovieLanguage</td>
                 <td>@item.MovieReleaseDate</td>
                 <td>
-                    @Model.Movie_Repository.GetAverageRating(item.MovieId)
+                    @Model.movieService.TryGetAverageRating(item)
                 </td>
                 <td>
-                    @Model.Movie_Repository.GetAmountOfFavorites(item.MovieId)
+                    @Model.movieService.TryGetAmountOfFavorites(item)
                 </td>
                 <td>
-                    @Model.Movie_Repository.GetCategories(item.MovieId)
+                    @Model.movieService.TryGetCategories(item)
                 </td>
             </tr>
         }

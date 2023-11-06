@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pokemon_DB_Workshop", "Pokemon_DB_Workshop\Pokemon_DB_Workshop.csproj", "{F1A17EA1-30C8-469F-9706-A67199EE60D7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{A83C8591-4B53-44C7-B1FD-A816DEC15CE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{8A82F710-64B6-496F-B039-EE160D5CE196}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1A17EA1-30C8-469F-9706-A67199EE60D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A17EA1-30C8-469F-9706-A67199EE60D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A17EA1-30C8-469F-9706-A67199EE60D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A17EA1-30C8-469F-9706-A67199EE60D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A83C8591-4B53-44C7-B1FD-A816DEC15CE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A83C8591-4B53-44C7-B1FD-A816DEC15CE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A83C8591-4B53-44C7-B1FD-A816DEC15CE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A83C8591-4B53-44C7-B1FD-A816DEC15CE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A82F710-64B6-496F-B039-EE160D5CE196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A82F710-64B6-496F-B039-EE160D5CE196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A82F710-64B6-496F-B039-EE160D5CE196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A82F710-64B6-496F-B039-EE160D5CE196}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FBD6C33-F4D3-4F3A-B01D-FD49CECF2E29}
+	EndGlobalSection
+EndGlobal

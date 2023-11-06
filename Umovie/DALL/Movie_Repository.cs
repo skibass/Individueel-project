@@ -26,43 +26,35 @@ namespace DALL
 
         public void DeleteRating(User userToBeAdded)
         {
-            User user = new User();
+           
+        }
 
-            List<Role> roles = context.Roles.ToList();
+        public void DeleteAsFavorite(Movie movie, User user)
+        {
+            var movieById = context.UserFavoriteMovies.Where(x => x.UserId == user.UserId).Where(x => x.MovieId == movie.MovieId).FirstOrDefault();
 
-            user.UserName = "thijn";
-            user.UserEmail = "titititi";
-            user.Role = roles[0];
+            context.Entry(movieById).State = EntityState.Deleted;
 
-            context.Users.Add(userToBeAdded);
             context.SaveChanges();
         }
 
-        public void DeleteAsFavorite(int toBeDeletedFavorite)
+        public double? GetAverageRating(Movie? movie)
         {
-            var studentbyid = context.Users.Where(x => x.UserId == toBeDeletedFavorite).FirstOrDefault();
-
-                context.Entry(studentbyid).State = EntityState.Deleted;
-
-                context.SaveChanges();
-        }
-        public double? GetAverageRating(int? movieId)
-        {
-            double? avarageRating = context.MovieRatings.Where(r => r.MovieId == movieId).Average(r => r.RatingNumber);
+            double? avarageRating = context.MovieRatings.Where(r => r.MovieId == movie.MovieId).Average(r => r.RatingNumber);
 
             return avarageRating;
         }
 
-        public double? GetAmountOfFavorites(int? movieId)
+        public double? GetAmountOfFavorites(Movie? movie)
         {
-            double? avarageRating = context.UserFavoriteMovies.Where(r => r.MovieId == movieId).Count();
+            double? avarageRating = context.UserFavoriteMovies.Where(r => r.MovieId == movie.MovieId).Count();
 
             return avarageRating;
         }
 
-        public string? GetCategories(int? movieId)
+        public string? GetCategories(Movie? movie)
         {
-            var movieCategories = context.MovieCategories.Where(r => r.MovieId == movieId);
+            var movieCategories = context.MovieCategories.Where(r => r.MovieId == movie.MovieId);
             string categories = "";
 
             foreach (var item in movieCategories)

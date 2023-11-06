@@ -1,0 +1,32 @@
+﻿@page
+@model Pokemon_DB_Workshop.Pages.pokemon.AddPokemonModel
+@{
+}
+<form method="POST">
+    <div asp-validation-summary="All"></div>
+    <div>
+        <label asp-for="pokemon.Name"></label>
+        <div>
+            <input asp-for="pokemon.Name" class="form-control" />
+        </div>
+    </div>
+    <div>
+        <label asp-for="pokemon.MaxHp"></label>
+        <div>
+            <input asp-for="pokemon.MaxHp" class="form-control" />
+        </div>
+    </div>
+    <div>
+        <label>Min Hp</label>
+        <div>
+            <input asp-for="pokemon.MaxHp" class="form-control" />
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <br>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </div>
+</form>

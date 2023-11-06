@@ -37,5 +37,14 @@ namespace DALL
             context.Users.Add(userToBeAdded);
             context.SaveChanges();
         }
+
+        //public User RegisterUser()
+        //{
+
+        //}
+        //public User LoginUser()
+        //{
+
+        //}
     }
 }

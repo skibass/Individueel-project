@@ -1,4 +1,5 @@
-﻿using DALL;
+﻿using BLL;
+using DALL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Models;
@@ -7,8 +8,8 @@ namespace Umovie.Pages
 {
     public class IndexModel : PageModel
     {
-        public User_Repository User_Repository= new User_Repository();
-        Movie_Repository movie_Repository= new Movie_Repository(); 
+        public User_Service userService= new User_Service();
+
         private readonly ILogger<IndexModel> _logger;
 
         public IndexModel(ILogger<IndexModel> logger)

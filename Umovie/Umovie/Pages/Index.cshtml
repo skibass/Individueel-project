@@ -6,7 +6,7 @@
 
 <div class="text-center">
     <label>USER:</label><br />
-    @foreach (var item in Model.User_Repository.GetUsers())
+    @foreach (var item in Model.userService.TryGetUsers())
     {
         <h1 class="display-4">@item.UserName</h1>
         <h1 class="display-4">@item.UserEmail</h1>

@@ -1,0 +1,27 @@
+﻿@page
+@model Pokemon_DB_Workshop.Pages.Pokemon.AttacksModel
+@{
+}
+<button>
+    <a class="nav-link text-dark" asp-area="" asp-page="/Pokemon/AddPokemon">Show pokemon</a>
+</button>
+All attacks
+@* <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Max Hp</th>
+            <th scope="col">Min Hp</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.pokemonRepo.GetPokemon())
+        {
+            <tr>
+                <th scope="row">@item.Name</th>
+                <td>@item.MaxHp</td>
+                <td>@item.MinHp</td>
+            </tr>
+        }
+    </tbody>
+</table> *@

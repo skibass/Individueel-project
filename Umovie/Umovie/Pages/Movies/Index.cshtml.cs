@@ -1,3 +1,4 @@
+using BLL;
 using DALL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,7 +8,7 @@ namespace Umovie.Pages.Movies
 {
     public class IndexModel : PageModel
     {
-        public Movie_Repository Movie_Repository = new();
+        public Movie_Service movieService = new();
 
 
         public void OnGet()
