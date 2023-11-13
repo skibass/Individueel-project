@@ -53,6 +53,7 @@ namespace DALL
                                 MovieCategories = new List<MovieCategory>(),
                                 MovieRatings = new List<MovieRating>(),
                                 UserFavoriteMovies = new List<UserFavoriteMovie>()
+
                             };
 
                             movies.Add(movie);
