@@ -19,14 +19,14 @@ namespace DALL
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 string query = @"
-                     SELECT movies.movie_id, movies.movie_name, movies.movie_description, movies.movie_director, movies.movie_director, movies.movie_release_date, movies.movie_language,
-        categories.name AS CategoryName, movie_ratings.rating_number AS RatingNumber, users.user_name AS UserName
- FROM movies
- JOIN movie_categories ON movies.movie_id = movie_categories.movie_id
- JOIN categories ON movie_categories.id = categories.id
- JOIN movie_ratings ON movies.movie_id = movie_ratings.movie_id
- JOIN users ON movie_ratings.user_id = users.user_id;
-                ";
+                                        SELECT movies.movie_id, movies.movie_name, movies.movie_description, movies.movie_director, movies.movie_director, movies.movie_release_date, movies.movie_language,
+       categories.name AS CategoryName, AVG(movie_ratings.rating_number) AS RatingNumber, COUNT(users.user_name) AS UserFavorites
+FROM movies
+JOIN movie_categories ON movies.movie_id = movie_categories.movie_id
+JOIN categories ON movie_categories.id = categories.id
+JOIN movie_ratings ON movies.movie_id = movie_ratings.movie_id
+JOIN users ON movie_ratings.user_id = users.user_id
+GROUP BY movie_id, categories.id;";
 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
@@ -58,18 +58,25 @@ namespace DALL
 
                             movies.Add(movie);
                         }
+                        Category category = new();
 
-                        //var category = new MovieCategory
-                        //{
-                        //    CategoryName = reader["CategoryName"].ToString()
-                        //};
-                        //movie.MovieCategories.Add(category);
-
-                        var rating = new MovieRating
+                        var categoryMovie = new Category
                         {
-                            RatingNumber = Convert.ToInt32(reader["RatingNumber"])
+                            Name = reader["CategoryName"].ToString()
                         };
-                        movie.MovieRatings.Add(rating);
+
+                        var categoryM = new MovieCategory
+                        {
+                            Categorie = categoryMovie,
+                        };
+
+                        movie.MovieCategories.Add(categoryM);
+
+                        //var rating = new MovieRating
+                        //{
+                        //    RatingNumber = Convert.ToInt32(reader["RatingNumber"])
+                        //};
+                        //movie.MovieRatings.Add(rating);
 
                         //var user = new UserFavoriteMovie
                         //{
