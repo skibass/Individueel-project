@@ -20,7 +20,7 @@ namespace DALL
             {
                 string query = @"
                                         SELECT movies.movie_id, movies.movie_name, movies.movie_description, movies.movie_director, movies.movie_director, movies.movie_release_date, movies.movie_language,
-       categories.name AS CategoryName, AVG(movie_ratings.rating_number) AS RatingNumber, COUNT(users.user_name) AS UserFavorites
+       categories.name AS CategoryName, AVG(movie_ratings.rating_number) AS AverageRating, COUNT(users.user_name) AS UserFavorites
 FROM movies
 JOIN movie_categories ON movies.movie_id = movie_categories.movie_id
 JOIN categories ON movie_categories.id = categories.id
@@ -72,17 +72,9 @@ GROUP BY movie_id, categories.id;";
 
                         movie.MovieCategories.Add(categoryM);
 
-                        //var rating = new MovieRating
-                        //{
-                        //    RatingNumber = Convert.ToInt32(reader["RatingNumber"])
-                        //};
-                        //movie.MovieRatings.Add(rating);
+                        movie.MovieAverageRating = Convert.ToInt32(reader["AverageRating"]);
 
-                        //var user = new UserFavoriteMovie
-                        //{
-                        //    UserName = reader["UserName"].ToString()
-                        //};
-                        //movie.UserFavoriteMovies.Add(user);
+                        movie.UserFavorites = Convert.ToInt32(reader["UserFavorites"]);
                     }
 
                     reader.Close();
@@ -90,6 +82,8 @@ GROUP BY movie_id, categories.id;";
             }
             return movies;
         }
+
+
 
 
         public void DeleteRating(User userToBeAdded)
@@ -106,30 +100,50 @@ GROUP BY movie_id, categories.id;";
         //    context.SaveChanges();
         //}
 
-        //public double? GetAverageRating(Movie? movie)
-        //{
-        //    double? avarageRating = context.MovieRatings.Where(r => r.MovieId == movie.MovieId).Average(r => r.RatingNumber);
+        public double? GetAverageRating(Movie? movie)
+        {
+            double? rating = 0;
 
-        //    return avarageRating;
-        //}
+            foreach (var item in GetMovies())
+            {          
+                    if (item.MovieId == movie.MovieId)
+                    {
+                        rating = item.MovieAverageRating;
+                    }              
+            }
 
-        //public double? GetAmountOfFavorites(Movie? movie)
-        //{
-        //    double? amountOfFavorites = context.UserFavoriteMovies.Where(r => r.MovieId == movie.MovieId).Count();
+            return rating;
+        }
 
-        //    return amountOfFavorites;
-        //}
+        public int? GetAmountOfFavorites(Movie? movie)
+        {
+            int users = 0;
+            foreach (var item in GetMovies())
+            {
+                if (item.MovieId == movie.MovieId)
+                {
+                        users = (int)item.UserFavorites;
+                }
+            }
 
-        //public string? GetCategories(Movie? movie)
-        //{
-        //    var movieCategories = context.MovieCategories.Where(r => r.MovieId == movie.MovieId);
-        //    string categories = "";
+            return users;
+        }
 
-        //    foreach (var item in movieCategories)
-        //    {
-        //        categories += " | " + item.Categorie.Name;
-        //    }
-        //    return categories;
-        //}
+        public string? GetCategories(Movie? movie)
+        {
+            string categories = "";
+
+            foreach (var item in GetMovies())
+            {
+                if (item.MovieId == movie.MovieId)
+                {
+                    foreach (MovieCategory cat in item.MovieCategories)
+                    {
+                        categories += " | " + cat.Categorie.Name;
+                    }
+                }
+            }
+            return categories;
+        }
     }
 }

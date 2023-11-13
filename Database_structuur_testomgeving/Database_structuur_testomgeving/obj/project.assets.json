@@ -2072,23 +2072,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Thijn\\.nuget\\packages\\": {},
+    "C:\\Users\\Chris\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Fontys_S2\\Projecten\\Individueel-project\\Database_structuur_testomgeving\\Database_structuur_testomgeving\\Database_structuur_testomgeving.csproj",
+      "projectUniqueName": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Database_structuur_testomgeving\\Database_structuur_testomgeving\\Database_structuur_testomgeving.csproj",
       "projectName": "Database_structuur_testomgeving",
-      "projectPath": "E:\\Fontys_S2\\Projecten\\Individueel-project\\Database_structuur_testomgeving\\Database_structuur_testomgeving\\Database_structuur_testomgeving.csproj",
-      "packagesPath": "C:\\Users\\Thijn\\.nuget\\packages\\",
-      "outputPath": "E:\\Fontys_S2\\Projecten\\Individueel-project\\Database_structuur_testomgeving\\Database_structuur_testomgeving\\obj\\",
+      "projectPath": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Database_structuur_testomgeving\\Database_structuur_testomgeving\\Database_structuur_testomgeving.csproj",
+      "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
+      "outputPath": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Database_structuur_testomgeving\\Database_structuur_testomgeving\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Thijn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2097,7 +2097,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
