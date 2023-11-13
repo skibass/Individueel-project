@@ -19,6 +19,8 @@ public partial class Movie
     public string? MovieReleaseDate { get; set; }
 
     public int? MovieAgeRating { get; set; }
+    public double? MovieAverageRating { get; set; }
+    public int? UserFavorites { get; set; }
 
     public ICollection<MovieCategory> MovieCategories { get; set; } = new List<MovieCategory>();
 
