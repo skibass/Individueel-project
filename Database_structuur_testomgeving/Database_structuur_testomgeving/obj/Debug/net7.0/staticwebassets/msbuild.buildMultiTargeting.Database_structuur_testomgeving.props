@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Database_structuur_testomgeving.props" />
+</Project>
