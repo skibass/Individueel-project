@@ -17,6 +17,7 @@ namespace DALL
         {
             List<Movie> movies = context.Movies.Include(e => e.MovieRatings).Include(e => e.UserFavoriteMovies).Include(e => e.MovieCategories).ThenInclude(e => e.Categorie).ToList();
 
+
             if (movies == null)
             {
                 movies = new List<Movie>();
