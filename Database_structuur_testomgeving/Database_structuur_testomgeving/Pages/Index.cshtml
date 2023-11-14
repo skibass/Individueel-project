@@ -35,6 +35,18 @@
                 <td>
                     @Model.MovieRepository.GetCategories(item)
                 </td>
+                <td>
+                    <form method="post" asp-page-handler="TryDeleteMovie">
+                        <input type="hidden" name="movieId" value="@item.MovieId">
+                        <input type="submit" name="deleteButton" value="Delete">
+                    </form>
+
+                    <form method="post" asp-page-handler="TryUpdateMovie">
+                        <input type="hidden" name="movieId" value="@item.MovieId">
+                        <input type="text" name="movieName">
+                        <input type="submit" name="updateButton" value="Update">
+                    </form>
+                </td>
             </tr>
         }
     </tbody>

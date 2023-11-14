@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Fontys_S2\\Projecten\\Individueel-project\\Pokemon_DB_Workshop\\Models\\Models.csproj": {}
+    "G:\\Fontys_S2\\Individueel\\Individueel-project\\Pokemon_DB_Workshop\\Models\\Models.csproj": {}
   },
   "projects": {
-    "E:\\Fontys_S2\\Projecten\\Individueel-project\\Pokemon_DB_Workshop\\Models\\Models.csproj": {
+    "G:\\Fontys_S2\\Individueel\\Individueel-project\\Pokemon_DB_Workshop\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Fontys_S2\\Projecten\\Individueel-project\\Pokemon_DB_Workshop\\Models\\Models.csproj",
+        "projectUniqueName": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Pokemon_DB_Workshop\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "E:\\Fontys_S2\\Projecten\\Individueel-project\\Pokemon_DB_Workshop\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\Thijn\\.nuget\\packages\\",
-        "outputPath": "E:\\Fontys_S2\\Projecten\\Individueel-project\\Pokemon_DB_Workshop\\Models\\obj\\",
+        "projectPath": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Pokemon_DB_Workshop\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
+        "outputPath": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Pokemon_DB_Workshop\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Thijn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

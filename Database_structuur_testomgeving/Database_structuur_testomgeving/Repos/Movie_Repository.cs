@@ -1,12 +1,16 @@
 ﻿using Models;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
+using static Google.Protobuf.WellKnownTypes.Field.Types;
+using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace DALL
 {
     public class Movie_Repository
     {
         string connectionString = "Server=127.0.0.1;Database=umovie;Uid=root;Pwd=;";
+        MySqlConnection db = new MySqlConnection("Server=127.0.0.1;Database=umovie;Uid=root;Pwd=;");
 
         public List<Movie> GetMovies()
         {
@@ -93,14 +97,37 @@ group by movie_id, categorie_id;";
 
         }
 
-        //public void DeleteAsFavorite(Movie movie, User user)
-        //{
-        //    var movieById = context.UserFavoriteMovies.Where(x => x.UserId == user.UserId).Where(x => x.MovieId == movie.MovieId).FirstOrDefault();
+        public void DeleteMovie(int movieId)
+        {
+            db.Open();
 
-        //    context.Entry(movieById).State = EntityState.Deleted;
+            MySqlCommand cmd = new MySqlCommand($"delete from movies where movie_id = @id", db);
 
-        //    context.SaveChanges();
-        //}
+            cmd.Parameters.Add(new MySqlParameter("@Id", MySqlDbType.VarChar));
+
+            cmd.Parameters["@Id"].Value = movieId;
+           
+            cmd.ExecuteNonQuery();
+
+            db.Close();
+        }
+
+        public void UpdateMovie(int movieId, string name)
+        {
+            db.Open();
+
+            MySqlCommand cmd = new MySqlCommand($"UPDATE movies SET movie_name = @Name WHERE movie_id = @Id;", db);
+
+            cmd.Parameters.Add(new MySqlParameter("@Id", MySqlDbType.VarChar));
+            cmd.Parameters.Add(new MySqlParameter("@Name", MySqlDbType.VarChar));
+
+            cmd.Parameters["@Id"].Value = movieId;
+            cmd.Parameters["@Name"].Value = name;
+
+            cmd.ExecuteNonQuery();
+
+            db.Close();
+        }
 
         public decimal? GetAverageRating(Movie? movie)
         {
