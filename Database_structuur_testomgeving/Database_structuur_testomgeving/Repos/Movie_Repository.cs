@@ -1,16 +1,19 @@
 ﻿using Models;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
+using static Google.Protobuf.WellKnownTypes.Field.Types;
+using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace DALL
 {
     public class Movie_Repository
     {
         string connectionString = "Server=127.0.0.1;Database=umovie;Uid=root;Pwd=;";
+        MySqlConnection db = new MySqlConnection("Server=127.0.0.1;Database=umovie;Uid=root;Pwd=;");
 
         public List<Movie> GetMovies()
         {
-
             List<Movie> movies = new List<Movie>();
 
 
@@ -18,15 +21,19 @@ namespace DALL
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                string query = @"
-                                        SELECT movies.movie_id, movies.movie_name, movies.movie_description, movies.movie_director, movies.movie_director, movies.movie_release_date, movies.movie_language,
-       categories.name AS CategoryName, AVG(movie_ratings.rating_number) AS AverageRating, COUNT(users.user_name) AS UserFavorites
-FROM movies
-JOIN movie_categories ON movies.movie_id = movie_categories.movie_id
-JOIN categories ON movie_categories.id = categories.id
-JOIN movie_ratings ON movies.movie_id = movie_ratings.movie_id
-JOIN users ON movie_ratings.user_id = users.user_id
-GROUP BY movie_id, categories.id;";
+                string query = @"SELECT movies.movie_id, movies.movie_name, movies.movie_description, movies.movie_director, movies.movie_director, movies.movie_release_date, movies.movie_language, 
+categories.name as CategoryName, round(avg(movie_ratings.rating_number), 1) as AverageRating, count(user_favorite_movies.user_id) as UserFavorites
+
+FROM movies 
+
+left JOIN movie_categories ON movies.movie_id = movie_categories.movie_id
+left JOIN categories ON movie_categories.categorie_id = categories.id
+left JOIN movie_ratings ON movies.movie_id = movie_ratings.movie_id
+left JOIN users ON movie_ratings.user_id = users.user_id
+left JOIN user_favorite_movies ON movies.movie_id = user_favorite_movies.movie_id
+
+
+group by movie_id, categorie_id;";
 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
@@ -53,9 +60,7 @@ GROUP BY movie_id, categories.id;";
                                 MovieCategories = new List<MovieCategory>(),
                                 MovieRatings = new List<MovieRating>(),
                                 UserFavoriteMovies = new List<UserFavoriteMovie>()
-
                             };
-
                             movies.Add(movie);
                         }
                         Category category = new();
@@ -72,9 +77,10 @@ GROUP BY movie_id, categories.id;";
 
                         movie.MovieCategories.Add(categoryM);
 
-                        movie.MovieAverageRating = Convert.ToInt32(reader["AverageRating"]);
+                        movie.MovieAverageRating = reader["AverageRating"] != DBNull.Value ? (decimal?)reader["AverageRating"] : null;
 
-                        movie.UserFavorites = Convert.ToInt32(reader["UserFavorites"]);
+                        movie.UserFavorites = reader["UserFavorites"] != DBNull.Value ? (long?)reader["UserFavorites"] : null;
+
                     }
 
                     reader.Close();
@@ -91,18 +97,41 @@ GROUP BY movie_id, categories.id;";
 
         }
 
-        //public void DeleteAsFavorite(Movie movie, User user)
-        //{
-        //    var movieById = context.UserFavoriteMovies.Where(x => x.UserId == user.UserId).Where(x => x.MovieId == movie.MovieId).FirstOrDefault();
-
-        //    context.Entry(movieById).State = EntityState.Deleted;
-
-        //    context.SaveChanges();
-        //}
-
-        public double? GetAverageRating(Movie? movie)
+        public void DeleteMovie(int movieId)
         {
-            double? rating = 0;
+            db.Open();
+
+            MySqlCommand cmd = new MySqlCommand($"delete from movies where movie_id = @id", db);
+
+            cmd.Parameters.Add(new MySqlParameter("@Id", MySqlDbType.VarChar));
+
+            cmd.Parameters["@Id"].Value = movieId;
+           
+            cmd.ExecuteNonQuery();
+
+            db.Close();
+        }
+
+        public void UpdateMovie(int movieId, string name)
+        {
+            db.Open();
+
+            MySqlCommand cmd = new MySqlCommand($"UPDATE movies SET movie_name = @Name WHERE movie_id = @Id;", db);
+
+            cmd.Parameters.Add(new MySqlParameter("@Id", MySqlDbType.VarChar));
+            cmd.Parameters.Add(new MySqlParameter("@Name", MySqlDbType.VarChar));
+
+            cmd.Parameters["@Id"].Value = movieId;
+            cmd.Parameters["@Name"].Value = name;
+
+            cmd.ExecuteNonQuery();
+
+            db.Close();
+        }
+
+        public decimal? GetAverageRating(Movie? movie)
+        {
+            decimal? rating = 0;
 
             foreach (var item in GetMovies())
             {          
@@ -122,7 +151,7 @@ GROUP BY movie_id, categories.id;";
             {
                 if (item.MovieId == movie.MovieId)
                 {
-                        users = (int)item.UserFavorites;
+                    users = (int)item.UserFavorites;
                 }
             }
 

@@ -19,5 +19,20 @@ namespace Database_structuur_testomgeving.Pages
         {
         
         }
+        public void OnPostTryUpdateMovie()
+        {
+            int movieId = int.Parse(Request.Form["movieId"]);
+            string movieName = Request.Form["movieName"];
+
+               MovieRepository.UpdateMovie(movieId, movieName);    
+        }
+
+        public void OnPostTryDeleteMovie()
+        {
+            int movieId = int.Parse(Request.Form["movieId"]);
+            
+                MovieRepository.DeleteMovie(movieId);
+            
+        }
     }
 }
