@@ -92,9 +92,23 @@ group by movie_id, categorie_id;";
 
 
 
-        public void DeleteRating(User userToBeAdded)
+        public void FavoriteMovie(int movieId, int userId = 3)
         {
+            db.Open();
 
+
+
+            MySqlCommand cmd = new MySqlCommand($"INSERT INTO user_favorite_movies (user_id, movie_id) VALUES (@Uid, @Mid)", db);
+
+            cmd.Parameters.Add(new MySqlParameter("@Uid", MySqlDbType.VarChar));
+            cmd.Parameters.Add(new MySqlParameter("@Mid", MySqlDbType.VarChar));
+
+            cmd.Parameters["@Uid"].Value = userId;
+            cmd.Parameters["@Mid"].Value = movieId;
+
+            cmd.ExecuteNonQuery();
+
+            db.Close();
         }
 
         public void DeleteMovie(int movieId)

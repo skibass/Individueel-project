@@ -46,6 +46,11 @@
                         <input type="text" name="movieName">
                         <input type="submit" name="updateButton" value="Update">
                     </form>
+
+                    <form method="post" asp-page-handler="TryFavoriteMovie">
+                        <input type="hidden" name="movieId" value="@item.MovieId">
+                        <input type="submit" value="Favorite">
+                    </form>
                 </td>
             </tr>
         }

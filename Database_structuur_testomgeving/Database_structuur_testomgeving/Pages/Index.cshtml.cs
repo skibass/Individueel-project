@@ -34,5 +34,12 @@ namespace Database_structuur_testomgeving.Pages
                 MovieRepository.DeleteMovie(movieId);
             
         }
+
+        public void OnPostTryFavoriteMovie()
+        {
+            int movieId = int.Parse(Request.Form["movieId"]);
+
+            MovieRepository.FavoriteMovie(movieId);
+        }
     }
 }
