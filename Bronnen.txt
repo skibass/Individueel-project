@@ -1,1 +1,2 @@
 EF scaffolding from existing database: https://dev.mysql.com/doc/connector-net/en/connector-net-entityframework-core-scaffold-example.html
+Identity MySQL scaffolding: https://www.youtube.com/watch?v=AGkIM-rlJxI
