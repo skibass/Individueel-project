@@ -26,13 +26,9 @@ namespace DALL
 
         public void AddUserAndLogin(User userToBeAdded)
         {
-            User user = new User();
-
             List<Role> roles = context.Roles.ToList();
 
-            user.UserName = "thijn";
-            user.UserEmail = "titititi";
-            user.Role = roles[0];
+            userToBeAdded.Role = roles[0];
 
             context.Users.Add(userToBeAdded);
             context.SaveChanges();

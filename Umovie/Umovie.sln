@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umovie", "Umovie\Umovie.csproj", "{857CC6CE-335B-4A86-9D1E-4D4740312929}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Umovie", "Umovie\Umovie.csproj", "{857CC6CE-335B-4A86-9D1E-4D4740312929}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{AC5557B5-C02A-4E07-9F58-30C72A11E568}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{AC5557B5-C02A-4E07-9F58-30C72A11E568}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALL", "DALL\DALL.csproj", "{80940815-78AE-44CB-B41D-C2FA13DBE5D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DALL", "DALL\DALL.csproj", "{80940815-78AE-44CB-B41D-C2FA13DBE5D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{0C0AE06A-4CBB-441E-B5CA-D62572A543F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{0C0AE06A-4CBB-441E-B5CA-D62572A543F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

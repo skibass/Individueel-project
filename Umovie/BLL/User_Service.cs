@@ -15,6 +15,10 @@ namespace BLL
         {
             return userRepository.GetUsers();
         }
+        public void TryRegisterUser(User user)
+        {
+            userRepository.AddUserAndLogin(user);
+        }
 
         //public User TryRegisterUser(User user)
         //{
