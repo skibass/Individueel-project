@@ -16,10 +16,12 @@ namespace Umovie.Pages.Account
 
         public void OnGet()
         {
+
             user = new User();
         }
         public IActionResult OnPostTryLoginUser()
         {
+
             User loggedUser = userService.TryLoginUser(user);
             if (loggedUser != null)
             {

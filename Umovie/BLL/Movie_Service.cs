@@ -16,6 +16,10 @@ namespace BLL
         {
             return repository.GetMovies();
         }
+        public List<UserFavoriteMovie> TryGetFavoriteMovies(int id)
+        {
+            return repository.GetFavoriteMovies(id);
+        }
 
         public double? TryGetAverageRating(Movie? movie)
         {

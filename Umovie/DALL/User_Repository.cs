@@ -27,6 +27,17 @@ namespace DALL
             return users;
         }
 
+        public User GetCurrentUser(int uId)
+        {
+            User user = context.Users.Where(r => r.UserId == uId).Include(e => e.Role).SingleOrDefault();
+
+            if (user == null)
+            {
+                user = new User();
+            }
+            return user;
+        }
+
         public bool AddUserAndLogin(User userToBeAdded)
         {
             List<Role> roles = context.Roles.ToList();

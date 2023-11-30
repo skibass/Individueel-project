@@ -26,9 +26,15 @@ namespace DALL
             return movies;
         }
 
-        public void DeleteRating(User userToBeAdded)
+        public List<UserFavoriteMovie> GetFavoriteMovies(int uId)
         {
-           
+            List<UserFavoriteMovie> fMovies = context.UserFavoriteMovies.Include(e => e.Movie).ThenInclude(e => e.MovieCategories).ThenInclude(e => e.Categorie).Where(x => x.UserId == uId).ToList();
+            
+            if (fMovies == null)
+            {
+                fMovies = new List<UserFavoriteMovie>();
+            }
+            return fMovies;
         }
 
         public void DeleteAsFavorite(Movie movie, User user)
