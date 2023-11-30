@@ -33,6 +33,12 @@
                 <td>
                     @Model.movieService.TryGetCategories(item)
                 </td>
+                <td>
+                    <form method="post" asp-page-handler="TryFavoriteMovie">
+                        <input type="hidden" name="movieId" value="@item.MovieId">
+                        <input type="submit" value="Favorite">
+                    </form>
+                </td>
             </tr>
         }
     </tbody>

@@ -31,5 +31,10 @@ namespace BLL
         {
             return repository.GetCategories(movie);
         }
+
+        public bool? TryFavoriteMovie(int movieId, int userId)
+        {
+            return repository.FavoriteMovie(movieId, userId);
+        }
     }
 }

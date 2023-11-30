@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
 namespace DALL
 {
@@ -63,6 +64,39 @@ namespace DALL
                 categories += " | " + item.Categorie.Name;
             }
             return categories;
+        }
+
+        public bool? FavoriteMovie(int movieId, int userId)
+        {
+            bool favorite = false;
+
+            UserFavoriteMovie uF = new();
+
+            var favoriteMovie = context.UserFavoriteMovies.Where(r => r.MovieId == movieId).Where(r => r.UserId == userId).SingleOrDefault();
+
+            // favorite
+            if (favoriteMovie == null)
+            {
+                uF.MovieId = movieId;
+                uF.UserId = userId;
+
+                context.UserFavoriteMovies.Add(uF);
+
+                context.SaveChanges();
+
+                 favorite = true;
+            }
+            // unfavorite
+            else
+            {
+                context.Entry(favoriteMovie).State = EntityState.Deleted;
+
+                context.SaveChanges();
+
+                 favorite = false;
+            }
+
+            return favorite;
         }
     }
 }
