@@ -5,36 +5,5 @@
 }
 
 <div class="text-center">
-    <label>USER:</label><br />
-    @foreach (var item in Model.userService.TryGetUsers())
-    {
-        <h1 class="display-4">@item.UserName</h1>
-        <h1 class="display-4">@item.UserEmail</h1>
-        <br />
-        <label>Ratings:</label>
-        <br />
-        foreach (var rating in item.MovieRatings)
-        {
-            <label>Movie:</label>
-
-            <h1 class="display-4">@rating.Movie.MovieName</h1>
-            <h1 class="display-4">@rating.RatingNumber</h1>
-
-            <br />
-            <br />
-        }
-        <label>Favorites:</label>
-        <br />
-        foreach (var favorite in item.UserFavoriteMovies)
-        {
-            <label>Movie:</label>
-            <h1 class="display-4">@favorite.Movie.MovieName</h1>
-            <br />
-            <br />
-        }
-        <label>Role:</label>
-        <br />
-
-        <h1 class="display-4">@item.Role.RoleName</h1>
-    }
+   
 </div>

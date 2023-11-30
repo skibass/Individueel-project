@@ -27,6 +27,7 @@ namespace Umovie.Pages.Account
             {
                 HttpContext.Session.SetInt32("uId", loggedUser.UserId);
                 HttpContext.Session.SetString("uName", loggedUser.UserName);
+                HttpContext.Session.SetString("rName", loggedUser.Role.RoleName);
             }
 
             return RedirectToPage("../Index");

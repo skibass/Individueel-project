@@ -1,8 +1,10 @@
 using BLL;
 using DALL;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Models;
+using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Umovie.Pages.Movies
@@ -15,6 +17,7 @@ namespace Umovie.Pages.Movies
         {
             
         }
+        [HttpPost("/form-body")]
         public IActionResult OnPostTryFavoriteMovie()
         {
             if (movieService.TryFavoriteMovie(int.Parse(Request.Form["movieId"]), (int)HttpContext.Session.GetInt32("uId")) == true)

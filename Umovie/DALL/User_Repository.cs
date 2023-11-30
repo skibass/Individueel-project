@@ -44,6 +44,7 @@ namespace DALL
 
             userToBeAdded.Role = roles[0];
             userToBeAdded.UserPassword = BCrypt.Net.BCrypt.HashPassword(userToBeAdded.UserPassword);
+
             context.Users.Add(userToBeAdded);
             context.SaveChanges();
 
@@ -51,7 +52,7 @@ namespace DALL
         }
         public User VerifyUser(User user)
         {
-            var userR = context.Users.SingleOrDefault(x => x.UserEmail == user.UserEmail);
+            var userR = context.Users.Include(e => e.Role).SingleOrDefault(x => x.UserEmail == user.UserEmail);
 
             if (userR != null) 
             {

@@ -12,11 +12,11 @@ namespace Umovie.Pages.Account
         public string uEmail { get; set; }
         public string uRole { get; set; }
 
+
         public Movie_Service movieService = new();
         public User_Service userService = new();
         public void OnGet()
         {
-
             int userId = (int)HttpContext.Session.GetInt32("uId");
             uId = userId;
 
