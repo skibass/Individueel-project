@@ -195,6 +195,10 @@ public partial class UmovieContext : DbContext
                 .HasMaxLength(45)
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnName("user_name");
+            entity.Property(e => e.UserPassword)
+                .HasMaxLength(45)
+                .HasDefaultValueSql("'NULL'")
+                .HasColumnName("password");
 
             entity.HasOne(d => d.Role).WithMany(p => p.Users)
                 .HasForeignKey(d => d.RoleId)

@@ -186,3 +186,4 @@ E:\Fontys_S2\Projecten\Individueel-project\Umovie\Umovie\obj\Debug\net7.0\refint
 E:\Fontys_S2\Projecten\Individueel-project\Umovie\Umovie\obj\Debug\net7.0\Umovie.pdb
 E:\Fontys_S2\Projecten\Individueel-project\Umovie\Umovie\obj\Debug\net7.0\Umovie.genruntimeconfig.cache
 E:\Fontys_S2\Projecten\Individueel-project\Umovie\Umovie\obj\Debug\net7.0\ref\Umovie.dll
+G:\Fontys_S2\Individueel\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\BCrypt.Net-Next.dll

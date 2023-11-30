@@ -1,11 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace DALL
 {
@@ -24,23 +27,29 @@ namespace DALL
             return users;
         }
 
-        public void AddUserAndLogin(User userToBeAdded)
+        public bool AddUserAndLogin(User userToBeAdded)
         {
             List<Role> roles = context.Roles.ToList();
 
             userToBeAdded.Role = roles[0];
-
+            userToBeAdded.UserPassword = BCrypt.Net.BCrypt.HashPassword(userToBeAdded.UserPassword);
             context.Users.Add(userToBeAdded);
             context.SaveChanges();
+
+            return true;
         }
+        public User VerifyUser(User user)
+        {
+            var userR = context.Users.SingleOrDefault(x => x.UserEmail == user.UserEmail);
 
-        //public User RegisterUser()
-        //{
-
-        //}
-        //public User LoginUser()
-        //{
-
-        //}
+            if (userR != null) 
+            {
+                if (userR == null || !BCrypt.Net.BCrypt.Verify(user.UserPassword, userR.UserPassword))
+                {
+                    return userR;
+                }
+            }
+            return null;
+        }
     }
 }

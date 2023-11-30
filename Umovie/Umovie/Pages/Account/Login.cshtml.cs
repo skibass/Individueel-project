@@ -1,5 +1,6 @@
 using BLL;
 using DALL;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Models;
@@ -8,18 +9,25 @@ namespace Umovie.Pages.Account
 {
     public class LoginModel : PageModel
     {
-        User_Service userService = new  User_Service();
-        User user = new User();
+        User_Service userService = new User_Service();
+
+        [BindProperty]
+        public User user { get; set; }
 
         public void OnGet()
         {
+            user = new User();
         }
-        public void OnPostTryLoginUser()
+        public IActionResult OnPostTryLoginUser()
         {
-            user.UserEmail = Request.Form["userEmail"];
-            user.UserName = Request.Form["userName"];
+            User loggedUser = userService.TryLoginUser(user);
+            if (loggedUser != null)
+            {
+                HttpContext.Session.SetInt32("uId", loggedUser.UserId);
+                HttpContext.Session.SetString("uName", loggedUser.UserName);
+            }
 
-            //userService.TryLoginUser(user);
+            return RedirectToPage("../Index");
         }
     }
 }

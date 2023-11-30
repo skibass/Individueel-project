@@ -46,6 +46,19 @@
           }
         }
       },
+      "BCrypt.Net-Next/4.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/BCrypt.Net-Next.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/BCrypt.Net-Next.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "BouncyCastle.Cryptography/2.2.1": {
         "type": "package",
         "compile": {
@@ -1299,6 +1312,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
           "DALL": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.13",
           "MySql.Data": "8.2.0",
@@ -1315,6 +1329,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.13",
           "Models": "1.0.0",
           "MySql.Data": "8.2.0",
@@ -1331,6 +1346,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "BCrypt.Net-Next": "4.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.13",
           "MySql.Data": "8.2.0",
           "MySql.EntityFrameworkCore": "7.0.10"
@@ -1381,6 +1397,37 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "BCrypt.Net-Next/4.0.3": {
+      "sha512": "W+U9WvmZQgi5cX6FS5GDtDoPzUCV4LkBLkywq/kRZhuDwcbavOzcDAr3LXJFqHUi952Yj3LEYoWW0jbEUQChsA==",
+      "type": "package",
+      "path": "bcrypt.net-next/4.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bcrypt.net-next.4.0.3.nupkg.sha512",
+        "bcrypt.net-next.nuspec",
+        "ico.png",
+        "lib/net20/BCrypt.Net-Next.dll",
+        "lib/net20/BCrypt.Net-Next.xml",
+        "lib/net35/BCrypt.Net-Next.dll",
+        "lib/net35/BCrypt.Net-Next.xml",
+        "lib/net462/BCrypt.Net-Next.dll",
+        "lib/net462/BCrypt.Net-Next.xml",
+        "lib/net472/BCrypt.Net-Next.dll",
+        "lib/net472/BCrypt.Net-Next.xml",
+        "lib/net48/BCrypt.Net-Next.dll",
+        "lib/net48/BCrypt.Net-Next.xml",
+        "lib/net5.0/BCrypt.Net-Next.dll",
+        "lib/net5.0/BCrypt.Net-Next.xml",
+        "lib/net6.0/BCrypt.Net-Next.dll",
+        "lib/net6.0/BCrypt.Net-Next.xml",
+        "lib/netstandard2.0/BCrypt.Net-Next.dll",
+        "lib/netstandard2.0/BCrypt.Net-Next.xml",
+        "lib/netstandard2.1/BCrypt.Net-Next.dll",
+        "lib/netstandard2.1/BCrypt.Net-Next.xml",
+        "readme.md"
       ]
     },
     "BouncyCastle.Cryptography/2.2.1": {
@@ -3727,6 +3774,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "BCrypt.Net-Next >= 4.0.3",
       "BLL >= 1.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.13",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.13",
@@ -3735,23 +3783,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Thijn\\.nuget\\packages\\": {},
+    "C:\\Users\\Chris\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Fontys_S2\\Projecten\\Individueel-project\\Umovie\\Umovie\\Umovie.csproj",
+      "projectUniqueName": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Umovie\\Umovie\\Umovie.csproj",
       "projectName": "Umovie",
-      "projectPath": "E:\\Fontys_S2\\Projecten\\Individueel-project\\Umovie\\Umovie\\Umovie.csproj",
-      "packagesPath": "C:\\Users\\Thijn\\.nuget\\packages\\",
-      "outputPath": "E:\\Fontys_S2\\Projecten\\Individueel-project\\Umovie\\Umovie\\obj\\",
+      "projectPath": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Umovie\\Umovie\\Umovie.csproj",
+      "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
+      "outputPath": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Umovie\\Umovie\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Thijn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3760,15 +3808,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "E:\\Fontys_S2\\Projecten\\Individueel-project\\Umovie\\BLL\\BLL.csproj": {
-              "projectPath": "E:\\Fontys_S2\\Projecten\\Individueel-project\\Umovie\\BLL\\BLL.csproj"
+            "G:\\Fontys_S2\\Individueel\\Individueel-project\\Umovie\\BLL\\BLL.csproj": {
+              "projectPath": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Umovie\\BLL\\BLL.csproj"
             }
           }
         }
@@ -3783,6 +3830,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "BCrypt.Net-Next": {
+            "target": "Package",
+            "version": "[4.0.3, )"
+          },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[7.0.13, )"
