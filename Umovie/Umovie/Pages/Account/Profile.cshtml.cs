@@ -15,6 +15,7 @@ namespace Umovie.Pages.Account
 
         public Movie_Service movieService = new();
         public User_Service userService = new();
+
         public void OnGet()
         {
             int userId = (int)HttpContext.Session.GetInt32("uId");
