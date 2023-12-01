@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
+using System.Security.Cryptography;
 
 namespace DALL
 {
@@ -24,6 +25,17 @@ namespace DALL
                 movies = new List<Movie>();
             }
             return movies;
+        }
+
+        public Movie GetMovie(int movieId)
+        {
+            Movie movie = context.Movies.Where(r => r.MovieId == movieId).Include(e => e.MovieRatings).Include(e => e.UserFavoriteMovies).Include(e => e.MovieCategories).ThenInclude(e => e.Categorie).SingleOrDefault();
+
+            if (movie == null)
+            {
+                movie = new Movie();
+            }
+            return movie;
         }
 
         public List<UserFavoriteMovie> GetFavoriteMovies(int uId)
@@ -46,23 +58,23 @@ namespace DALL
             context.SaveChanges();
         }
 
-        public double? GetAverageRating(Movie? movie)
+        public double? GetAverageRating(int movieId)
         {
-            double? avarageRating = context.MovieRatings.Where(r => r.MovieId == movie.MovieId).Average(r => r.RatingNumber);
+            double? avarageRating = context.MovieRatings.Where(r => r.MovieId == movieId).Average(r => r.RatingNumber);
 
             return avarageRating;
         }
 
-        public double? GetAmountOfFavorites(Movie? movie)
+        public double? GetAmountOfFavorites(int movieId)
         {
-            double? amountOfFavorites = context.UserFavoriteMovies.Where(r => r.MovieId == movie.MovieId).Count();
+            double? amountOfFavorites = context.UserFavoriteMovies.Where(r => r.MovieId == movieId).Count();
 
             return amountOfFavorites;
         }
 
-        public string? GetCategories(Movie? movie)
+        public string? GetCategories(int movieId)
         {
-            var movieCategories = context.MovieCategories.Where(r => r.MovieId == movie.MovieId);
+            var movieCategories = context.MovieCategories.Where(r => r.MovieId == movieId);
             string categories = "";
 
             foreach (var item in movieCategories)

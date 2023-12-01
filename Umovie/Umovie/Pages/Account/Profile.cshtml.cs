@@ -1,6 +1,7 @@
 using BLL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Models;
 using Models.Pagination;
 
 namespace Umovie.Pages.Account
@@ -25,5 +26,21 @@ namespace Umovie.Pages.Account
             uEmail = userService.TryGetCurrentUser(uId).UserEmail;
             uRole = userService.TryGetCurrentUser(uId).Role.RoleName;
         }
+
+        public IActionResult OnPostViewMovie()
+        {
+            HttpContext.Session.SetInt32("movieId", int.Parse(Request.Form["movieId"]));
+
+            return RedirectToPage("../Movies/Movie");
+        }
+        public IActionResult OnPostTryUnfavoriteMovie()
+        {
+            if (movieService.TryFavoriteMovie(int.Parse(Request.Form["movieId"]), (int)HttpContext.Session.GetInt32("uId")) == true)
+            {
+
+            }
+            return RedirectToPage("../Account/Profile");
+        }
+
     }
 }

@@ -30,13 +30,13 @@
                 <td>@item.MovieLanguage</td>
                 <td>@item.MovieReleaseDate</td>
                 <td>
-                    @Model.movieService.TryGetAverageRating(item)
+                    @Model.movieService.TryGetAverageRating(item.MovieId)
                 </td>
                 <td>
-                    @Model.movieService.TryGetAmountOfFavorites(item)
+                    @Model.movieService.TryGetAmountOfFavorites(item.MovieId)
                 </td>
                 <td>
-                    @Model.movieService.TryGetCategories(item)
+                    @Model.movieService.TryGetCategories(item.MovieId)
                 </td>
                 <td>
                     <form method="post" asp-page-handler="TryFavoriteMovie">

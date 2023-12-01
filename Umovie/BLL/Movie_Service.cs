@@ -16,24 +16,28 @@ namespace BLL
         {
             return repository.GetMovies();
         }
+        public Movie TryGetMovie(int movieId)
+        {
+            return repository.GetMovie(movieId);
+        }
         public List<UserFavoriteMovie> TryGetFavoriteMovies(int id)
         {
             return repository.GetFavoriteMovies(id);
         }
 
-        public double? TryGetAverageRating(Movie? movie)
+        public double? TryGetAverageRating(int movieId)
         {
-            return repository.GetAverageRating(movie);
+            return repository.GetAverageRating(movieId);
         }
 
-        public double? TryGetAmountOfFavorites(Movie? movie)
+        public double? TryGetAmountOfFavorites(int movieId)
         {
-            return repository.GetAmountOfFavorites(movie);
+            return repository.GetAmountOfFavorites(movieId);
         }
 
-        public string? TryGetCategories(Movie? movie)
+        public string? TryGetCategories(int movieId)
         {
-            return repository.GetCategories(movie);
+            return repository.GetCategories(movieId);
         }
 
         public bool? TryFavoriteMovie(int movieId, int userId)

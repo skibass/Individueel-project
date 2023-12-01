@@ -8,14 +8,13 @@
             <div class="col">
                 <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">User</a></li>
+                        <li class="breadcrumb-item"><a asp-page="../Movies/Index">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">User Profile</li>
                     </ol>
                 </nav>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="col-lg-4">
                 <div class="card mb-4">
@@ -34,26 +33,13 @@
                 <div class="card mb-4 mb-lg-0">
                     <div class="card-body p-0">
                         <ul class="list-group list-group-flush rounded-3">
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fas fa-globe fa-lg text-warning"></i>
-                                <p class="mb-0">https://mdbootstrap.com</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                <p class="mb-0">mdbootstrap</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                                <p class="mb-0">mdbootstrap</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                <p class="mb-0">mdbootstrap</p>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                                <p class="mb-0">mdbootstrap</p>
-                            </li>
+                            @foreach (var item in Model.movieService.TryGetFavoriteMovies(Model.uId))
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;">Favorited: </i>
+                                    <p style="font-weight:bold;" class="mb-0">@item.Movie.MovieName </p>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
@@ -66,7 +52,7 @@
                                 <p class="mb-0">Full Name</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">Johnatan Smith</p>
+                                <p class="text-muted mb-0">@Model.uName</p>
                             </div>
                         </div>
                         <hr>
@@ -75,7 +61,7 @@
                                 <p class="mb-0">Email</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">example@example.com</p>
+                                <p class="text-muted mb-0">@Model.uEmail</p>
                             </div>
                         </div>
                         <hr>
@@ -99,23 +85,32 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Address</p>
+                                <p class="mb-0">Role</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                <p class="text-muted mb-0">@Model.uRole</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <p class="mb-0">Favorites</p>
-                @foreach (var item in Model.movieService.TryGetFavoriteMovies(Model.uId))
-                {
+                    @foreach (var item in Model.movieService.TryGetFavoriteMovies(Model.uId))
+                    {
                         <div class="col-md-6">
                             <div class="card mb-4 mb-md-0">
                                 <div class="card-body">
                                     <p class="mb-4">
-                                        <span class="text-primary font-italic me-1">@item.Movie.MovieName</span> 
+                                        <form method="post" asp-page-handler="ViewMovie">
+                                            <input type="hidden" name="movieId" value="@item.MovieId">
+                                            <span class="text-primary font-italic me-1">
+                                                <button class="btn btn-primary" type="submit">@item.Movie.MovieName</button>
+                                            </span>
+                                        </form>
+                                        <form method="post" asp-page-handler="TryUnfavoriteMovie">
+                                            <input type="hidden" name="movieId" value="@item.MovieId">
+                                            <input type="submit" value="Unfavorite">
+                                        </form>
                                     </p>
                                     <p class="mt-4 mb-1" style="font-size: .77rem;">@item.Movie.MovieDescription</p>
                                     <div class="progress rounded" style="height: 5px;">
@@ -137,12 +132,12 @@
                                         <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
                                              aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">@Model.movieService.TryGetAverageRating(item.Movie)</p>
+                                    <p class="mt-4 mb-1" style="font-size: .77rem;">@Model.movieService.TryGetAverageRating(item.Movie.MovieId)</p>
                                     <div class="progress rounded mb-2" style="height: 5px;">
                                         <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
                                              aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">@Model.movieService.TryGetCategories(item.Movie)</p>
+                                    <p class="mt-4 mb-1" style="font-size: .77rem;">@Model.movieService.TryGetCategories(item.Movie.MovieId)</p>
                                     <div class="progress rounded mb-2" style="height: 5px;">
                                         <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
                                              aria-valuemin="0" aria-valuemax="100"></div>
@@ -150,7 +145,7 @@
                                 </div>
                             </div>
                         </div>
-                }
+                    }
                 </div>
             </div>
         </div>
