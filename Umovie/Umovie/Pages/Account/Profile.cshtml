@@ -21,9 +21,9 @@
                     <div class="card-body text-center">
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                              class="rounded-circle img-fluid" style="width: 150px;">
-                        <h5 class="my-3">@Model.uName</h5>
-                        <p class="text-muted mb-1">@Model.uEmail</p>
-                        <p class="text-muted mb-4">Role: @Model.uRole</p>
+                        <h5 class="my-3">@Model.user.UserName</h5>
+                        <p class="text-muted mb-1">@Model.user.UserEmail</p>
+                        <p class="text-muted mb-4">Role: @Model.user.Role.RoleName</p>
                         <div class="d-flex justify-content-center mb-2">
                             <button type="button" class="btn btn-primary">Follow</button>
                             <button type="button" class="btn btn-outline-primary ms-1">Message</button>
@@ -33,7 +33,7 @@
                 <div class="card mb-4 mb-lg-0">
                     <div class="card-body p-0">
                         <ul class="list-group list-group-flush rounded-3">
-                            @foreach (var item in Model.movieService.TryGetFavoriteMovies(Model.uId))
+                            @foreach (var item in Model.movieService.TryGetFavoriteMovies(Model.user.UserId))
                             {
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                     <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;">Favorited: </i>
@@ -52,7 +52,7 @@
                                 <p class="mb-0">Full Name</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">@Model.uName</p>
+                                <p class="text-muted mb-0">@Model.user.UserName</p>
                             </div>
                         </div>
                         <hr>
@@ -61,7 +61,7 @@
                                 <p class="mb-0">Email</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">@Model.uEmail</p>
+                                <p class="text-muted mb-0">@Model.user.UserEmail</p>
                             </div>
                         </div>
                         <hr>
@@ -88,14 +88,14 @@
                                 <p class="mb-0">Role</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">@Model.uRole</p>
+                                <p class="text-muted mb-0">@Model.user.Role.RoleName</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <p class="mb-0">Favorites</p>
-                    @foreach (var item in Model.movieService.TryGetFavoriteMovies(Model.uId))
+                    @foreach (var item in Model.movieService.TryGetFavoriteMovies(Model.user.UserId))
                     {
                         <div class="col-md-6">
                             <div class="card mb-4 mb-md-0">
@@ -111,7 +111,13 @@
                                             <input type="hidden" name="movieId" value="@item.MovieId">
                                             <input type="submit" value="Unfavorite">
                                         </form>
+                                        <form method="post" asp-page-handler="TryRateMovie">
+                                            <input type="hidden" name="movieId" value="@item.MovieId">
+                                            <input type="text" name="rating" placeholder="@Model.movieService.TryGetUserRating(item.Movie.MovieId, Model.user.UserId)">
+                                            <input type="submit" value="Rate">
+                                        </form>
                                     </p>
+   
                                     <p class="mt-4 mb-1" style="font-size: .77rem;">@item.Movie.MovieDescription</p>
                                     <div class="progress rounded" style="height: 5px;">
                                         <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
@@ -144,8 +150,10 @@
                                     </div>
                                 </div>
                             </div>
+                            <br />
                         </div>
                     }
+                   
                 </div>
             </div>
         </div>

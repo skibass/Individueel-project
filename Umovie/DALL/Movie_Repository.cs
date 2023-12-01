@@ -116,5 +116,38 @@ namespace DALL
 
             return favorite;
         }
+
+        public bool? RateMovie(int movieId, int userId, int rating)
+        {
+            MovieRating uMR = new();
+
+            var movieRating = context.MovieRatings.Where(r => r.MovieId == movieId).Where(r => r.UserId == userId).SingleOrDefault();
+
+
+            if (movieRating != null)
+            {
+                context.Entry(movieRating).State = EntityState.Deleted;
+
+                context.SaveChanges();
+            }
+
+            uMR.MovieId = movieId;
+            uMR.UserId = userId;
+            uMR.RatingNumber = rating;
+
+            context.MovieRatings.Add(uMR);
+
+            context.SaveChanges();
+
+
+            return true;
+        }
+
+        public int? GetUserRating(int movieId, int userId)
+        {
+            var movieRating = context.MovieRatings.Where(r => r.MovieId == movieId).Where(r => r.UserId == userId).SingleOrDefault();
+
+            return movieRating.RatingNumber;
+        }
     }
 }

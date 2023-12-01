@@ -9,65 +9,65 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Umovie
 build_property.RootNamespace = Umovie
-build_property.ProjectDir = G:\Fontys_S2\Individueel\Individueel-project\Umovie\Umovie\
+build_property.ProjectDir = E:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Umovie\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = G:\Fontys_S2\Individueel\Individueel-project\Umovie\Umovie
+build_property.MSBuildProjectDirectory = E:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Umovie
 build_property._RazorSourceGeneratorDebug = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/Account/Login.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/Account/Logout.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/Account/Profile.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/Account/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/Account/Registration.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/Account/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxSZWdpc3RyYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/Error.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/ForYou/Index.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/ForYou/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9yWW91XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/Index.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/Movies/Index.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/Movies/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/Movies/Movie.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/Movies/Movie.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW92aWVzXE1vdmllLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/Privacy.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/_ViewImports.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/_ViewStart.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[G:/Fontys_S2/Individueel/Individueel-project/Umovie/Umovie/Pages/Shared/_Layout.cshtml]
+[E:/Fontys_S2/Projecten/Individueel/Individueel-project/Umovie/Umovie/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-4m5j9gaa64

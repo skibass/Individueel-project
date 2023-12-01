@@ -20,9 +20,25 @@ namespace Umovie.Pages.Movies
         [HttpPost("/form-body")]
         public IActionResult OnPostTryFavoriteMovie()
         {
-            if (movieService.TryFavoriteMovie(int.Parse(Request.Form["movieId"]), (int)HttpContext.Session.GetInt32("uId")) == true)
+            int movieId = int.Parse(Request.Form["movieId"]);
+            int uId = (int)HttpContext.Session.GetInt32("uId");
+
+            if (movieService.TryFavoriteMovie(movieId, uId) == true)
             {
                 
+            }
+            return Redirect("Movies/Index");
+        }
+
+        public IActionResult OnPostTryRateMovie()
+        {
+            int movieId = int.Parse(Request.Form["movieId"]);
+            int rating = int.Parse(Request.Form["rating"]);
+            int uId = (int)HttpContext.Session.GetInt32("uId");
+
+            if (movieService.TryRateMovie(movieId, uId, rating) == true)
+            {
+
             }
             return Redirect("Movies/Index");
         }

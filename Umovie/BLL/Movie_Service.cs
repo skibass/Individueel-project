@@ -44,5 +44,13 @@ namespace BLL
         {
             return repository.FavoriteMovie(movieId, userId);
         }
+        public bool? TryRateMovie(int movieId, int userId, int rating)
+        {
+            return repository.RateMovie(movieId, userId, rating);
+        }
+        public int? TryGetUserRating(int movieId, int userId)
+        {
+            return repository.GetUserRating(movieId, userId);
+        }
     }
 }

@@ -8,7 +8,13 @@
 <br />
 <br />
 <div class="row">
-    <p class="mb-0">Favorites</p>
+    <p class="mb-0">
+        <form method="post" asp-page-handler="TryRateMovie">
+            <input type="hidden" name="movieId" value="@Model.movieService.TryGetMovie(Model.Id).MovieId">
+            <input type="text" name="rating" placeholder="@Model.movieService.TryGetUserRating(Model.Id, Model.user.UserId)">
+            <input type="submit" value="Rate">
+        </form>
+    </p>
     <div class="col-md-6">
         <div class="card mb-4 mb-md-0">
             <div class="card-body">

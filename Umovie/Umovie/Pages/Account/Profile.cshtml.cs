@@ -8,11 +8,7 @@ namespace Umovie.Pages.Account
 {
     public class ProfileModel : PageModel
     {
-        public int uId { get; set; }
-        public string uName { get; set; }
-        public string uEmail { get; set; }
-        public string uRole { get; set; }
-
+        public User user = new User();
 
         public Movie_Service movieService = new();
         public User_Service userService = new();
@@ -20,11 +16,8 @@ namespace Umovie.Pages.Account
         public void OnGet()
         {
             int userId = (int)HttpContext.Session.GetInt32("uId");
-            uId = userId;
 
-            uName = userService.TryGetCurrentUser(uId).UserName;
-            uEmail = userService.TryGetCurrentUser(uId).UserEmail;
-            uRole = userService.TryGetCurrentUser(uId).Role.RoleName;
+            user = userService.TryGetCurrentUser(userId);
         }
 
         public IActionResult OnPostViewMovie()
@@ -41,6 +34,17 @@ namespace Umovie.Pages.Account
             }
             return RedirectToPage("../Account/Profile");
         }
+        public IActionResult OnPostTryRateMovie()
+        {
+            int movieId = int.Parse(Request.Form["movieId"]);
+            int rating = int.Parse(Request.Form["rating"]);
+            int uId = (int)HttpContext.Session.GetInt32("uId");
 
+            if (movieService.TryRateMovie(movieId, uId, rating) == true)
+            {
+
+            }
+            return RedirectToPage("../Account/Profile");
+        }
     }
 }
