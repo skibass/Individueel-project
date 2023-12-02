@@ -32,15 +32,19 @@ namespace Umovie.Pages.Movies
 
         public IActionResult OnPostTryRateMovie()
         {
-            int movieId = int.Parse(Request.Form["movieId"]);
-            int rating = int.Parse(Request.Form["rating"]);
-            int uId = (int)HttpContext.Session.GetInt32("uId");
-
-            if (movieService.TryRateMovie(movieId, uId, rating) == true)
+            if (Request.Form["rating"] != "")
             {
+                int movieId = int.Parse(Request.Form["movieId"]);
+                int rating = int.Parse(Request.Form["rating"]);
+                int uId = (int)HttpContext.Session.GetInt32("uId");
 
+                if (movieService.TryRateMovie(movieId, uId, rating) == true)
+                {
+
+                }
+                return Redirect("Movies/Index");
             }
-            return Redirect("Movies/Index");
+            return null;
         }
     }
 }

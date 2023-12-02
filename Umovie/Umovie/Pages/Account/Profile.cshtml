@@ -10,6 +10,7 @@
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a asp-page="../Movies/Index">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                        <li class="breadcrumb-item"><a asp-page="../Movies/ViewRatings">Your ratings</a></li>
                     </ol>
                 </nav>
             </div>
@@ -25,8 +26,9 @@
                         <p class="text-muted mb-1">@Model.user.UserEmail</p>
                         <p class="text-muted mb-4">Role: @Model.user.Role.RoleName</p>
                         <div class="d-flex justify-content-center mb-2">
-                            <button type="button" class="btn btn-primary">Follow</button>
-                            <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                            <form method="post" asp-page-handler="TryViewRatings">
+                                <button type="submit" class="btn btn-outline-primary ms-1">Ratings</button>
+                            </form>
                         </div>
                     </div>
                 </div>

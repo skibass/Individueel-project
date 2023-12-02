@@ -52,5 +52,9 @@ namespace BLL
         {
             return repository.GetUserRating(movieId, userId);
         }
+        public List<MovieRating> TryGetUserRatedMovies( int userId)
+        {
+            return repository.GetUserRatedMovies(userId);
+        }
     }
 }

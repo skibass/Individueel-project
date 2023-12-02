@@ -7,51 +7,70 @@
 <br />
 <br />
 <br />
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Director</th>
-            <th scope="col">Language</th>
-            <th scope="col">Release date</th>
-            <th scope="col">Rating</th>
-            <th scope="col">Favorites</th>
-            <th scope="col">Categories</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.movieService.TryGetMovies())
-        {
-            <tr>
-                <th scope="row">@item.MovieName</th>
-                <td>@item.MovieDescription</td>
-                <td>@item.MovieDirector</td>
-                <td>@item.MovieLanguage</td>
-                <td>@item.MovieReleaseDate</td>
-                <td>
-                    @Model.movieService.TryGetAverageRating(item.MovieId)
-                </td>
-                <td>
-                    @Model.movieService.TryGetAmountOfFavorites(item.MovieId)
-                </td>
-                <td>
-                    @Model.movieService.TryGetCategories(item.MovieId)
-                </td>
-                <td>
-                    <form method="post" asp-page-handler="TryRateMovie">
-                        <input type="hidden" name="movieId" value="@item.MovieId">
-                        <input type="text" name="rating" placeholder="Rating" >
-                        <input type="submit" value="Rate">
-                    </form>
-                </td>
-                <td>
-                    <form method="post" asp-page-handler="TryFavoriteMovie">
-                        <input type="hidden" name="movieId" value="@item.MovieId">
-                        <input type="submit" value="Favorite">
-                    </form>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table> 
+<section style="background-color: #eee;">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item active" aria-current="page">Movies</li>
+                        <li class="breadcrumb-item"> <a asp-page="../Account/Profile">User profile</a></li>
+                        <li class="breadcrumb-item"> <a asp-page="../Movies/ViewRatings">Your ratings</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Director</th>
+                        <th scope="col">Language</th>
+                        <th scope="col">Release date</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Favorites</th>
+                        <th scope="col">Categories</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.movieService.TryGetMovies())
+                    {
+                        <tr>
+                            <th scope="row">@item.MovieName</th>
+                            <td>@item.MovieDescription</td>
+                            <td>@item.MovieDirector</td>
+                            <td>@item.MovieLanguage</td>
+                            <td>@item.MovieReleaseDate</td>
+                            <td>
+                                @Model.movieService.TryGetAverageRating(item.MovieId)
+                            </td>
+                            <td>
+                                @Model.movieService.TryGetAmountOfFavorites(item.MovieId)
+                            </td>
+                            <td>
+                                @Model.movieService.TryGetCategories(item.MovieId)
+                            </td>
+                            <td>
+                                <form method="post" asp-page-handler="TryRateMovie">
+                                    <input type="hidden" name="movieId" value="@item.MovieId">
+                                    <input type="text" name="rating" placeholder="Rating">
+                                    <input type="submit" value="Rate">
+                                </form>
+                            </td>
+                            <td>
+                                <form method="post" asp-page-handler="TryFavoriteMovie">
+                                    <input type="hidden" name="movieId" value="@item.MovieId">
+                                    <input type="submit" value="Favorite">
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+

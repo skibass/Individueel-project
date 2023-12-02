@@ -19,7 +19,6 @@ namespace DALL
         {
             List<Movie> movies = context.Movies.Include(e => e.MovieRatings).Include(e => e.UserFavoriteMovies).Include(e => e.MovieCategories).ThenInclude(e => e.Categorie).ToList();
 
-
             if (movies == null)
             {
                 movies = new List<Movie>();
@@ -69,7 +68,11 @@ namespace DALL
         {
             double? amountOfFavorites = context.UserFavoriteMovies.Where(r => r.MovieId == movieId).Count();
 
-            return amountOfFavorites;
+            if (amountOfFavorites != null)
+            {
+                return amountOfFavorites;
+            }
+            return null;
         }
 
         public string? GetCategories(int movieId)
@@ -123,7 +126,7 @@ namespace DALL
 
             var movieRating = context.MovieRatings.Where(r => r.MovieId == movieId).Where(r => r.UserId == userId).SingleOrDefault();
 
-
+            // if movie has already been rated
             if (movieRating != null)
             {
                 context.Entry(movieRating).State = EntityState.Deleted;
@@ -147,7 +150,22 @@ namespace DALL
         {
             var movieRating = context.MovieRatings.Where(r => r.MovieId == movieId).Where(r => r.UserId == userId).SingleOrDefault();
 
-            return movieRating.RatingNumber;
+            if (movieRating != null)
+            {
+                return movieRating.RatingNumber;
+            }
+            return null;
+        }
+
+        public List<MovieRating> GetUserRatedMovies(int userId)
+        {
+            List<MovieRating> movies = context.MovieRatings.Where(r => r.UserId == userId).Include(e => e.Movie).ToList();
+
+            if (movies == null)
+            {
+                movies = new List<MovieRating>();
+            }
+            return movies;
         }
     }
 }

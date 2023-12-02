@@ -46,5 +46,12 @@ namespace Umovie.Pages.Account
             }
             return RedirectToPage("../Account/Profile");
         }
+
+        public IActionResult OnPostTryViewRatings()
+        {
+            HttpContext.Session.SetInt32("uId", (int)HttpContext.Session.GetInt32("uId"));
+
+            return RedirectToPage("../Movies/ViewRatings");
+        }
     }
 }

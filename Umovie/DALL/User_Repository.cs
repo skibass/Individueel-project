@@ -52,8 +52,6 @@ namespace DALL
         }
         public User VerifyUser(User user)
         {
-            user.UserPassword = BCrypt.Net.BCrypt.HashPassword(user.UserPassword);
-
             var userR = context.Users.Include(e => e.Role).SingleOrDefault(x => x.UserEmail == user.UserEmail);
 
             if (userR != null) 
