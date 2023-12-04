@@ -7,7 +7,9 @@ namespace Umovie.Pages.Movies
 {
     public class ViewRatingsModel : PageModel
     {
-        public User user = new();
+        [BindProperty]
+        public required User user { get; set; }
+        //public User user = new();
 
         public Movie_Service movieService = new();
         public User_Service userService = new();

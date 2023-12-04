@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,33 +34,35 @@ namespace DALL
 
             if (user == null)
             {
-                user = new User();
+                //user = new User();
             }
             return user;
         }
 
-        public bool AddUserAndLogin(User userToBeAdded)
+        public User AddUserAndLogin(User userToBeAdded)
         {
-            List<Role> roles = context.Roles.ToList();
+            User findIfUserExists = context.Users.Where(r => r.UserEmail == userToBeAdded.UserEmail).SingleOrDefault();
 
-            userToBeAdded.Role = roles[0];
-            userToBeAdded.UserPassword = BCrypt.Net.BCrypt.HashPassword(userToBeAdded.UserPassword);
+            if (findIfUserExists == null)
+            {
+                List<Role> roles = context.Roles.ToList();
 
-            context.Users.Add(userToBeAdded);
-            context.SaveChanges();
+                userToBeAdded.UserPassword = BCrypt.Net.BCrypt.HashPassword(userToBeAdded.UserPassword);
 
-            return true;
+                context.Users.Add(userToBeAdded);
+                context.SaveChanges();
+
+                return userToBeAdded;
+            }
+            return null;
         }
         public User VerifyUser(User user)
         {
-            var userR = context.Users.Include(e => e.Role).SingleOrDefault(x => x.UserEmail == user.UserEmail);
+            var userR = context.Users.Include(e => e.Role).Where(r => r.UserName == user.UserName).SingleOrDefault(x => x.UserEmail == user.UserEmail);
 
-            if (userR != null) 
+            if (userR != null && BCrypt.Net.BCrypt.Verify(user.UserPassword, userR.UserPassword))
             {
-                if (userR == null || !BCrypt.Net.BCrypt.Verify(user.UserPassword, userR.UserPassword))
-                {
-                    return userR;
-                }
+                return userR;
             }
             return null;
         }

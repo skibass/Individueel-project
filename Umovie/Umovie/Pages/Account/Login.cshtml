@@ -10,19 +10,20 @@
 <form method="post" asp-page-handler="TryLoginUser">
 
     <div class="form-outline mb-4">
-        <input class="form-control" asp-for="@Model.user.UserName">
+        <input class="form-control" required asp-for="@Model.user.UserName">
         <label class="form-label" for="form2Example1">User name</label>
     </div>
 
     <div class="form-outline mb-4">
-        <input class="form-control" type="email" asp-for="@Model.user.UserEmail">
+        <input class="form-control" required type="email" asp-for="@Model.user.UserEmail">
         <label class="form-label" for="form2Example1">Email address</label>
     </div>
 
     <div class="form-outline mb-4">
-        <input class="form-control" type="password" asp-for="@Model.user.UserPassword">
+        <input class="form-control" required type="password" asp-for="@Model.user.UserPassword">
         <label class="form-label" for="form2Example2">Password</label>
     </div>
+    <label class="form-label error">@Model.errorHandling.Message</label>
 
     <div class="row mb-4">
         <div class="col d-flex justify-content-center">

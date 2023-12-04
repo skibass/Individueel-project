@@ -8,7 +8,9 @@ namespace Umovie.Pages.Account
 {
     public class ProfileModel : PageModel
     {
-        public User user = new User();
+        [BindProperty]
+        public required User user { get; set; }
+        //public User user = new User();
 
         public Movie_Service movieService = new();
         public User_Service userService = new();
@@ -32,7 +34,7 @@ namespace Umovie.Pages.Account
             {
 
             }
-            return RedirectToPage("../Account/Profile");
+            return Page();
         }
         public IActionResult OnPostTryRateMovie()
         {
@@ -44,7 +46,7 @@ namespace Umovie.Pages.Account
             {
 
             }
-            return RedirectToPage("../Account/Profile");
+            return Page();
         }
 
         public IActionResult OnPostTryViewRatings()

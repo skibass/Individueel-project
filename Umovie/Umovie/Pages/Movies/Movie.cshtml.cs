@@ -8,7 +8,9 @@ namespace Umovie.Pages.Movies
     public class MovieModel : PageModel
     {
         public int Id { get; set; }
-        public User user = new();
+        [BindProperty]
+        public required User user { get; set; }
+        //public User user = new();
 
         public Movie_Service movieService = new();
         public User_Service userService = new();
@@ -29,7 +31,7 @@ namespace Umovie.Pages.Movies
             {
 
             }
-            return RedirectToPage("../Movies/Movie");
+            return Page();
         }
     }
 }

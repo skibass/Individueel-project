@@ -10,10 +10,10 @@ namespace Umovie.Pages.Account
     public class LoginModel : PageModel
     {
         User_Service userService = new User_Service();
+        public ErrorHandling errorHandling = new ErrorHandling();
 
         [BindProperty]
-        public User user { get; set; }
-
+        public required User user { get; set; }
         public void OnGet()
         {
             user = new User();
@@ -26,9 +26,14 @@ namespace Umovie.Pages.Account
                 HttpContext.Session.SetInt32("uId", loggedUser.UserId);
                 HttpContext.Session.SetString("uName", loggedUser.UserName);
                 HttpContext.Session.SetString("rName", loggedUser.Role.RoleName);
-            }
+                return RedirectToPage("../Index");
 
-            return RedirectToPage("../Index");
+            }
+            else
+            {
+                errorHandling.Message = "Wrong username, email or password!";
+                return Page();
+            }
         }
     }
 }

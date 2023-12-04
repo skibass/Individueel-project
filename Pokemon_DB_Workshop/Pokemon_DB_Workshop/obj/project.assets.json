@@ -1826,11 +1826,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Pokemon_DB_Workshop\\Pokemon_DB_Workshop\\Pokemon_DB_Workshop.csproj",
+      "projectUniqueName": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Pokemon_DB_Workshop\\Pokemon_DB_Workshop\\Pokemon_DB_Workshop.csproj",
       "projectName": "Pokemon_DB_Workshop",
-      "projectPath": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Pokemon_DB_Workshop\\Pokemon_DB_Workshop\\Pokemon_DB_Workshop.csproj",
+      "projectPath": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Pokemon_DB_Workshop\\Pokemon_DB_Workshop\\Pokemon_DB_Workshop.csproj",
       "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
-      "outputPath": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Pokemon_DB_Workshop\\Pokemon_DB_Workshop\\obj\\",
+      "outputPath": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Pokemon_DB_Workshop\\Pokemon_DB_Workshop\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1851,11 +1851,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "G:\\Fontys_S2\\Individueel\\Individueel-project\\Pokemon_DB_Workshop\\DAL\\DAL.csproj": {
-              "projectPath": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Pokemon_DB_Workshop\\DAL\\DAL.csproj"
+            "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Pokemon_DB_Workshop\\DAL\\DAL.csproj": {
+              "projectPath": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Pokemon_DB_Workshop\\DAL\\DAL.csproj"
             },
-            "G:\\Fontys_S2\\Individueel\\Individueel-project\\Pokemon_DB_Workshop\\Models\\Models.csproj": {
-              "projectPath": "G:\\Fontys_S2\\Individueel\\Individueel-project\\Pokemon_DB_Workshop\\Models\\Models.csproj"
+            "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Pokemon_DB_Workshop\\Models\\Models.csproj": {
+              "projectPath": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Pokemon_DB_Workshop\\Models\\Models.csproj"
             }
           }
         }

@@ -9,20 +9,22 @@
 <br />
 <form method="post" asp-page-handler="TryRegisterUser">
     <div class="form-outline mb-4">
-        <input class="form-control form-control-lg" asp-for="@Model.user.UserName">
+        <input class="form-control form-control-lg" required asp-for="@Model.user.UserName">
         <label class="form-label" for="form3Example1cg">Your Name</label>
     </div>
 
     <div class="form-outline mb-4">
-        <input class="form-control form-control-lg" type="email" asp-for="@Model.user.UserEmail">
+        <input class="form-control form-control-lg" required type="email" asp-for="@Model.user.UserEmail">
         <label class="form-label" for="form3Example3cg">Your Email</label>
     </div>
 
     <div class="form-outline mb-4">
-        <input class="form-control form-control-lg" type="password" asp-for="@Model.user.UserPassword">
-        <label class="form-label" for="form3Example4cg">Password</label>
+        <input class="form-control form-control-lg" required type="password" asp-for="@Model.user.UserPassword">
+        <label class="form-label">Password</label>
     </div>
-
+   
+    <label class="form-label error">@Model.errorHandling.Message</label>
+ 
     @* <div class="form-outline mb-4">
         <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
         <label class="form-label" for="form3Example4cdg">Repeat your password</label>

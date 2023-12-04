@@ -15,7 +15,7 @@ namespace BLL
         {
             return userRepository.GetCurrentUser(id);
         }
-        public bool TryRegisterUser(User user)
+        public User TryRegisterUser(User user)
         {           
             return userRepository.AddUserAndLogin(user); ;
         }

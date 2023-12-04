@@ -9,26 +9,31 @@ namespace Umovie.Pages.Account
     public class RegistrationModel : PageModel
     {
         User_Service userService = new User_Service();
+        public ErrorHandling errorHandling = new ErrorHandling();
 
         [BindProperty]
-        public User user { get; set; }
+        public required User user { get; set; }
 
         public void OnGet()
         {
-            user = new User();
+            //user = new User();
         }
         public IActionResult OnPostTryRegisterUser()
         {
-            if (userService.TryRegisterUser(user))
+            User newUser = userService.TryRegisterUser(user);
+            if (newUser != null)
             {
-                User loggedUser = userService.TryLoginUser(user);
-                if (loggedUser != null)
-                {
-                    HttpContext.Session.SetInt32("uId", loggedUser.UserId);
-                    HttpContext.Session.SetString("uName", loggedUser.UserName);
-                }
+                HttpContext.Session.SetInt32("uId", newUser.UserId);
+                HttpContext.Session.SetString("uName", newUser.UserName);
+                HttpContext.Session.SetString("rName", newUser.Role.RoleName);
+
+                return RedirectToPage("../Index");
             }
-            return RedirectToPage("../Index");
+            else
+            {
+                errorHandling.Message = "A user with this email adres already exists!";
+                return Page();
+            }
         }
     }
 }

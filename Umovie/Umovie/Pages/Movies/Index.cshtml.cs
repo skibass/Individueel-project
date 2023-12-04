@@ -27,7 +27,7 @@ namespace Umovie.Pages.Movies
             {
                 
             }
-            return Redirect("Movies/Index");
+            return Page();
         }
 
         public IActionResult OnPostTryRateMovie()
@@ -42,7 +42,7 @@ namespace Umovie.Pages.Movies
                 {
 
                 }
-                return Redirect("Movies/Index");
+                return Page();
             }
             return null;
         }
