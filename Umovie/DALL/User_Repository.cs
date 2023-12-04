@@ -30,7 +30,7 @@ namespace DALL
 
         public User GetCurrentUser(int uId)
         {
-            User user = context.Users.Where(r => r.UserId == uId).Include(e => e.Role).SingleOrDefault();
+            User user = context.Users.Include(e => e.Role).Where(r => r.UserId == uId).SingleOrDefault();
 
             if (user == null)
             {

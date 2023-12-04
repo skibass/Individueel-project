@@ -34,7 +34,7 @@ namespace Umovie.Pages.Account
             {
 
             }
-            return Page();
+            return RedirectToPage("../Account/Profile");
         }
         public IActionResult OnPostTryRateMovie()
         {
