@@ -55,14 +55,14 @@
                             </td>
                             <td>
                                 <form method="post" asp-page-handler="TryRateMovie">
-                                    <input type="hidden" name="movieId" value="@item.MovieId">
-                                    <input type="text" name="rating" placeholder="Rating">
+                                    <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
+                                    <input type="number" required asp-for="@Model.rating.RatingNumber" placeholder="Rating">
                                     <input type="submit" value="Rate">
                                 </form>
                             </td>
                             <td>
                                 <form method="post" asp-page-handler="TryFavoriteMovie">
-                                    <input type="hidden" name="movieId" value="@item.MovieId">
+                                    <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
                                     <input type="submit" value="Favorite">
                                 </form>
                             </td>

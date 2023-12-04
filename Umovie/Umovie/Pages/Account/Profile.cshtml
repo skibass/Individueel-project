@@ -104,18 +104,18 @@
                                 <div class="card-body">
                                     <p class="mb-4">
                                         <form method="post" asp-page-handler="ViewMovie">
-                                            <input type="hidden" name="movieId" value="@item.MovieId">
+                                            <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
                                             <span class="text-primary font-italic me-1">
                                                 <button class="btn btn-primary" type="submit">@item.Movie.MovieName</button>
                                             </span>
                                         </form>
                                         <form method="post" asp-page-handler="TryUnfavoriteMovie">
-                                            <input type="hidden" name="movieId" value="@item.MovieId">
+                                            <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
                                             <input type="submit" value="Unfavorite">
                                         </form>
                                         <form method="post" asp-page-handler="TryRateMovie">
-                                            <input type="hidden" name="movieId" value="@item.MovieId">
-                                            <input type="text" name="rating" placeholder="@Model.movieService.TryGetUserRating(item.Movie.MovieId, Model.user.UserId)">
+                                            <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
+                                            <input type="text" asp-for="@Model.rating.RatingNumber" required placeholder="@Model.movieService.TryGetUserRating(item.Movie.MovieId, Model.user.UserId)">
                                             <input type="submit" value="Rate">
                                         </form>
                                     </p>

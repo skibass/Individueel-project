@@ -10,7 +10,12 @@ namespace Umovie.Pages.Movies
         public int Id { get; set; }
         [BindProperty]
         public required User user { get; set; }
-        //public User user = new();
+
+        [BindProperty]
+        public required Movie movie { get; set; }
+
+        [BindProperty]
+        public required MovieRating rating { get; set; }
 
         public Movie_Service movieService = new();
         public User_Service userService = new();
@@ -23,15 +28,15 @@ namespace Umovie.Pages.Movies
         }
         public IActionResult OnPostTryRateMovie()
         {
-            int movieId = int.Parse(Request.Form["movieId"]);
-            int rating = int.Parse(Request.Form["rating"]);
+            int movieId = movie.MovieId;
+            int ratingNumber = (int)rating.RatingNumber;
             int uId = (int)HttpContext.Session.GetInt32("uId");
 
-            if (movieService.TryRateMovie(movieId, uId, rating) == true)
+            if (movieService.TryRateMovie(movieId, uId, ratingNumber) == true)
             {
 
             }
-            return Page();
+            return RedirectToPage("../Movies/Movie");
         }
     }
 }

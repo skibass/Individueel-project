@@ -9,7 +9,8 @@ namespace Umovie.Pages.Movies
     {
         [BindProperty]
         public required User user { get; set; }
-        //public User user = new();
+        [BindProperty]
+        public required Movie movie { get; set; }
 
         public Movie_Service movieService = new();
         public User_Service userService = new();
@@ -21,7 +22,7 @@ namespace Umovie.Pages.Movies
         }
         public IActionResult OnPostViewMovie()
         {
-            HttpContext.Session.SetInt32("movieId", int.Parse(Request.Form["movieId"]));
+            HttpContext.Session.SetInt32("movieId", movie.MovieId);
 
             return RedirectToPage("../Movies/Movie");
         }

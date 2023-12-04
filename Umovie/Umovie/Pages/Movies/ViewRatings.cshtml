@@ -29,7 +29,7 @@
                         <tr>
                             <td>
                                 <form method="post" asp-page-handler="ViewMovie">
-                                    <input type="hidden" name="movieId" value="@item.Movie.MovieId">
+                                    <input type="hidden" asp-for="movie.MovieId" value="@item.Movie.MovieId">
                                     <span class="text-primary font-italic me-1">
                                         <button class="btn btn-primary" type="submit">@item.Movie.MovieName</button>
                                     </span>

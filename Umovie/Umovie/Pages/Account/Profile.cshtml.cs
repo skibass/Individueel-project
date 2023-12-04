@@ -10,6 +10,12 @@ namespace Umovie.Pages.Account
     {
         [BindProperty]
         public required User user { get; set; }
+
+        [BindProperty]
+        public required Movie movie { get; set; }
+
+        [BindProperty]
+        public required MovieRating rating { get; set; }
         //public User user = new User();
 
         public Movie_Service movieService = new();
@@ -24,13 +30,16 @@ namespace Umovie.Pages.Account
 
         public IActionResult OnPostViewMovie()
         {
-            HttpContext.Session.SetInt32("movieId", int.Parse(Request.Form["movieId"]));
+            HttpContext.Session.SetInt32("movieId", movie.MovieId);
 
             return RedirectToPage("../Movies/Movie");
         }
         public IActionResult OnPostTryUnfavoriteMovie()
         {
-            if (movieService.TryFavoriteMovie(int.Parse(Request.Form["movieId"]), (int)HttpContext.Session.GetInt32("uId")) == true)
+            int movieId = movie.MovieId;
+            int uId = (int)HttpContext.Session.GetInt32("uId");
+
+            if (movieService.TryFavoriteMovie(movieId, uId) == true)
             {
 
             }
@@ -38,15 +47,15 @@ namespace Umovie.Pages.Account
         }
         public IActionResult OnPostTryRateMovie()
         {
-            int movieId = int.Parse(Request.Form["movieId"]);
-            int rating = int.Parse(Request.Form["rating"]);
+            int movieId = movie.MovieId;
+            int ratingNumber = (int)this.rating.RatingNumber;
             int uId = (int)HttpContext.Session.GetInt32("uId");
 
-            if (movieService.TryRateMovie(movieId, uId, rating) == true)
+            if (movieService.TryRateMovie(movieId, uId, ratingNumber) == true)
             {
 
             }
-            return Page();
+            return RedirectToPage("../Account/Profile");
         }
 
         public IActionResult OnPostTryViewRatings()

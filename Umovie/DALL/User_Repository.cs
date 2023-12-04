@@ -48,6 +48,7 @@ namespace DALL
                 List<Role> roles = context.Roles.ToList();
 
                 userToBeAdded.UserPassword = BCrypt.Net.BCrypt.HashPassword(userToBeAdded.UserPassword);
+                userToBeAdded.Role = roles[0];
 
                 context.Users.Add(userToBeAdded);
                 context.SaveChanges();
