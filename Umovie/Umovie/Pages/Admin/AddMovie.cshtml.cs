@@ -17,6 +17,18 @@ namespace Umovie.Pages.Admin
         {
             env = web;
         }
+        public IActionResult OnGet()
+        {
+            if (HttpContext.Session.GetString("rName") != "admin")
+            {
+                if (HttpContext.Session.GetString("uId") == null)
+                {
+                    return RedirectToPage("../Account/Login");
+                }
+                return RedirectToPage("../Movies/Index");
+            }
+            return null;
+        }
         public IActionResult OnPostTryAddMovie()
         {
             var file = Path.Combine(env.WebRootPath, "MovieImages", Upload.FileName);

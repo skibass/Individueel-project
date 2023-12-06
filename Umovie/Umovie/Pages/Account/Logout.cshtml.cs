@@ -9,7 +9,7 @@ namespace Umovie.Pages.Account
         public void OnGet()
         {
             HttpContext.Session.Clear();
-            RedirectToPage("../Index");
+            RedirectToPage("../Account/Login");
         }
     }
 }
