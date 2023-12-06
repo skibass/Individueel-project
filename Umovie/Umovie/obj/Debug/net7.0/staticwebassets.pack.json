@@ -5,6 +5,18 @@
       "PackagePath": "staticwebassets\\Umovie.bundle.scp.css"
     },
     {
+      "Id": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\movie1.jpg",
+      "PackagePath": "staticwebassets\\MovieImages\\movie1.jpg"
+    },
+    {
+      "Id": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\nemo.jfif",
+      "PackagePath": "staticwebassets\\MovieImages\\nemo.jfif"
+    },
+    {
+      "Id": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\titanic.jpg",
+      "PackagePath": "staticwebassets\\MovieImages\\titanic.jpg"
+    },
+    {
       "Id": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

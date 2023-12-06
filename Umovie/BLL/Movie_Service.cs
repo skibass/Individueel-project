@@ -8,9 +8,10 @@ using Models;
 
 namespace BLL
 {
-    
+
     public class Movie_Service
     {
+        UmovieContext context = new UmovieContext();
         Movie_Repository repository = new();
         public List<Movie> TryGetMovies()
         {
@@ -52,9 +53,17 @@ namespace BLL
         {
             return repository.GetUserRating(movieId, userId);
         }
-        public List<MovieRating> TryGetUserRatedMovies( int userId)
+        public List<MovieRating> TryGetUserRatedMovies(int userId)
         {
             return repository.GetUserRatedMovies(userId);
+        }
+
+        public Movie AddMovie(Movie movie)
+        {
+            context.Movies.Add(movie);
+            context.SaveChanges();
+
+            return movie;
         }
     }
 }

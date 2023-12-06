@@ -19,6 +19,7 @@ public partial class Movie
     public string? MovieReleaseDate { get; set; }
 
     public int? MovieAgeRating { get; set; }
+    public string? MovieImagePath { get; set; }
 
     public virtual ICollection<MovieCategory> MovieCategories { get; set; } = new List<MovieCategory>();
 

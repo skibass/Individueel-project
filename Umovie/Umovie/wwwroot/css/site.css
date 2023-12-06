@@ -27,3 +27,7 @@ body {
 .rating{
 
 }
+.movieimage {
+    width: 50px;
+    height: auto;
+}

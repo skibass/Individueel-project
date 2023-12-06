@@ -52,7 +52,7 @@
                                         @if (@Context.Session.GetString("rName") == "admin")
                                         {
                                             <li>
-                                                <a class="dropdown-item" asp-area="" asp-page="">Admin</a>
+                                                <a class="dropdown-item" asp-area="" asp-page="/Admin/AddMovie">Add movie</a>
                                             </li>
                                         }
                                         <li><a class="dropdown-item" asp-page="/Account/Logout">Logout</a></li>

@@ -25,6 +25,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th scope="col"></th>
                         <th scope="col">Title</th>
                         <th scope="col">Description</th>
                         <th scope="col">Director</th>
@@ -40,12 +41,13 @@
                     {
                         <tr>
                             <th scope="row">@item.MovieName</th>
+                            <th><img class="movieimage" src="~/movieimages/@item.MovieImagePath" /></th>
                             <td>@item.MovieDescription</td>
                             <td>@item.MovieDirector</td>
                             <td>@item.MovieLanguage</td>
                             <td>@item.MovieReleaseDate</td>
                             <td>
-                                @Model.movieService.TryGetAverageRating(item.MovieId)
+                                @Model.movieService.TryGetAverageRating(item.MovieId)/10                                
                             </td>
                             <td>
                                 @Model.movieService.TryGetAmountOfFavorites(item.MovieId)

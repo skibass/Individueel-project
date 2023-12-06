@@ -21,4 +21,12 @@
     <ProjectReference Include="..\BLL\BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\MovieImages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\MovieImages\movie1.jpg" />
+  </ItemGroup>
+
 </Project>

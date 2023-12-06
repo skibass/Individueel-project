@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "emNf0UKYo+JLCjmrCvxstoRNAEyEh+xBO6FNQb40URM=",
+  "Hash": "g07d1ohF1E/oqOMZTmrac+XRDAMaGfaZHt8hHppTS8k=",
   "Source": "Umovie",
   "BasePath": "_content/Umovie",
   "Mode": "Default",
@@ -1069,6 +1069,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\movie1.jpg",
+      "SourceId": "Umovie",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\",
+      "BasePath": "_content/Umovie",
+      "RelativePath": "MovieImages/movie1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MovieImages\\movie1.jpg"
+    },
+    {
+      "Identity": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\nemo.jfif",
+      "SourceId": "Umovie",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\",
+      "BasePath": "_content/Umovie",
+      "RelativePath": "MovieImages/nemo.jfif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MovieImages\\nemo.jfif"
+    },
+    {
+      "Identity": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\titanic.jpg",
+      "SourceId": "Umovie",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\",
+      "BasePath": "_content/Umovie",
+      "RelativePath": "MovieImages/titanic.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MovieImages\\titanic.jpg"
     }
   ]
 }
