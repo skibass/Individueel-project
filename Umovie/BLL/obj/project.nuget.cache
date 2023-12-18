@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dfNI+1ru/vef+xRgzlfC4SGwap/ClW3ahoeB44tXvj9AI05xGT2vZlc5nLHxMtNgCv0HJh9ouRo9LOLrZGa8gA==",
+  "dgSpecHash": "dgDQgRtl0Kkp5F0rcj8F3pgCtRprQbvg3VQzhg1VkowXytNklt9M1bAav1FM1AKrKSmkDB3QTwO7CtCazPPY3Q==",
   "success": true,
   "projectFilePath": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\BLL\\BLL.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\Thijn\\.nuget\\packages\\k4os.compression.lz4\\1.3.5\\k4os.compression.lz4.1.3.5.nupkg.sha512",
     "C:\\Users\\Thijn\\.nuget\\packages\\k4os.compression.lz4.streams\\1.3.5\\k4os.compression.lz4.streams.1.3.5.nupkg.sha512",
     "C:\\Users\\Thijn\\.nuget\\packages\\k4os.hash.xxhash\\1.0.8\\k4os.hash.xxhash.1.0.8.nupkg.sha512",
+    "C:\\Users\\Thijn\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\Thijn\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Thijn\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Thijn\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.1\\microsoft.data.sqlclient.5.1.1.nupkg.sha512",

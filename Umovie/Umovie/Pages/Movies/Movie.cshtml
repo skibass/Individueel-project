@@ -26,11 +26,11 @@
                     <input type="hidden" asp-for="@Model.movie.MovieId" value="@Model.movieService.TryGetMovie(Model.Id).MovieId">
                     @if (Model.movieService.TryGetUserRating(Model.Id, Model.user.UserId) != null)
                     {
-                        <input type="text" asp-for="@Model.rating.RatingNumber" required placeholder="@Model.movieService.TryGetUserRating(Model.Id, Model.user.UserId)">
+                        <input type="number" max="10" asp-for="@Model.rating.RatingNumber" required placeholder="@Model.movieService.TryGetUserRating(Model.Id, Model.user.UserId)">
                     }
                     else
                     {
-                        <input type="text" asp-for="@Model.rating.RatingNumber" placeholder="Rate">
+                        <input type="number" max="10" asp-for="@Model.rating.RatingNumber" placeholder="Rate">
                     }
                     <input type="submit" value="Rate">
                 </form>
@@ -41,6 +41,8 @@
                         <p class="mb-4">
                             <span class="text-primary font-italic me-1">@Model.movieService.TryGetMovie(Model.Id).MovieName</span>
                         </p>
+                        <p class="mt-4 mb-1" style="font-size: .77rem;"><img class="movieimage" src="~/movieimages/@Model.movieService.TryGetMovie(Model.Id).MovieImagePath" /></p>
+
                         <p class="mt-4 mb-1" style="font-size: .77rem;">@Model.movieService.TryGetMovie(Model.Id).MovieDirector</p>
                         <div class="progress rounded" style="height: 5px;">
                             <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"

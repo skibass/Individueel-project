@@ -29,16 +29,12 @@ namespace Umovie.Pages.Admin
             }
             return null;
         }
-        public IActionResult OnPostTryAddMovie()
+        public async Task OnPostTryAddMovie()
         {
-            var file = Path.Combine(env.WebRootPath, "MovieImages", Upload.FileName);
-            using (var fileStream = new FileStream(file, FileMode.Create))
-            {
-                Upload.CopyToAsync(fileStream);
-            }
-            movie.MovieImagePath = Upload.FileName;
-            Movie_Service.AddMovie(movie);
-            return RedirectToPage();
+            var file = Path.Combine(env.WebRootPath, "MovieImages");
+           
+            await Movie_Service.TryAddMovie(movie, file, Upload);
+            RedirectToPage();
         }
     }
 }

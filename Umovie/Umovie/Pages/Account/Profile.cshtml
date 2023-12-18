@@ -115,11 +115,12 @@
                                         </form>
                                         <form method="post" asp-page-handler="TryRateMovie">
                                             <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
-                                            <input type="text" asp-for="@Model.rating.RatingNumber" required placeholder="@Model.movieService.TryGetUserRating(item.Movie.MovieId, Model.user.UserId)">
+                                            <input type="number" max="10" asp-for="@Model.rating.RatingNumber" required placeholder="@Model.movieService.TryGetUserRating(item.Movie.MovieId, Model.user.UserId)">
                                             <input type="submit" value="Rate">
                                         </form>
                                     </p>
-   
+                                    <p class="mt-4 mb-1" style="font-size: .77rem;"><img class="movieimage" src="~/movieimages/@item.Movie.MovieImagePath" /></p>
+
                                     <p class="mt-4 mb-1" style="font-size: .77rem;">@item.Movie.MovieDescription</p>
                                     <div class="progress rounded" style="height: 5px;">
                                         <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"

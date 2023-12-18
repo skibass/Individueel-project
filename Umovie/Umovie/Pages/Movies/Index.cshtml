@@ -58,7 +58,7 @@
                             <td>
                                 <form method="post" asp-page-handler="TryRateMovie">
                                     <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
-                                    <input type="number" required asp-for="@Model.rating.RatingNumber" placeholder="Rating">
+                                    <input type="number" max="10" required asp-for="@Model.rating.RatingNumber" placeholder="Rating">
                                     <input type="submit" value="Rate">
                                 </form>
                             </td>

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DALL;
+using Microsoft.AspNetCore.Http;
 using Models;
+using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
 namespace BLL
 {
@@ -58,12 +61,24 @@ namespace BLL
             return repository.GetUserRatedMovies(userId);
         }
 
-        public Movie AddMovie(Movie movie)
+        public async Task TryAddMovie(Movie movie, string path, IFormFile Upload)
+        {
+            string Guidstring = Guid.NewGuid().ToString();
+            string UploadName = Path.Combine(path, Guidstring + Upload.FileName);
+
+
+            // If tthe file doesnt exist, add to both the database and folder
+            using (var fileStream = new FileStream(UploadName, FileMode.Create))
+            {
+                await Upload.CopyToAsync(fileStream);
+            }
+            movie.MovieImagePath = Guidstring + Upload.FileName;
+            await AddMovie(movie);   
+        }
+        private async Task AddMovie(Movie movie)
         {
             context.Movies.Add(movie);
             context.SaveChanges();
-
-            return movie;
         }
     }
 }

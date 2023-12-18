@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\Umovie.bundle.scp.css"
     },
     {
+      "Id": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\Banner Logo.png",
+      "PackagePath": "staticwebassets\\MovieImages\\Banner Logo.png"
+    },
+    {
+      "Id": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\f15f6fce-9541-4b19-8149-7d30060a42dcnemo.jfif",
+      "PackagePath": "staticwebassets\\MovieImages\\f15f6fce-9541-4b19-8149-7d30060a42dcnemo.jfif"
+    },
+    {
       "Id": "E:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\movie1.jpg",
       "PackagePath": "staticwebassets\\MovieImages\\movie1.jpg"
     },
