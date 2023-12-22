@@ -1,5 +1,5 @@
 ﻿@page
-@model Umovie.Pages.Admin.AddMovieModel
+@model Umovie.Pages.Admin.AddMovie
 @{
 }
 <br />
@@ -27,6 +27,14 @@
     <div class="form-outline mb-4">
         <input class="form-control form-control-lg" required type="date" asp-for="@Model.movie.MovieReleaseDate">
         <label class="form-label" for="form3Example3cg">Release date</label>
+    </div>
+
+
+    <div class="form-outline mb-4">
+        <select id="je" class="form-control form-control-lg" asp-for="chosenCategories" asp-items="@(new SelectList(Model.categories, "Id", "Name"))" required multiple="multiple">
+            <option value="" selected disabled>---Select a category---</option>
+        </select>
+        <label class="form-label" for="form3Example3cg">Categories</label>
     </div>
 
     <div class="form-outline mb-4">

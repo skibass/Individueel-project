@@ -1,21 +1,30 @@
 using BLL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Umovie.Pages.Admin
 {
-    public class AddMovieModel : PageModel
+    public class AddMovie : PageModel
     {
         public Movie_Service Movie_Service = new();
         IWebHostEnvironment env;
         [BindProperty]
         public required Movie movie { get; set; }
         public IFormFile Upload {  get; set; }
+        [BindProperty]
+        public List<Category> categories { get; set; }
+        [BindProperty]
+        public List<string> chosenCategories { get; set; }
 
-        public AddMovieModel(IWebHostEnvironment web)
+        public AddMovie(IWebHostEnvironment web)
         {
             env = web;
+            categories = new List<Category>();
+
+            this.categories = Movie_Service.TryGetCategories();
         }
         public IActionResult OnGet()
         {
@@ -31,10 +40,14 @@ namespace Umovie.Pages.Admin
         }
         public async Task<IActionResult> OnPostTryAddMovie()
         {
-            var file = Path.Combine(env.WebRootPath, "MovieImages");
-           
-            await Movie_Service.TryAddMovie(movie, file, Upload);
-            return RedirectToPage();
+
+            if (ModelState.IsValid)
+            {
+                var file = Path.Combine(env.WebRootPath, "MovieImages");
+                await Movie_Service.TryAddMovie(movie, chosenCategories, file, Upload);
+                return RedirectToPage();
+            }
+            return null;
         }
     }
 }

@@ -60,14 +60,25 @@ namespace BLL
         {
             return repository.GetUserRatedMovies(userId);
         }
-
-        public async Task TryAddMovie(Movie movie, string path, IFormFile Upload)
+        public List<Category> TryGetCategories()
         {
+            List<Category> categories = context.Categories.ToList();
+            return categories;
+        }
+
+        public async Task TryAddMovie(Movie movie, List<string> chosenCategories, string path, IFormFile Upload)
+        {
+            foreach (string category in chosenCategories)
+            {
+                MovieCategory movieCat = new();
+                movieCat.MovieId = movie.MovieId;
+                movieCat.CategorieId = int.Parse(category);
+                movie.MovieCategories.Add(movieCat);
+            }
+
             string Guidstring = Guid.NewGuid().ToString();
             string UploadName = Path.Combine(path, Guidstring + Upload.FileName);
 
-
-            // If tthe file doesnt exist, add to both the database and folder
             using (var fileStream = new FileStream(UploadName, FileMode.Create))
             {
                 await Upload.CopyToAsync(fileStream);

@@ -85,7 +85,7 @@ public partial class UmovieContext : DbContext
                 .HasDefaultValueSql("'''\"\"'''")
                 .HasColumnName("movie_release_date");
             entity.Property(e => e.MovieImagePath)
-                .HasMaxLength(45)
+                .HasMaxLength(255)
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnName("movie_image_path");
         });
