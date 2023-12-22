@@ -46,7 +46,7 @@ public partial class UmovieContext : DbContext
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
             entity.Property(e => e.Name)
-                .HasMaxLength(45)
+                .HasMaxLength(255)
                 .HasDefaultValueSql("'NULL'")
                 .HasColumnName("name");
         });

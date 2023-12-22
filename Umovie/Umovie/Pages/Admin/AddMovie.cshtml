@@ -34,7 +34,8 @@
         <select id="je" class="form-control form-control-lg" asp-for="chosenCategories" asp-items="@(new SelectList(Model.categories, "Id", "Name"))" required multiple="multiple">
             <option value="" selected disabled>---Select a category---</option>
         </select>
-        <label class="form-label" for="form3Example3cg">Categories</label>
+        <label class="form-label" for="form3Example3cg">Categories - </label>
+        <label style="color:red;">Hold CTRL and select multiple categories</label>
     </div>
 
     <div class="form-outline mb-4">

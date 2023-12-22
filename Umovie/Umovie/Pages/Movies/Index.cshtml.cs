@@ -21,7 +21,7 @@ namespace Umovie.Pages.Movies
 
         public void OnGet()
         {
-            
+
         }
         public IActionResult OnPostTryFavoriteMovie()
         {
@@ -30,7 +30,7 @@ namespace Umovie.Pages.Movies
 
             if (movieService.TryFavoriteMovie(movieId, uId) == true)
             {
-                
+
             }
             return RedirectToPage("../Movies/Index");
         }
@@ -50,6 +50,15 @@ namespace Umovie.Pages.Movies
                 return RedirectToPage("../Movies/Index");
             }
             return null;
+        }
+        public IActionResult OnPostEditMovie()
+        {
+            int movieId = movie.MovieId;
+
+            HttpContext.Session.SetInt32("editMovieId", movieId);
+
+            return RedirectToPage("../Admin/EditMovie");
+
         }
     }
 }

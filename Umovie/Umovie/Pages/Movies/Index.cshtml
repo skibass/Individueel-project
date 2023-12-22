@@ -68,6 +68,15 @@
                                     <input type="submit" value="Favorite">
                                 </form>
                             </td>
+                            @if (HttpContext.Session.GetString("rName") == "admin")
+                            {
+                                <td>
+                                    <form method="post" asp-page-handler="EditMovie">
+                                        <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
+                                        <input type="submit" value="Favorite">
+                                    </form>
+                                </td>
+                            }
                         </tr>
                     }
                 </tbody>

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DALL;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Models;
 using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 
@@ -68,14 +69,6 @@ namespace BLL
 
         public async Task TryAddMovie(Movie movie, List<string> chosenCategories, string path, IFormFile Upload)
         {
-            foreach (string category in chosenCategories)
-            {
-                MovieCategory movieCat = new();
-                movieCat.MovieId = movie.MovieId;
-                movieCat.CategorieId = int.Parse(category);
-                movie.MovieCategories.Add(movieCat);
-            }
-
             string Guidstring = Guid.NewGuid().ToString();
             string UploadName = Path.Combine(path, Guidstring + Upload.FileName);
 
@@ -84,8 +77,37 @@ namespace BLL
                 await Upload.CopyToAsync(fileStream);
             }
             movie.MovieImagePath = Guidstring + Upload.FileName;
-            await AddMovie(movie);   
+            await AddMovie(movie);
         }
+        public async Task TryEditMovie(Movie movie, List<string> chosenCategories, string path, IFormFile Upload)
+        {
+            Movie movie1 = context.Movies.Include(e => e.MovieCategories).Where(e => e.MovieId == movie.MovieId).FirstOrDefault();
+
+            string Guidstring = Guid.NewGuid().ToString();
+            string UploadName = Path.Combine(path, Guidstring + Upload.FileName);
+
+            using (var fileStream = new FileStream(UploadName, FileMode.Create))
+            {
+                await Upload.CopyToAsync(fileStream);
+            }
+
+            foreach (string category in chosenCategories)
+            {
+                if (!movie.MovieCategories.Any(mc => mc.CategorieId == int.Parse(category)))
+                {
+                    MovieCategory movieCat = new MovieCategory();
+                    movieCat.MovieId = movie.MovieId;
+                    movieCat.CategorieId = int.Parse(category);
+                    movie.MovieCategories.Add(movieCat);
+                }
+            }
+
+            movie1 = movie;
+
+            context.SaveChanges();
+        }
+
+
         private async Task AddMovie(Movie movie)
         {
             context.Movies.Add(movie);
