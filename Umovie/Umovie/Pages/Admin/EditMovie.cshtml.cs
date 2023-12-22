@@ -23,7 +23,6 @@ namespace Umovie.Pages.Admin
             categories = new List<Category>();
 
             this.categories = Movie_Service.TryGetCategories();
-            
         }
 
         public IActionResult OnGet()
@@ -43,15 +42,13 @@ namespace Umovie.Pages.Admin
         }
         public async Task<IActionResult> OnPostTryEditMovie()
         {
-            if (ModelState.IsValid)
-            {
-                int mId = (int)HttpContext.Session.GetInt32("editMovieId");
-                movie = Movie_Service.TryGetMovie(mId);
-                var file = Path.Combine(env.WebRootPath, "MovieImages");
-                await Movie_Service.TryEditMovie(movie, chosenCategories, file, Upload);
-                return RedirectToPage("../Movies/Index");
-            }
-            return null;
+
+            movie.MovieId = (int)HttpContext.Session.GetInt32("editMovieId");
+            var file = Path.Combine(env.WebRootPath, "MovieImages");
+
+            await Movie_Service.TryEditMovie(movie, chosenCategories, file, Upload);
+            return RedirectToPage("../Movies/Index");
+
         }
     }
 }

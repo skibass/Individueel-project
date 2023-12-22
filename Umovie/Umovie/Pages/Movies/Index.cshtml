@@ -7,8 +7,7 @@
 <br />
 <br />
 <br />
-<section style="background-color: #eee;">
-    <div class="container py-5">
+    <div class="container py-7">
         <div class="row">
             <div class="col">
                 <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
@@ -22,7 +21,7 @@
         </div>
 
         <div class="row">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col"></th>
@@ -34,20 +33,31 @@
                         <th scope="col">Rating</th>
                         <th scope="col">Favorites</th>
                         <th scope="col">Categories</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model.movieService.TryGetMovies())
                     {
                         <tr>
-                            <th scope="row">@item.MovieName</th>
                             <th><img class="movieimage" src="~/movieimages/@item.MovieImagePath" /></th>
+                            <th scope="row">
+                                <form method="post" asp-page-handler="ViewMovie">
+                                    <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
+                                    <span class="text-primary font-italic me-1">
+                                        <button class="btn btn-link" type="submit">@item.MovieName</button>
+                                    </span>
+                                </form>
+                            </th>
                             <td>@item.MovieDescription</td>
                             <td>@item.MovieDirector</td>
                             <td>@item.MovieLanguage</td>
                             <td>@item.MovieReleaseDate</td>
                             <td>
-                                @Model.movieService.TryGetAverageRating(item.MovieId)/10                                
+                                @Model.movieService.TryGetAverageRating(item.MovieId)/10
                             </td>
                             <td>
                                 @Model.movieService.TryGetAmountOfFavorites(item.MovieId)
@@ -58,14 +68,14 @@
                             <td>
                                 <form method="post" asp-page-handler="TryRateMovie">
                                     <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
-                                    <input type="number" max="10" required asp-for="@Model.rating.RatingNumber" placeholder="Rating">
-                                    <input type="submit" value="Rate">
+                                    <input type="number" max="10" required asp-for="@Model.rating.RatingNumber" placeholder="@Model.movieService.TryGetUserRating(item.MovieId, (int)HttpContext.Session.GetInt32("uId"))">
+                                    <button type="submit">Rate</button>
                                 </form>
                             </td>
                             <td>
                                 <form method="post" asp-page-handler="TryFavoriteMovie">
                                     <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
-                                    <input type="submit" value="Favorite">
+                                    <button type="submit">Favorite</button>
                                 </form>
                             </td>
                             @if (HttpContext.Session.GetString("rName") == "admin")
@@ -73,7 +83,13 @@
                                 <td>
                                     <form method="post" asp-page-handler="EditMovie">
                                         <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
-                                        <input type="submit" value="Favorite">
+                                        <button type="submit">Edit</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="post" asp-page-handler="DeleteMovie">
+                                        <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
+                                        <button type="submit" onclick="confirmMsg()">Delete</button>
                                     </form>
                                 </td>
                             }
@@ -83,5 +99,10 @@
             </table>
         </div>
     </div>
-</section>
+
+<script>
+    function confirmMsg() {
+        confirm("Delete movie?");
+    }
+</script>
 

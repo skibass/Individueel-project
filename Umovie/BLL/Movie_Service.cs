@@ -69,6 +69,14 @@ namespace BLL
 
         public async Task TryAddMovie(Movie movie, List<string> chosenCategories, string path, IFormFile Upload)
         {
+            foreach (string category in chosenCategories)
+            {
+                MovieCategory movieCat = new();
+                movieCat.MovieId = movie.MovieId;
+                movieCat.CategorieId = int.Parse(category);
+                movie.MovieCategories.Add(movieCat);
+            }
+
             string Guidstring = Guid.NewGuid().ToString();
             string UploadName = Path.Combine(path, Guidstring + Upload.FileName);
 
@@ -83,30 +91,45 @@ namespace BLL
         {
             Movie movie1 = context.Movies.Include(e => e.MovieCategories).Where(e => e.MovieId == movie.MovieId).FirstOrDefault();
 
-            string Guidstring = Guid.NewGuid().ToString();
-            string UploadName = Path.Combine(path, Guidstring + Upload.FileName);
+            movie1.MovieName = movie.MovieName;
+            movie1.MovieDirector = movie.MovieDirector;
+            movie1.MovieAgeRating = movie.MovieAgeRating;
+            movie1.MovieLanguage = movie.MovieLanguage;
+            movie1.MovieDescription = movie.MovieDescription;
+            movie1.MovieReleaseDate = movie.MovieReleaseDate;
 
-            using (var fileStream = new FileStream(UploadName, FileMode.Create))
+            if (Upload != null)
             {
-                await Upload.CopyToAsync(fileStream);
-            }
+                string Guidstring = Guid.NewGuid().ToString();
+                string UploadName = Path.Combine(path, Guidstring + Upload.FileName);
+
+                using (var fileStream = new FileStream(UploadName, FileMode.Create))
+                {
+                    await Upload.CopyToAsync(fileStream);
+                }
+                movie1.MovieImagePath = Guidstring + Upload.FileName;
+            }         
 
             foreach (string category in chosenCategories)
             {
-                if (!movie.MovieCategories.Any(mc => mc.CategorieId == int.Parse(category)))
+                if (!movie1.MovieCategories.Any(mc => mc.CategorieId == int.Parse(category)))
                 {
                     MovieCategory movieCat = new MovieCategory();
-                    movieCat.MovieId = movie.MovieId;
+                    movieCat.MovieId = movie1.MovieId;
                     movieCat.CategorieId = int.Parse(category);
-                    movie.MovieCategories.Add(movieCat);
+                    movie1.MovieCategories.Add(movieCat);
                 }
             }
+            context.SaveChanges();
+        }
+        public void DeleteMovie(int movieId)
+        {
+            var movie = context.Movies.Where(e => e.MovieId == movieId).FirstOrDefault();
 
-            movie1 = movie;
+            context.Entry(movie).State = EntityState.Deleted;
 
             context.SaveChanges();
         }
-
 
         private async Task AddMovie(Movie movie)
         {
