@@ -115,7 +115,7 @@
                                         </form>
                                         <form method="post" asp-page-handler="TryRateMovie">
                                             <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
-                                            <input type="number" max="10" asp-for="@Model.rating.RatingNumber" required placeholder="@Model.movieService.TryGetUserRating(item.Movie.MovieId, Model.user.UserId)">
+                                            <input type="number" min="1" max="10" asp-for="@Model.rating.RatingNumber" required placeholder="@Model.movieService.TryGetUserRating(item.Movie.MovieId, Model.user.UserId)">
                                             <input type="submit" value="Rate">
                                         </form>
                                     </p>

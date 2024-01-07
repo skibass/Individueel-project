@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hr+VoIQta2yPBVDXBh7+TzcimvhMTiDTFuGATLRwj2U=",
+  "Hash": "Da3xrv1QM7XtwWCYyncJUGegjFIt+2hAyaQ9QBI6L2E=",
   "Source": "Umovie",
   "BasePath": "_content/Umovie",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Umovie.bundle.scp.css"
     },
     {
+      "Identity": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\css\\Pagination.css",
+      "SourceId": "Umovie",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\",
+      "BasePath": "_content/Umovie",
+      "RelativePath": "css/Pagination.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Pagination.css"
+    },
+    {
       "Identity": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\css\\site.css",
       "SourceId": "Umovie",
       "SourceType": "Discovered",
@@ -83,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\js\\MoviePagination.js",
+      "SourceId": "Umovie",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\",
+      "BasePath": "_content/Umovie",
+      "RelativePath": "js/MoviePagination.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\MoviePagination.js"
     },
     {
       "Identity": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\js\\site.js",

@@ -26,11 +26,11 @@
                     <input type="hidden" asp-for="@Model.movie.MovieId" value="@Model.movieService.TryGetMovie(Model.Id).MovieId">
                     @if (Model.movieService.TryGetUserRating(Model.Id, Model.user.UserId) != null)
                     {
-                        <input type="number" max="10" asp-for="@Model.rating.RatingNumber" required placeholder="@Model.movieService.TryGetUserRating(Model.Id, Model.user.UserId)">
+                        <input type="number" min="1" max="10" asp-for="@Model.rating.RatingNumber" required placeholder="@Model.movieService.TryGetUserRating(Model.Id, Model.user.UserId)">
                     }
                     else
                     {
-                        <input type="number" max="10" asp-for="@Model.rating.RatingNumber" placeholder="Rate">
+                        <input type="number" min="1" max="10" asp-for="@Model.rating.RatingNumber" placeholder="Rate">
                     }
                     <input type="submit" value="Rate">
                 </form>

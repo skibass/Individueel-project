@@ -7,20 +7,24 @@
 <br />
 <br />
 <br />
-    <div class="container py-7">
-        <div class="row">
-            <div class="col">
-                <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item active" aria-current="page">Movies</li>
-                        <li class="breadcrumb-item"> <a asp-page="../Account/Profile">Profile</a></li>
-                        <li class="breadcrumb-item"> <a asp-page="../Movies/ViewRatings">Your Ratings</a></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+<script type="text/javascript" src="~/js/MoviePagination.js"></script>
 
-        <div class="row">
+<div class="container py-7">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item active" aria-current="page">Movies</li>
+                    <li class="breadcrumb-item"> <a asp-page="../Account/Profile">Profile</a></li>
+                    <li class="breadcrumb-item"> <a asp-page="../Movies/ViewRatings">Your Ratings</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="votesContainer">
+
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -42,7 +46,7 @@
                 <tbody>
                     @foreach (var item in Model.movieService.TryGetMovies())
                     {
-                        <tr>
+                        <tr class="vote-info">
                             <th><img class="movieimage" src="~/movieimages/@item.MovieImagePath" /></th>
                             <th scope="row">
                                 <form method="post" asp-page-handler="ViewMovie">
@@ -68,7 +72,7 @@
                             <td>
                                 <form method="post" asp-page-handler="TryRateMovie">
                                     <input type="hidden" asp-for="@Model.movie.MovieId" value="@item.MovieId">
-                                    <input type="number" max="10" required asp-for="@Model.rating.RatingNumber" placeholder="@Model.movieService.TryGetUserRating(item.MovieId, (int)HttpContext.Session.GetInt32("uId"))">
+                                    <input type="number" min="1" max="10" required asp-for="@Model.rating.RatingNumber" placeholder="@Model.movieService.TryGetUserRating(item.MovieId, (int)HttpContext.Session.GetInt32("uId"))">
                                     <button type="submit">Rate</button>
                                 </form>
                             </td>
@@ -98,7 +102,11 @@
                 </tbody>
             </table>
         </div>
+        <div class="pagination">
+            <!-- Pagination controls will be dynamically inserted here -->
+        </div>
     </div>
+</div>
 
 <script>
     function confirmMsg() {

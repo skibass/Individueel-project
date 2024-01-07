@@ -177,12 +177,20 @@
       "PackagePath": "staticwebassets\\MovieImages\\ff0867bd-9808-4398-98f7-4838d5b56981promo_bridge.jpg"
     },
     {
+      "Id": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\css\\Pagination.css",
+      "PackagePath": "staticwebassets\\css\\Pagination.css"
+    },
+    {
       "Id": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\js\\MoviePagination.js",
+      "PackagePath": "staticwebassets\\js\\MoviePagination.js"
     },
     {
       "Id": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\js\\site.js",
