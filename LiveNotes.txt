@@ -4,13 +4,13 @@ User can click on movie and view movie information: save clicked movie ID to mov
 "For you" page shows movies related to most clicked movie categories based on categorie data bound to account in database.
 
 TODO (important):
-    Add authentication.
+    Add authentication. : Done
     Add user clicked movie categories database data.
-    Add user profile.
-    Add option to favorite movie.
-    Add option to rate movie.
+    Add user profile. : Done
+    Add option to favorite movie. : Done
+    Add option to rate movie. : Done
 
 (not important yet)
-    Add admin functionality (CRUD - generalized - specified later).
+    Add admin functionality (CRUD - generalized - specified later). : Done
     Add for you page (generalized - specified later).
     General layout.
