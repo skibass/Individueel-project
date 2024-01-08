@@ -21,11 +21,17 @@ namespace Umovie.Pages.Account
         public Movie_Service movieService = new();
         public User_Service userService = new();
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (HttpContext.Session.GetString("uId") == null)
+            {
+                return RedirectToPage("../Account/Login");
+            }
             int userId = (int)HttpContext.Session.GetInt32("uId");
 
             user = userService.TryGetCurrentUser(userId);
+
+            return null;
         }
 
         public IActionResult OnPostViewMovie()

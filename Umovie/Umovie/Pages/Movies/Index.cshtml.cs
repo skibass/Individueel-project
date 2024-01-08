@@ -19,12 +19,17 @@ namespace Umovie.Pages.Movies
         [BindProperty]
         public required MovieRating rating { get; set; }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-       
+            if (HttpContext.Session.GetString("uId") == null)
+            {
+                return RedirectToPage("../Account/Login");
+            }
+            return null;
         }
         public IActionResult OnPostTryFavoriteMovie()
         {
+           
             int movieId = movie.MovieId;
             int uId = (int)HttpContext.Session.GetInt32("uId");
 

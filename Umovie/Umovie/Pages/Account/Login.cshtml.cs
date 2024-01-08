@@ -14,9 +14,15 @@ namespace Umovie.Pages.Account
 
         [BindProperty]
         public required User user { get; set; }
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (HttpContext.Session.GetString("uId") != null)
+            {
+                return RedirectToPage("../Movies/Index");
+            }
             user = new User();
+
+            return null;
         }
         public IActionResult OnPostTryLoginUser()
         {

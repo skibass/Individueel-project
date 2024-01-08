@@ -54,3 +54,17 @@ G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Models\obj\Debug\net
 G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Models\obj\Debug\net7.0\Models.pdb
 G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Models\obj\Debug\net7.0\Models.genruntimeconfig.cache
 G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Models\obj\Debug\net7.0\ref\Models.dll
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\bin\Debug\net7.0\Models.deps.json
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\bin\Debug\net7.0\Models.runtimeconfig.json
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\bin\Debug\net7.0\Models.dll
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\bin\Debug\net7.0\Models.pdb
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\obj\Debug\net7.0\Models.csproj.AssemblyReference.cache
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\obj\Debug\net7.0\Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\obj\Debug\net7.0\Models.AssemblyInfoInputs.cache
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\obj\Debug\net7.0\Models.AssemblyInfo.cs
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\obj\Debug\net7.0\Models.csproj.CoreCompileInputs.cache
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\obj\Debug\net7.0\Models.dll
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\obj\Debug\net7.0\refint\Models.dll
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\obj\Debug\net7.0\Models.pdb
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\obj\Debug\net7.0\Models.genruntimeconfig.cache
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Models\obj\Debug\net7.0\ref\Models.dll

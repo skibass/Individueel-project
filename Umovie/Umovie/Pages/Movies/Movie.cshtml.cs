@@ -19,12 +19,17 @@ namespace Umovie.Pages.Movies
 
         public Movie_Service movieService = new();
         public User_Service userService = new();
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (HttpContext.Session.GetString("uId") == null)
+            {
+                return RedirectToPage("../Account/Login");
+            }
             Id = (int)HttpContext.Session.GetInt32("movieId");
             int uId = (int)HttpContext.Session.GetInt32("uId");
 
             user = userService.TryGetCurrentUser(uId);
+            return null;
         }
         public IActionResult OnPostTryRateMovie()
         {
