@@ -54,9 +54,12 @@
                                             <li>
                                                 <a class="dropdown-item" asp-area="" asp-page="/Admin/AddMovie">Add movie</a>
                                             </li>
-                                            <li>
-                                                <a class="dropdown-item" asp-area="" asp-page="/Admin/EditMovie">Edit movie</a>
-                                            </li>
+                                            @if (@Context.Session.GetInt32("editMovieId") != null)
+                                            {
+                                                <li>
+                                                    <a class="dropdown-item" asp-area="" asp-page="/Admin/EditMovie">Edit movie</a>
+                                                </li>
+                                            }
                                         }
                                         <li><a class="dropdown-item" asp-page="/Account/Logout">Logout</a></li>
                                     }

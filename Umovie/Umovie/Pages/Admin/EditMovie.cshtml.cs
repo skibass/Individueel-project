@@ -27,8 +27,6 @@ namespace Umovie.Pages.Admin
 
         public IActionResult OnGet()
         {
-            int mId = (int)HttpContext.Session.GetInt32("editMovieId");
-            movie = Movie_Service.TryGetMovie(mId);
 
             if (HttpContext.Session.GetString("rName") != "admin")
             {
@@ -36,6 +34,16 @@ namespace Umovie.Pages.Admin
                 {
                     return RedirectToPage("../Account/Login");
                 }
+                return RedirectToPage("../Movies/Index");
+            }
+
+            if (HttpContext.Session.GetInt32("editMovieId") != null)
+            {
+                int mId = (int)HttpContext.Session.GetInt32("editMovieId");
+                movie = Movie_Service.TryGetMovie(mId);
+            }
+            else
+            {
                 return RedirectToPage("../Movies/Index");
             }
             return null;
