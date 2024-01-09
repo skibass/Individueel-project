@@ -18,7 +18,10 @@ namespace VptLibrary
         public EventSpace()
         {
             Parts = new List<Part>();
-
+            GetParts();
+        }
+        private void GetParts()
+        {
             Random randParts = new Random();
             for (int i = 0; i < randParts.Next(1, 11); i++)
             {
@@ -26,7 +29,6 @@ namespace VptLibrary
                 Parts.Add(part);
             }
         }
-
 
     }
 }

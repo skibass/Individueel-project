@@ -8,14 +8,14 @@ namespace VptLibrary
 {
     public class Chair
     {
-        public string ChairCode { get; set; }
+        public string EventChairName { get; set; }
         public Visitor Visitor { get; set; }
 
         public Chair(string eventRowName, int chairNr) 
         { 
           Visitor = new Visitor();
-          
-          
+
+            EventChairName = eventRowName + "-" + chairNr;
         }
     }
 }

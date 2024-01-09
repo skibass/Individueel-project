@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,16 +14,21 @@ namespace VptLibrary
         public List<Row> Rows { get; set; }       
 
         public Part(char letter) 
-        {
-            int rowNr = 0;
+        {           
             this.Letter = letter;
             Rows = new List<Row>();
+            GetRows();
+        }
+
+        private void GetRows()
+        {
+            int rowNr = 1;
             Random randRows = new Random();
-            for (int i = 0; i < randRows.Next(1,4); i++)
+            for (int i = 0; i < randRows.Next(1, 4); i++)
             {
-                    Row row = new Row(letter, rowNr++);
-                    Rows.Add(row);            
-            }            
+                Row row = new Row(Letter, rowNr++);
+                Rows.Add(row);
+            }
         }
     }
 }

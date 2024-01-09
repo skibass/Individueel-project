@@ -17,7 +17,12 @@ namespace VptLibrary
         {
             Chairs = new List<Chair>();
             EventRowName = letter + "" + rowNr;
-            int chairNr = 0;
+            GetChairs();
+        }
+
+        public void GetChairs ()
+        {
+            int chairNr = 1;
 
             Random randChairs = new Random();
             for (int i = 0; i < randChairs.Next(3, 11); i++)
