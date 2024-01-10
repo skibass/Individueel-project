@@ -20,6 +20,11 @@ namespace VptLibrary
         public List<Visitor> GrouplessVisitors { get; set; }
         public EventSpace()
         {
+            // TODO: Make rows same length and correct chair numbering
+
+
+
+
             Groups = new List<Group>();
             Parts = new List<Part>();
             GrouplessVisitors = new List<Visitor>();
