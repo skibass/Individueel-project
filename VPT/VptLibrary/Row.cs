@@ -52,12 +52,16 @@ namespace VptLibrary
         {
             foreach (var group in groups)
             {
+                bool adultInGroup = false;
+
+                if (group.groupVisitors.Any(a => a.IsAdult == true))
+                {
+                    adultInGroup = true;
+                }
                 foreach (var chair in Chairs)
                 {
                     if (chair.IsTaken == false)
                     {
-                        bool adultInGroup = false;
-
                         foreach (var visitor in group.groupVisitors)
                         {
                             if (visitor.IsAdult == true && visitor.IsSeated == false)
@@ -69,7 +73,7 @@ namespace VptLibrary
                                 break;
                             }
                             // If visitor is a child and there is already an adult in the row, its allowed
-                            else if (visitor.IsAdult == false && adultInGroup)
+                            else if (visitor.IsAdult == false && visitor.IsSeated == false && adultInGroup)
                             {
                                 chair.Visitor = visitor;
                                 visitor.IsSeated = true;
