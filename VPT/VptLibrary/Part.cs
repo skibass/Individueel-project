@@ -25,9 +25,7 @@ namespace VptLibrary
         {
             int rowNr = 1;
             Random randRows = new Random();
-            int rowlength = randRows.Next(1, 4);
-
-            for (int i = 0; i < rowlength; i++)
+            for (int i = 0; i < randRows.Next(1, 4); i++)
             {
                 Row row = new Row(Letter, rowNr++);
                 Rows.Add(row);
