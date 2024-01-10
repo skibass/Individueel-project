@@ -25,9 +25,12 @@ namespace VptLibrary
         {
             int rowNr = 1;
             Random randRows = new Random();
+            Random randChairs = new Random();
+            int amountOfChairsThisRow = randChairs.Next(3, 11);
+
             for (int i = 0; i < randRows.Next(1, 4); i++)
-            {
-                Row row = new Row(Letter, rowNr++);
+            {          
+                Row row = new Row(Letter, rowNr++, amountOfChairsThisRow);
                 Rows.Add(row);
             }
         }

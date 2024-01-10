@@ -11,11 +11,13 @@ namespace VptLibrary
     {
         // Between 3 and 10 chairs
         public string EventRowName { get; set; }
+        public int AmountOfChairs { get; set; }
         public List<Chair> Chairs { get; set; }
 
-        public Row(char letter, int rowNr)
+        public Row(char letter, int rowNr, int amountOfChairs)
         {
             Chairs = new List<Chair>();
+            AmountOfChairs = amountOfChairs;
             EventRowName = letter + "" + rowNr;
             GetChairs();
         }
@@ -25,7 +27,7 @@ namespace VptLibrary
             int chairNr = 1;
 
             Random randChairs = new Random();
-            for (int i = 0; i < randChairs.Next(3, 11); i++)
+            for (int i = 0; i < AmountOfChairs; i++)
             {
                 Chair chair = new Chair(EventRowName, chairNr++);
                 Chairs.Add(chair);
