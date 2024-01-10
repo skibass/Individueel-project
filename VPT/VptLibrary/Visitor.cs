@@ -10,7 +10,10 @@ namespace VptLibrary
     {
         public string Name { get; set; }
         public DateOnly BirthDate { get; set; }
+        public DateOnly SignUpDate { get; set; }
         public int Age { get; set; }
+        public bool IsAdult { get; set; }
+        public bool IsSeated { get; set; } = false;
 
         public Visitor() 
         { 
@@ -25,6 +28,15 @@ namespace VptLibrary
             int daysSinceBirth = birthRand.Next(365, 36500);
             BirthDate = DateOnly.FromDateTime(DateTime.Now.AddDays(-daysSinceBirth));
             Age = DateTime.Now.Year - BirthDate.Year;
+
+            if (Age > 12)
+            {
+                IsAdult = true;
+            }
+            else
+            {
+                IsAdult = false;
+            }
         }
 
         public void GetRandomName() 

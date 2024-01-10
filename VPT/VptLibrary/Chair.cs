@@ -9,11 +9,12 @@ namespace VptLibrary
     public class Chair
     {
         public string EventChairName { get; set; }
-        public Visitor Visitor { get; set; }
+        public Visitor? Visitor { get; set; }
+        public bool IsTaken { get; set; } = false;
 
         public Chair(string eventRowName, int chairNr) 
         { 
-          Visitor = new Visitor();
+            Visitor PreCheckedVisitor = new Visitor();
 
             EventChairName = eventRowName + "-" + chairNr;
         }

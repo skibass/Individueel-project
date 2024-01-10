@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace VptLibrary
@@ -28,6 +29,15 @@ namespace VptLibrary
             {
                 Row row = new Row(Letter, rowNr++);
                 Rows.Add(row);
+            }
+        }
+
+        public void SetupRows(List<Visitor> grouplessVisitors, List<Group> Groups)
+        {
+            foreach (var item in Rows)
+            {
+                item.PlaceGrouplessVisitors(grouplessVisitors);
+                item.PlaceGroups(Groups);
             }
         }
     }

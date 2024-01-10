@@ -10,7 +10,7 @@ namespace VptLibrary
     public class Row
     {
         // Between 3 and 10 chairs
-        public string EventRowName { get; set; }   
+        public string EventRowName { get; set; }
         public List<Chair> Chairs { get; set; }
 
         public Row(char letter, int rowNr)
@@ -20,7 +20,7 @@ namespace VptLibrary
             GetChairs();
         }
 
-        public void GetChairs ()
+        public void GetChairs()
         {
             int chairNr = 1;
 
@@ -31,6 +31,62 @@ namespace VptLibrary
                 Chairs.Add(chair);
             }
         }
+        public void PlaceGrouplessVisitors(List<Visitor> grouplessVisitors)
+        {
+            foreach (var chair in Chairs)
+            {
+                foreach (var visitor in grouplessVisitors)
+                {
+                    if (visitor.IsAdult == true && visitor.IsSeated == false)
+                    {
+                        chair.Visitor = visitor;
+                        visitor.IsSeated = true;
+                        chair.IsTaken = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void PlaceGroups(List<Group> groups)
+        {
+            foreach (var group in groups)
+            {
+                foreach (var chair in Chairs)
+                {
+                    if (chair.IsTaken == false)
+                    {
+                        bool adultInGroup = false;
+
+                        foreach (var visitor in group.groupVisitors)
+                        {
+                            if (visitor.IsAdult == true && visitor.IsSeated == false)
+                            {
+                                chair.Visitor = visitor;
+                                visitor.IsSeated = true;
+                                chair.IsTaken = true;
+                                adultInGroup = true;
+                                break;
+                            }
+                            // If visitor is a child and there is already an adult in the row, its allowed
+                            else if (visitor.IsAdult == false && adultInGroup)
+                            {
+                                chair.Visitor = visitor;
+                                visitor.IsSeated = true;
+                                chair.IsTaken = true;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+
+
 
     }
 }

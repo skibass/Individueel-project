@@ -1,5 +1,4 @@
 ﻿using VptLibrary;
-Visitor visitor = new Visitor();
 EventSpace eventSpace = new EventSpace();
 
 Console.WriteLine("");
@@ -11,16 +10,22 @@ foreach (var part in eventSpace.Parts)
 
 	foreach (var row in part.Rows)
 	{
-        Console.WriteLine("");
+        Console.WriteLine("--");
         Console.WriteLine(row.EventRowName);
-        Console.WriteLine("");
+        Console.WriteLine("--");
 
         foreach (var chair in row.Chairs)
 		{
-            Console.WriteLine(chair.EventChairName);
+            if (chair.Visitor != null)
+            {
+                Console.WriteLine(chair.EventChairName + " | Age:" + chair.Visitor.Age);
+            }
+            else
+            {
+                Console.WriteLine(chair.EventChairName + " | EMPTY");
+            }
         }
     }
     Console.WriteLine("");
-
 }
 
