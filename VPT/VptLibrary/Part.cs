@@ -40,8 +40,8 @@ namespace VptLibrary
         {
             foreach (var item in Rows)
             {
-                item.PlaceGrouplessVisitors(grouplessVisitors);
                 item.PlaceGroups(Groups);
+                item.PlaceGrouplessVisitors(grouplessVisitors);
             }
         }
     }

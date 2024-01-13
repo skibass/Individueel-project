@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace VptLibrary
 {
+    // Steps still needed: 7, 8, part of 9, 10, 12
     public class EventSpace
     {
         public List<Part> Parts { get; set; }
         public DateTime LastSignUpDatePossibility { get; set; }
-        public int VisitorLimit { get; set; } = 5;
+        public int VisitorLimit { get; set; }
         public int VisitorSignUpCount { get; set; }
         public bool EventFull { get; set; }
         private char CurrentLetter { get; set; } = 'A';
@@ -22,6 +23,7 @@ namespace VptLibrary
         public List<Visitor> AllVisitors { get; set; }
         public EventSpace()
         {
+            VisitorLimit = GetRandomVisitorLimit();
             LastSignUpDatePossibility = GetRandomEventSignDate();
             Parts = new List<Part>();
             Groups = new List<Group>();
@@ -33,6 +35,7 @@ namespace VptLibrary
             GetAllVisitors();
             CheckIfVisitorSignedOnTime();
             CheckSpotsAvailable();
+            EventFull = IsEventOverSigned(); 
             PlaceVisitors();
         }
         private void GetParts()
@@ -116,17 +119,7 @@ namespace VptLibrary
         }
         private void CheckSpotsAvailable()
         {
-            int visitorsInGroupCount = 0;
-            foreach (var visitor in Groups)
-            {
-                foreach (var item in visitor.groupVisitors)
-                {
-                    visitorsInGroupCount++;
-                }
-            }
-            VisitorSignUpCount = GrouplessVisitors.Count + visitorsInGroupCount;
-
-            if (VisitorSignUpCount > VisitorLimit)
+            if (IsEventOverSigned())
             {
                 FirstComeFirstServe();
             }
@@ -134,17 +127,27 @@ namespace VptLibrary
 
         private void FirstComeFirstServe()
         {
-            int count = 0;
+            int count = 1;
             var allOrdenedVisitors = AllVisitors.OrderBy(v => v.SignUpDate).Where(v => v.SignedOnTime == true).ToList();
 
             foreach (var visitor in allOrdenedVisitors)
             {
-                if (count < VisitorLimit)
+                // If count exceeds limit
+                if (count > VisitorLimit)
                 {
-                    visitor.IfEventFullIsVisitorAllowed = true;
-                    count++;
+                    visitor.IfEventFullIsVisitorAllowed = false;                   
                 }
+                count++;
             }
+        }
+
+        private bool IsEventOverSigned()
+        {
+            if (AllVisitors.Count >= VisitorLimit)
+            {
+                return true;
+            }
+            return false;
         }
         private void GetAllVisitors()
         {
@@ -167,6 +170,12 @@ namespace VptLibrary
             DateTime start = new DateTime(1995, 1, 1);
             int range = (DateTime.Today - start).Days;
             return start.AddDays(random.Next(range));
+        }
+        private int GetRandomVisitorLimit()
+        {
+            var random = new Random();
+            
+            return random.Next(50, 201);
         }
     }
 }

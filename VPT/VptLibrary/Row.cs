@@ -116,6 +116,7 @@ namespace VptLibrary
         private bool IsVisitorAllowed(Visitor visitor)
         {
             bool isAllowed = false;
+
             if (visitor.IsSeated == false && visitor.SignedOnTime == true && visitor.IfEventFullIsVisitorAllowed == true)
             {
                 return isAllowed = true;
