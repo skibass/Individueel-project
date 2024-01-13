@@ -10,18 +10,21 @@ namespace VptLibrary
     {
         public string Name { get; set; }
         public DateOnly BirthDate { get; set; }
-        public DateOnly SignUpDate { get; set; }
+        public DateTime SignUpDate { get; set; }
+        public bool SignedOnTime { get; set; }
         public int Age { get; set; }
         public bool IsAdult { get; set; }
         public bool IsSeated { get; set; } = false;
+        public bool IfEventFullIsVisitorAllowed { get; set; }
 
         public Visitor() 
         { 
             GetBirthDateAndAge();
             GetRandomName();
+            SignUpDate = GetRandomSignUpDate();
         }
 
-        public void GetBirthDateAndAge()
+        private void GetBirthDateAndAge()
         {
             Random birthRand = new Random();
 
@@ -39,7 +42,7 @@ namespace VptLibrary
             }
         }
 
-        public void GetRandomName() 
+        private void GetRandomName() 
         {
             // From https://stackoverflow.com/questions/14687658/random-name-generator-in-c-sharp
 
@@ -63,6 +66,13 @@ namespace VptLibrary
                 b++;
             }
             this.Name = Name;
+        }
+        private DateTime GetRandomSignUpDate()
+        {
+            var random = new Random();
+            DateTime start = new DateTime(1995, 1, 1);
+            int range = (DateTime.Today - start).Days;
+            return start.AddDays(random.Next(range));
         }
     }
 }

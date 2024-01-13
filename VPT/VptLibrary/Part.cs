@@ -12,6 +12,7 @@ namespace VptLibrary
     public class Part
     {
         public char Letter { get; set; }
+        private bool IsPartFull { get; set; }
         public List<Row> Rows { get; set; }       
 
         public Part(char letter) 
