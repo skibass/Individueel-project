@@ -41,7 +41,7 @@ namespace VptLibrary
             {
                 foreach (var visitor in grouplessVisitors)
                 {
-                    if (visitor.IsAdult == true && visitor.IsSeated == false)
+                    if (visitor.IsAdult == true && IsVisitorAllowed(visitor) == true)
                     {
                         chair.Visitor = visitor;
                         visitor.IsSeated = true;
@@ -116,7 +116,7 @@ namespace VptLibrary
         private bool IsVisitorAllowed(Visitor visitor)
         {
             bool isAllowed = false;
-            if (visitor.IsSeated == false && visitor.SignedOnTime == true)
+            if (visitor.IsSeated == false && visitor.SignedOnTime == true && visitor.IfEventFullIsVisitorAllowed == true)
             {
                 return isAllowed = true;
             }

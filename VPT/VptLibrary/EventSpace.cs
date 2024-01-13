@@ -13,7 +13,6 @@ namespace VptLibrary
     {
         public List<Part> Parts { get; set; }
         public DateTime LastSignUpDatePossibility { get; set; }
-        // First come first serve
         public int VisitorLimit { get; set; } = 5;
         public int VisitorSignUpCount { get; set; }
         public bool EventFull { get; set; }
