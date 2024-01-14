@@ -1,4 +1,5 @@
-﻿using VptLibrary;
+﻿using System.Text.RegularExpressions;
+using VptLibrary;
 EventSpace eventSpace = new EventSpace();
 
 Console.WriteLine("");

@@ -56,12 +56,6 @@ namespace VptLibrary
         {
             foreach (var group in groups)
             {
-                bool adultInGroup = false;
-
-                if (group.groupVisitors.Any(a => a.IsAdult == true))
-                {
-                    adultInGroup = true;
-                }
                 foreach (var chair in Chairs)
                 {
                     if (chair.IsTaken == false)
@@ -71,7 +65,7 @@ namespace VptLibrary
                             // Fix this shit
                             if (IsRowInFront == true)
                             {
-                                if (visitor.IsAdult == false && adultInGroup && IsVisitorAllowed(visitor) == true)
+                                if (visitor.IsAdult == false && IsVisitorAllowed(visitor) == true)
                                 {
                                     chair.Visitor = visitor;
                                     visitor.IsSeated = true;
@@ -79,16 +73,15 @@ namespace VptLibrary
                                     break;
                                 }
                             }
-                            else if (visitor.IsAdult == true && IsVisitorAllowed(visitor) == true)
+                            if (visitor.IsAdult == true && IsVisitorAllowed(visitor) == true)
                             {
                                 chair.Visitor = visitor;
                                 visitor.IsSeated = true;
                                 chair.IsTaken = true;
-                                adultInGroup = true;
                                 break;
                             }
                             // If visitor is a child and there is already an adult in the row, its allowed
-                            else if (visitor.IsAdult == false && IsVisitorAllowed(visitor) == true && adultInGroup)
+                            else if (visitor.IsAdult == false && IsVisitorAllowed(visitor) == true)
                             {
                                 chair.Visitor = visitor;
                                 visitor.IsSeated = true;

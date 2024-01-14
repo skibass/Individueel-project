@@ -78,10 +78,10 @@ namespace VptLibrary
         {
             foreach (var item in groups)
             {
-                if (item.groupVisitors.Any(vis => vis.IsAdult == false))
-                {
-                    groups.Remove(item);
-                    break;
+                // If theres a child in group
+                if (item.groupVisitors.Any(vis => vis.IsAdult == false) && item.groupVisitors.Count(vis => vis.IsAdult) < 1)
+                {                 
+                        groups.Remove(item);                                    
                 }
             }
         }
@@ -167,7 +167,7 @@ namespace VptLibrary
         private DateTime GetRandomEventSignDate()
         {
             var random = new Random();
-            DateTime start = new DateTime(1995, 1, 1);
+            DateTime start = new DateTime(2018, 1, 1);
             int range = (DateTime.Today - start).Days;
             return start.AddDays(random.Next(range));
         }

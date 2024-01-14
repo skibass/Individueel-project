@@ -8,6 +8,7 @@ namespace VptLibrary
 {
     public class Visitor
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public DateOnly BirthDate { get; set; }
         public DateTime SignUpDate { get; set; }
@@ -22,6 +23,7 @@ namespace VptLibrary
             GetBirthDateAndAge();
             GetRandomName();
             SignUpDate = GetRandomSignUpDate();
+            Id = GetRandomVisitorId();
         }
 
         private void GetBirthDateAndAge()
@@ -70,9 +72,15 @@ namespace VptLibrary
         private DateTime GetRandomSignUpDate()
         {
             var random = new Random();
-            DateTime start = new DateTime(1995, 1, 1);
+            DateTime start = new DateTime(2018, 1, 1);
             int range = (DateTime.Today - start).Days;
             return start.AddDays(random.Next(range));
+        }
+        private int GetRandomVisitorId()
+        {
+            var random = new Random();
+            
+            return random.Next(1, 9999);
         }
     }
 }
