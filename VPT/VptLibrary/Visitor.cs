@@ -28,14 +28,8 @@ namespace VptLibrary
             GetRandomName();
             SignUpDate = GetRandomSignUpDate();
             Id = GetRandomVisitorId();
-            if (groupNumber == 0 && Age < 12)
-            {
-                IsVisitorAllowed = false;
-            }
-            else
-            {
-                IsVisitorAllowed = true;
-            }
+            IsVisitorAllowed = IsVisitorAllowedCheck(groupNumber);
+            
         }
 
         private void GetBirthDateAndAge()
@@ -93,6 +87,20 @@ namespace VptLibrary
             var random = new Random();
 
             return random.Next(1, 9999);
+        }
+        private bool IsVisitorAllowedCheck(int groupNumber)
+        {
+            bool isAllowed = false;
+            // If visitor is not in group and younger than 12, visitor is not allowed
+            if (groupNumber == 0 && IsAdult == false)
+            {
+                isAllowed = false;
+            }
+            else
+            {
+                isAllowed = true;
+            }
+            return isAllowed;
         }
     }
 }

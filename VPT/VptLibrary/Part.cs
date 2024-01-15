@@ -65,8 +65,8 @@ namespace VptLibrary
         {
             var g = allVisitors.Count(v => v.IsVisitorAllowed && v.SignedOnTime && v.IsSeated);
 			var t = item.Chairs.Count(v => v.IsTaken == true);
-			var y = item.Chairs.Count(v => v.IsTaken == false);
-			var f = allVisitors.Count(v => v.IsVisitorAllowed && v.SignedOnTime);
+            // Added && iseventfullvisitorallowed to the condition to make the validation also validate the visitors based on if its allowed when the event is full
+			var f = allVisitors.Count(v => v.IsVisitorAllowed && v.SignedOnTime && v.IfEventFullIsVisitorAllowed);
 
 			// if the amount of available valid visitors that are seated is equal to the amount of total valid visitors
 			if (g == f)
