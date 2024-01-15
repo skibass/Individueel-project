@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace VptLibrary
         // Between 3 and 10 chairs
         public string EventRowName { get; set; }
         public int AmountOfChairs { get; set; }
-        private bool IsRowFull { get; set; }
+        public bool IsRowFull { get; set; }
         private bool IsRowInFront { get; set; }
         public List<Chair> Chairs { get; set; }
 
@@ -35,24 +36,27 @@ namespace VptLibrary
                 Chairs.Add(chair);
             }
         }
-        public void PlaceGrouplessVisitors(List<Visitor> grouplessVisitors)
+        public void PlaceGrouplessVisitors(List<Visitor> grouplessVisitors, ref bool rdy)
         {
             foreach (var chair in Chairs)
             {
-                foreach (var visitor in grouplessVisitors)
+                if (chair.IsTaken == false)
                 {
-                    if (visitor.IsAdult == true && IsVisitorAllowed(visitor) == true)
+                    foreach (var visitor in grouplessVisitors)
                     {
-                        chair.Visitor = visitor;
-                        visitor.IsSeated = true;
-                        chair.IsTaken = true;
-                        break;
+                        if (visitor.IsAdult == true && IsVisitorAllowed(visitor) == true)
+                        {
+                            chair.Visitor = visitor;
+                            visitor.IsSeated = true;
+                            chair.IsTaken = true;
+                            break;
+                        }
                     }
-                }
+                }                 
             }
         }
 
-        public void PlaceGroups(List<Group> groups)
+        public void PlaceGroups(List<Group> groups, ref bool rdy)
         {
             foreach (var group in groups)
             {
@@ -90,12 +94,8 @@ namespace VptLibrary
                             }
                         }
                     }
-                    else
-                    {
-                        break;
-                    }
                 }
-            }
+            }          
         }
         private bool CheckIfRowIsFront(int rowNr)
         {
@@ -112,6 +112,7 @@ namespace VptLibrary
 
             if (visitor.IsSeated == false && visitor.SignedOnTime == true && visitor.IfEventFullIsVisitorAllowed == true)
             {
+                visitor.HasBeenProcessed = true;
                 return isAllowed = true;
             }
             return isAllowed = false;
