@@ -111,11 +111,10 @@ namespace VptLibrary
             bool isAllowed = false;
 
             if (visitor.IsSeated == false && visitor.SignedOnTime == true && visitor.IfEventFullIsVisitorAllowed == true)
-            {
-                visitor.HasBeenProcessed = true;
+            {               
                 return isAllowed = true;
             }
-            return isAllowed = false;
+            return isAllowed;
         }
     }
 }

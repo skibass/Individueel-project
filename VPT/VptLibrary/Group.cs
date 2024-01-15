@@ -23,7 +23,7 @@ namespace VptLibrary
             Random random = new Random();
             for (int i = 0; i < random.Next(2, 11); i++)
             {
-                groupVisitors.Add(new Visitor());
+                groupVisitors.Add(new Visitor(Number));
             }
         }
         private int GetRandomNumber()

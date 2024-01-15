@@ -6,27 +6,38 @@ Console.WriteLine("");
 
 foreach (var part in eventSpace.Parts)
 {
-    Console.WriteLine("-------------------------------");
-    Console.WriteLine(part.Letter);
+    if (part.IsPartInUse == true)
+    {
+		Console.WriteLine("-------------------------------");
+		Console.WriteLine(part.Letter);
 
-	foreach (var row in part.Rows)
-	{
-        Console.WriteLine("--");
-        Console.WriteLine(row.EventRowName);
-        Console.WriteLine("--");
-
-        foreach (var chair in row.Chairs)
+		foreach (var row in part.Rows)
 		{
-            if (chair.Visitor != null)
-            {
-                Console.WriteLine(chair.EventChairName + "| ID: " + chair.Visitor.Id + " | Age:" + chair.Visitor.Age);
-            }
-            else
-            {
-                Console.WriteLine(chair.EventChairName + " | EMPTY");
-            }
-        }
-    }
-    Console.WriteLine("");
+			Console.WriteLine("--");
+			Console.WriteLine(row.EventRowName);
+			Console.WriteLine("--");
+
+			foreach (var chair in row.Chairs)
+			{
+				
+				if (chair.Visitor != null)
+				{
+					if (chair.Visitor.GroupNumber != 0) 
+					{
+						Console.WriteLine(chair.EventChairName + "| Group: " + chair.Visitor.GroupNumber + " | Age:" + chair.Visitor.Age);
+					}
+					else
+					{
+						Console.WriteLine(chair.EventChairName + "| Group: Alone | Age:" + chair.Visitor.Age);
+					}
+				}
+				else
+				{
+					Console.WriteLine(chair.EventChairName + " | EMPTY");
+				}
+			}
+		}
+		Console.WriteLine("");
+	}   
 }
 

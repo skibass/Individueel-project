@@ -83,7 +83,7 @@ namespace VptLibrary
         {
             for (int i = 0; i < random.Next(1, 100); i++)
             {
-                GrouplessVisitors.Add(new Visitor());
+                GrouplessVisitors.Add(new Visitor(0));
             }
         }
         private void GetAllVisitors()
@@ -167,7 +167,21 @@ namespace VptLibrary
             foreach (var part in Parts)
             {
                 part.SetupRows(GrouplessVisitors, Groups, AllVisitors);
+                part.IsPartInUse = CheckIfPartIsInUse(part);
             }
-        }                   
+        } 
+        private bool CheckIfPartIsInUse(Part part)
+        {
+            bool isPartInUse = false;
+            foreach (var item in part.Rows)
+            {
+                // are there seated chairs in part
+                if (item.Chairs.Count(v => v.IsTaken) > 0)
+                {
+                    isPartInUse = true;
+                }
+            }
+            return isPartInUse;
+        }
     }
 }

@@ -9,3 +9,14 @@ G:\Fontys_S2\Individueel\skibass\Individueel-project\VPT\VptLibrary\obj\Debug\ne
 G:\Fontys_S2\Individueel\skibass\Individueel-project\VPT\VptLibrary\obj\Debug\net7.0\refint\VptLibrary.dll
 G:\Fontys_S2\Individueel\skibass\Individueel-project\VPT\VptLibrary\obj\Debug\net7.0\VptLibrary.pdb
 G:\Fontys_S2\Individueel\skibass\Individueel-project\VPT\VptLibrary\obj\Debug\net7.0\ref\VptLibrary.dll
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\VPT\VptLibrary\bin\Debug\net7.0\VptLibrary.deps.json
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\VPT\VptLibrary\bin\Debug\net7.0\VptLibrary.dll
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\VPT\VptLibrary\bin\Debug\net7.0\VptLibrary.pdb
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\VPT\VptLibrary\obj\Debug\net7.0\VptLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\VPT\VptLibrary\obj\Debug\net7.0\VptLibrary.AssemblyInfoInputs.cache
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\VPT\VptLibrary\obj\Debug\net7.0\VptLibrary.AssemblyInfo.cs
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\VPT\VptLibrary\obj\Debug\net7.0\VptLibrary.csproj.CoreCompileInputs.cache
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\VPT\VptLibrary\obj\Debug\net7.0\VptLibrary.dll
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\VPT\VptLibrary\obj\Debug\net7.0\refint\VptLibrary.dll
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\VPT\VptLibrary\obj\Debug\net7.0\VptLibrary.pdb
+C:\Fontys_S2\Projecten\Individueel\Individueel-project\VPT\VptLibrary\obj\Debug\net7.0\ref\VptLibrary.dll

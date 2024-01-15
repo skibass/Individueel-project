@@ -12,7 +12,7 @@ namespace VptLibrary
     public class Part
     {
         public char Letter { get; set; }
-        private bool IsPartFull { get; set; }
+        public bool IsPartInUse { get; set; }
         public List<Row> Rows { get; set; }
 
         public Part(char letter)
@@ -63,10 +63,16 @@ namespace VptLibrary
         }
         private bool RowIsReady(Row item, List<Visitor> allVisitors)
         {
-            if (allVisitors.Count(v => v.SignedOnTime && v.IsSeated) == allVisitors.Count(v => v.SignedOnTime))
+            var g = allVisitors.Count(v => v.SignedOnTime && v.IsSeated);
+			var t = item.Chairs.Count(v => v.IsTaken == true);
+			var f = allVisitors.Count(v => v.SignedOnTime);
+
+			// if the amount of available valid visitors that are seated is equal to the amount of total valid visitors
+			if (allVisitors.Count(v => v.SignedOnTime && v.IsSeated) == allVisitors.Count(v => v.SignedOnTime))
             {
                 return true;
             }
+            // if amaount of taken chairs is less that available chairs in row
             else if (item.Chairs.Count(v => v.IsTaken == true) < item.Chairs.Count())
             {
                 return false;

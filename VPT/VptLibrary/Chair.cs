@@ -14,8 +14,6 @@ namespace VptLibrary
 
         public Chair(string eventRowName, int chairNr) 
         { 
-            Visitor PreCheckedVisitor = new Visitor();
-
             EventChairName = eventRowName + "-" + chairNr;
         }
     }

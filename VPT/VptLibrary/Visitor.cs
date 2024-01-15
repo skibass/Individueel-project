@@ -18,9 +18,11 @@ namespace VptLibrary
         public bool IsSeated { get; set; } = false;
         public bool HasBeenProcessed { get; set; } = false;
         public bool IfEventFullIsVisitorAllowed { get; set; } = true;
+        public int GroupNumber { get; set; }
 
-        public Visitor() 
+        public Visitor(int groupNumber) 
         { 
+            this.GroupNumber = groupNumber;
             GetBirthDateAndAge();
             GetRandomName();
             SignUpDate = GetRandomSignUpDate();
