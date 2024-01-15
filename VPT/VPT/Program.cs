@@ -19,7 +19,7 @@ foreach (var part in eventSpace.Parts)
 		{
             if (chair.Visitor != null)
             {
-                Console.WriteLine(chair.EventChairName + " | Age:" + chair.Visitor.Age);
+                Console.WriteLine(chair.EventChairName + "| ID: " + chair.Visitor.Id + " | Age:" + chair.Visitor.Age);
             }
             else
             {
