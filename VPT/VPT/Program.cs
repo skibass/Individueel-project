@@ -24,11 +24,11 @@ foreach (var part in eventSpace.Parts)
 				{
 					if (chair.Visitor.GroupNumber != 0) 
 					{
-						Console.WriteLine(chair.EventChairName + "| Group: " + chair.Visitor.GroupNumber + " | Age:" + chair.Visitor.Age);
+						Console.WriteLine(chair.EventChairName + "| Group: " + chair.Visitor.GroupNumber + " | Age:" + chair.Visitor.Age + " | date:" + chair.Visitor.SignUpDate);
 					}
 					else
 					{
-						Console.WriteLine(chair.EventChairName + "| Group: Alone | Age:" + chair.Visitor.Age);
+						Console.WriteLine(chair.EventChairName + "| Group: Alone | Age:" + chair.Visitor.Age + " | date:" + chair.Visitor.SignUpDate);
 					}
 				}
 				else

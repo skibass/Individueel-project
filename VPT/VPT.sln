@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPT", "VPT\VPT.csproj", "{AB775482-B917-4B5B-A7F8-CCE8EE61D927}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VPT", "VPT\VPT.csproj", "{AB775482-B917-4B5B-A7F8-CCE8EE61D927}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VptLibrary", "VptLibrary\VptLibrary.csproj", "{59C664CB-516F-4DB2-9A68-BF18D8B5EA5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VptLibrary", "VptLibrary\VptLibrary.csproj", "{59C664CB-516F-4DB2-9A68-BF18D8B5EA5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VptTests", "VptTests\VptTests.csproj", "{6B0DCEB3-0C25-40BF-B9A2-620627EB65C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{59C664CB-516F-4DB2-9A68-BF18D8B5EA5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59C664CB-516F-4DB2-9A68-BF18D8B5EA5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59C664CB-516F-4DB2-9A68-BF18D8B5EA5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B0DCEB3-0C25-40BF-B9A2-620627EB65C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B0DCEB3-0C25-40BF-B9A2-620627EB65C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B0DCEB3-0C25-40BF-B9A2-620627EB65C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B0DCEB3-0C25-40BF-B9A2-620627EB65C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

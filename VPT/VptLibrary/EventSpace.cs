@@ -79,7 +79,7 @@ namespace VptLibrary
             }
         }
 
-        public void GetRandomAmountOfGrouplessVisitors()
+        private void GetRandomAmountOfGrouplessVisitors()
         {
             for (int i = 0; i < random.Next(1, 100); i++)
             {
