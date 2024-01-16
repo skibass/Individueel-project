@@ -100,15 +100,12 @@ namespace VptLibrary
         {
             for (int i = 0; i < random.Next(1, 100); i++)
             {
-                // Check if visitor exists already
-
-                //Visitor vis = new(0);
-                //if (GrouplessVisitors.Count(v => v.Name == vis.Name) == 0)
-                //{
-
-                //}
-
-                GrouplessVisitors.Add(new Visitor(0));
+                // Only add if visitor is unique
+                Visitor vis = new(0);
+                if (AllVisitors.Count(v => v.Id == vis.Id) == 0)
+                {
+                    GrouplessVisitors.Add(new Visitor(0));
+                }
             }
         }
         private void GetAllVisitors()

@@ -12,8 +12,8 @@ namespace VptTests
         [TestMethod]
         public void CanGenerateEventWithLimitAndPlaceBasedOnFirstComeFirstServe()
         {
-            DateTime dateTime = new DateTime(2018, 05, 31); ;
             // Arrange
+            DateTime dateTime = new DateTime(2018, 05, 31); ;           
             EventSpace eventSpace = new EventSpace(1, dateTime);
 
             // Act

@@ -28,8 +28,7 @@ namespace VptLibrary
             GetRandomName();
             SignUpDate = GetRandomSignUpDate();
             Id = GetRandomVisitorId();
-            IsVisitorAllowed = IsVisitorAllowedCheck(groupNumber);
-            
+            IsVisitorAllowed = IsVisitorAllowedCheck(groupNumber);            
         }
 
         private void GetBirthDateAndAge()
@@ -80,6 +79,7 @@ namespace VptLibrary
             var random = new Random();
             DateTime start = new DateTime(2018, 1, 1);
             int range = (DateTime.Today - start).Days;
+
             return start.AddDays(random.Next(range));
         }
         private int GetRandomVisitorId()

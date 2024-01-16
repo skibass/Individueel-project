@@ -63,10 +63,10 @@ namespace VptTests
                 adultsInGroup = grou.groupVisitors.Count(a => a.IsAdult);
             }
 
-            Console.WriteLine("Total visitors should be atleast 10: " + allVisitors.Count());
+            Console.WriteLine($"Total visitors should be atleast 10: {allVisitors.Count()}");
 
             // Kids should never be valid being alone
-            Console.WriteLine("Valid kids in groupless should always be 0: " + grouplessVis.Count(a => a.IsAdult == false && a.IsVisitorAllowed == true));
+            Console.WriteLine($"Valid kids in groupless should always be 0: {grouplessVis.Count(a => a.IsAdult == false && a.IsVisitorAllowed == true)}");
 
 
             //Assert
