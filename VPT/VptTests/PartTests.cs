@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VptLibrary;
 
 namespace VptTests
 {
@@ -13,10 +13,18 @@ namespace VptTests
         [TestMethod]
         public void CanCreateRows()
         {
+            // Arrange
             Part part = new Part('A');
 
-            Assert.IsTrue(part.Rows.Count > 0);
+            // Act
+            int rowCount = part.Rows.Count();
+
+            Console.WriteLine(rowCount);
+
+            // Assert
+            Assert.IsTrue(rowCount >= 1 && rowCount <= 3);
         }
+
 
         [TestMethod]
         public void PlaceVisitorInPart()
@@ -64,7 +72,5 @@ namespace VptTests
             //Assert
             Assert.IsTrue(grouplessVis.Count(a => a.IsAdult == false && a.IsVisitorAllowed == true) == 0 && adultsInGroup > 0);
         }
-
-
     }
 }

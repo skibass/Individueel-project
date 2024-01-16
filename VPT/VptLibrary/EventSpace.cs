@@ -41,6 +41,23 @@ namespace VptLibrary
             EventFull = IsEventOverSigned(); 
             PlaceVisitors();
         }
+        public EventSpace(int visitorLimit, DateTime lastSignDate)
+        {
+            VisitorLimit = visitorLimit;
+            LastSignUpDatePossibility = lastSignDate;
+            Parts = new List<Part>();
+            Groups = new List<Group>();
+            GrouplessVisitors = new List<Visitor>();
+            AllVisitors = new List<Visitor>();
+            GetParts();
+            GetRandomAmountOfGroups();
+            GetRandomAmountOfGrouplessVisitors();
+            GetAllVisitors();
+            CheckIfVisitorSignedOnTime();
+            CheckSpotsAvailable();
+            EventFull = IsEventOverSigned();
+            PlaceVisitors();
+        }
         private int GetRandomVisitorLimit()
         {
             return random.Next(50, 201);

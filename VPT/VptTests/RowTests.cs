@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace VptTests
 {
-    internal class RowTests
+    [TestClass]
+    public class RowTests
     {
+        [TestMethod]
+        public void CreateSeatsBasedOnDeterminedAmount()
+        {
+            // Arrange
+            Row row = new Row('A', 1, 10);
+
+            // Act
+            Console.WriteLine(row.Chairs.Count());
+
+            // Assert
+            Assert.AreEqual(row.Chairs.Count, 10);
+        }
     }
 }
