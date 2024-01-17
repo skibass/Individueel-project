@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Da3xrv1QM7XtwWCYyncJUGegjFIt+2hAyaQ9QBI6L2E=",
+  "Hash": "NTxIlxHAh/XaZa2Sa6XQq7fARgoI8YvQ98lEviH8GKg=",
   "Source": "Umovie",
   "BasePath": "_content/Umovie",
   "Mode": "Default",
@@ -1103,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\003ac156-c5e0-4628-b21d-8098e540918amine.gif",
+      "SourceId": "Umovie",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\",
+      "BasePath": "_content/Umovie",
+      "RelativePath": "MovieImages/003ac156-c5e0-4628-b21d-8098e540918amine.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MovieImages\\003ac156-c5e0-4628-b21d-8098e540918amine.gif"
     },
     {
       "Identity": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\0168a23a-baf8-4aa3-b997-ad83b1b4cae7MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg",

@@ -38,6 +38,7 @@ namespace UMovieTests
             movie.MovieDirector = "test";
             movie.MovieLanguage = "en";
             movie.MovieReleaseDate = "2014/09/1";
+            movie.MovieDescription = "test";
 
             foreach (Category category in categories)
             {

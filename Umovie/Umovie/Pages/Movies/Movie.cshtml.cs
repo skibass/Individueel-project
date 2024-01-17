@@ -37,10 +37,8 @@ namespace Umovie.Pages.Movies
             int ratingNumber = (int)rating.RatingNumber;
             int uId = (int)HttpContext.Session.GetInt32("uId");
 
-            if (movieService.TryRateMovie(movieId, uId, ratingNumber) == true)
-            {
+            movieService.TryRateMovie(movieId, uId, ratingNumber);
 
-            }
             return RedirectToPage("../Movies/Movie");
         }
     }
