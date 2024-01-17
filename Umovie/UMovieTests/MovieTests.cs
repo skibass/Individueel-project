@@ -30,7 +30,6 @@ namespace UMovieTests
             // Arrange
             UmovieContext context = new UmovieContext();
 
-            List<Movie> movies = new();
             List<Category> categories = context.Categories.ToList();
 
             Movie movie = new Movie();
@@ -39,7 +38,6 @@ namespace UMovieTests
             movie.MovieDirector = "test";
             movie.MovieLanguage = "en";
             movie.MovieReleaseDate = "2014/09/1";
-            movie.MovieId = 1;
 
             foreach (Category category in categories)
             {
@@ -50,12 +48,12 @@ namespace UMovieTests
             }
 
             // Act
-            int previousCountMovies = movies.Count();
+            int previousCountMovies = context.Movies.Count();
             
-            movies.Add(movie);
+            context.Movies.Add(movie);
+            context.SaveChanges();
 
-
-            int newCount = movies.Count();
+            int newCount = context.Movies.Count();
 
             Console.WriteLine($"{previousCountMovies}  {newCount}");
 
@@ -118,6 +116,48 @@ namespace UMovieTests
 
             // Assert
             Assert.IsTrue(oldMovie != newMovie);
+        }
+
+        [TestMethod]
+        public void CanDeleteMovie()
+        {
+            UmovieContext context = new UmovieContext();
+
+            List<Movie> movies = new();
+            List<Category> categories = context.Categories.ToList();
+
+            Movie movie = new Movie();
+            movie.MovieName = "Test";
+            movie.MovieAgeRating = 10;
+            movie.MovieDirector = "test";
+            movie.MovieLanguage = "en";
+            movie.MovieReleaseDate = "2014/09/1";
+            movie.MovieId = 1;
+
+            foreach (Category category in categories)
+            {
+                MovieCategory movieCat = new();
+                movieCat.MovieId = movie.MovieId;
+                movieCat.CategorieId = category.Id;
+                movie.MovieCategories.Add(movieCat);
+            }
+
+            movies.Add(movie);
+            int oldMovieCount = movies.Count();
+
+            foreach (var item in movies)
+            {
+                if (item.MovieId == 1)
+                {
+                    movies.Remove(item);
+                    break;
+                }
+            }
+            int newMovieCount = movies.Count();
+
+            Console.WriteLine($"Amount of movies previously: {oldMovieCount} | Amount now {newMovieCount}");
+
+            Assert.IsTrue(newMovieCount == 0);
         }
     }
 }
