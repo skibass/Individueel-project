@@ -114,7 +114,7 @@ namespace DALL
 
                 context.SaveChanges();
 
-                 favorite = false;
+                favorite = false;
             }
 
             return favorite;

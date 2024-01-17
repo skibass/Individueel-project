@@ -3820,23 +3820,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Thijn\\.nuget\\packages\\": {},
+    "C:\\Users\\Chris\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\Umovie.csproj",
+      "projectUniqueName": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\Umovie.csproj",
       "projectName": "Umovie",
-      "projectPath": "C:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\Umovie.csproj",
-      "packagesPath": "C:\\Users\\Thijn\\.nuget\\packages\\",
-      "outputPath": "C:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\Umovie\\obj\\",
+      "projectPath": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\Umovie.csproj",
+      "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
+      "outputPath": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Thijn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3845,15 +3845,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\BLL\\BLL.csproj": {
-              "projectPath": "C:\\Fontys_S2\\Projecten\\Individueel\\Individueel-project\\Umovie\\BLL\\BLL.csproj"
+            "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\BLL\\BLL.csproj": {
+              "projectPath": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\BLL\\BLL.csproj"
             }
           }
         }
