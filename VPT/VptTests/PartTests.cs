@@ -19,7 +19,7 @@ namespace VptTests
             // Act
             int rowCount = part.Rows.Count();
 
-            Console.WriteLine(rowCount);
+            Console.WriteLine($"Rows: {rowCount}");
 
             // Assert
             Assert.IsTrue(rowCount >= 1 && rowCount <= 3);
@@ -27,7 +27,7 @@ namespace VptTests
 
 
         [TestMethod]
-        public void PlaceVisitorInPart()
+        public void CanGetValidVisitorsBasedOnAge()
         {
             // Arrange
             Part part = new Part('A');
@@ -39,6 +39,7 @@ namespace VptTests
             {
                 groups.Add(new Group());
             }
+
             foreach (Group group in groups)
             {
                 foreach (Visitor visitor in group.groupVisitors)
@@ -46,6 +47,7 @@ namespace VptTests
                     allVisitors.Add(visitor);
                 }
             }
+
             for (int i = 0; i < 10; i++)
             {
                 Visitor vis = new Visitor(0);
@@ -66,11 +68,11 @@ namespace VptTests
             Console.WriteLine($"Total visitors should be atleast 10: {allVisitors.Count()}");
 
             // Kids should never be valid being alone
-            Console.WriteLine($"Valid kids in groupless should always be 0: {grouplessVis.Count(a => a.IsAdult == false && a.IsVisitorAllowed == true)}");
+            Console.WriteLine($"Valid groupless kids should always be 0: {grouplessVis.Count(a => a.IsAdult == false && a.IsVisitorAllowedInBasedOnAge == true)}");
 
 
             //Assert
-            Assert.IsTrue(grouplessVis.Count(a => a.IsAdult == false && a.IsVisitorAllowed == true) == 0 && adultsInGroup > 0);
+            Assert.IsTrue(grouplessVis.Count(a => a.IsAdult == false && a.IsVisitorAllowedInBasedOnAge == true) == 0 && adultsInGroup > 0);
         }
     }
 }

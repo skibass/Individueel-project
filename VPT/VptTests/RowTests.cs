@@ -17,14 +17,14 @@ namespace VptTests
             Row row = new Row('A', 1, 10);
 
             // Act
-            Console.WriteLine(row.Chairs.Count());
+            Console.WriteLine($"Amount of predetermined seats is 10, amount in rowis: {row.Chairs.Count()}");
 
             // Assert
             Assert.AreEqual(row.Chairs.Count, 10);
         }
 
         [TestMethod]
-        public void PlaceGrouplessVisitors()
+        public void PlaceVisitors()
         {
             // Arrange
 

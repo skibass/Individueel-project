@@ -28,7 +28,7 @@ namespace VptTests
             // If earliest visitor is still too late
             if (visitorEarliest > eventSpace.LastSignUpDatePossibility)
             {
-                Console.WriteLine($"Amount of seated visitors: {seatedVisitorsFirstCome} Earliest visitor sign date: {visitorEarliest} Event date {eventSpace.LastSignUpDatePossibility} No visitor signed on time!!");
+                Console.WriteLine($"Amount of seated visitors: {seatedVisitorsFirstCome} | Earliest visitor sign date: {visitorEarliest} | Event date {eventSpace.LastSignUpDatePossibility} | No visitor signed on time!!");
                 if (seatedVisitorsFirstCome == 0)
                 {
                     noOnTimeVisitors = true;
@@ -36,7 +36,7 @@ namespace VptTests
             }
             else
             {
-                Console.WriteLine($"Amount of seated visitors: {seatedVisitorsFirstCome} Earliest visitor sign date: {visitorEarliest} Event date {eventSpace.LastSignUpDatePossibility}");
+                Console.WriteLine($"Amount of seated visitors: {seatedVisitorsFirstCome} | Earliest visitor sign date: {visitorEarliest} | Event date {eventSpace.LastSignUpDatePossibility}");
                 if (seatedVisitorsFirstCome == eventSpace.VisitorLimit)
                 {
                     canPlace = true;
@@ -69,6 +69,7 @@ namespace VptTests
                     {
                         equalChairsPerRow = false;
                     }
+                    Console.WriteLine($"Row: {row.EventRowName} | Amount of chairs: {row.Chairs.Count()}");
                 }
             }
             

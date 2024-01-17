@@ -50,7 +50,7 @@ namespace VptLibrary
                         item.PlaceGroups(groups, ref readyForNextRow);
                         item.PlaceGrouplessVisitors(grouplessVisitors, ref readyForNextRow);
                         var t = item.Chairs.Count(v => v.IsTaken == true);
-                        var f = allVisitors.Any(v => v.IsVisitorAllowed);
+                        var f = allVisitors.Any(v => v.IsVisitorAllowedInBasedOnAge);
                     }
 
                     if (item.Chairs.Count(v => v.IsTaken == true) == item.Chairs.Count())
@@ -63,10 +63,10 @@ namespace VptLibrary
         }
         private bool RowIsReady(Row item, List<Visitor> allVisitors)
         {
-            var g = allVisitors.Count(v => v.IsVisitorAllowed && v.SignedOnTime && v.IsSeated);
+            var g = allVisitors.Count(v => v.IsVisitorAllowedInBasedOnAge && v.SignedOnTime && v.IsSeated);
 			var t = item.Chairs.Count(v => v.IsTaken == true);
             // Added && iseventfullvisitorallowed to the condition to make the validation also validate the visitors based on if its allowed when the event is full
-			var f = allVisitors.Count(v => v.IsVisitorAllowed && v.SignedOnTime && v.IfEventFullIsVisitorAllowed);
+			var f = allVisitors.Count(v => v.IsVisitorAllowedInBasedOnAge && v.SignedOnTime && v.IfEventFullIsVisitorAllowed);
 
 			// if the amount of available valid visitors that are seated is equal to the amount of total valid visitors
 			if (g == f)

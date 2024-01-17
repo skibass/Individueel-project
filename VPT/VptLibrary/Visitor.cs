@@ -18,7 +18,7 @@ namespace VptLibrary
         public bool IsSeated { get; set; } = false;
         public bool HasBeenProcessed { get; set; } = false;
         public bool IfEventFullIsVisitorAllowed { get; set; } = true;
-        public bool IsVisitorAllowed { get; set; } = false;
+        public bool IsVisitorAllowedInBasedOnAge { get; set; } = false;
         public int GroupNumber { get; set; }
 
         public Visitor(int groupNumber)
@@ -28,7 +28,7 @@ namespace VptLibrary
             GetRandomName();
             SignUpDate = GetRandomSignUpDate();
             Id = GetRandomVisitorId();
-            IsVisitorAllowed = IsVisitorAllowedCheck(groupNumber);            
+            IsVisitorAllowedInBasedOnAge = IsVisitorAllowedCheck(groupNumber);            
         }
 
         private void GetBirthDateAndAge()
