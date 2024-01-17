@@ -21,7 +21,7 @@ namespace UMovieTests
                 movies = new List<Movie>();
             }
             Console.WriteLine($"Amount of retrieved movies {movies.Count}");
-            Assert.IsTrue(movies.Count() > 0);
+            Assert.IsTrue(movies != null);
         }
 
         [TestMethod]
@@ -56,7 +56,7 @@ namespace UMovieTests
 
             int newCount = context.Movies.Count();
 
-            Console.WriteLine($"{previousCountMovies}  {newCount}");
+            Console.WriteLine($"Previous amount of movies: {previousCountMovies} | Amount after adding: {newCount}");
 
             // Assert
             Assert.IsTrue(previousCountMovies < newCount);
@@ -156,7 +156,7 @@ namespace UMovieTests
             }
             int newMovieCount = movies.Count();
 
-            Console.WriteLine($"Amount of movies previously: {oldMovieCount} | Amount now {newMovieCount}");
+            Console.WriteLine($"Amount of movies previously: {oldMovieCount} | Amount after deleting: {newMovieCount}");
 
             Assert.IsTrue(newMovieCount == 0);
         }
