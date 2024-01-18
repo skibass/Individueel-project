@@ -123,25 +123,8 @@ namespace VptLibrary
             }
         }
         private void CheckIfVisitorSignedOnTime()
-        {
-            // Check groups
-            foreach (var item in Groups)
-            {
-                foreach (var visitor in item.groupVisitors)
-                {
-                    if (visitor.SignUpDate > LastSignUpDatePossibility)
-                    {
-                        visitor.SignedOnTime = false;
-                    }
-                    else
-                    {
-                        visitor.SignedOnTime = true;
-                    }
-                }
-            }
-
-            // Check groupless visitors
-            foreach (var visitor in GrouplessVisitors)
+        {           
+            foreach (var visitor in AllVisitors)
             {
                 if (visitor.SignUpDate > LastSignUpDatePossibility)
                 {
