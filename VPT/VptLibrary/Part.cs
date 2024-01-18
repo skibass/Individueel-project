@@ -42,7 +42,7 @@ namespace VptLibrary
             {
                 foreach (var row in Rows)
                 {
-                    while (!RowIsReady(row, allVisitors))
+                    while (!RowIsFull(row, allVisitors))
                     {
                         row.PlaceVisitors(allVisitors);
                     }
@@ -52,7 +52,7 @@ namespace VptLibrary
             }
         }
 
-        private bool RowIsReady(Row row, List<Visitor> allVisitors)
+        private bool RowIsFull(Row row, List<Visitor> allVisitors)
         {
             // Count of valid visitors based on age, signed on time, and if seated
             var validVisitorsCount = allVisitors.Count(v =>
