@@ -104,7 +104,7 @@ namespace VptLibrary
         {
             bool isAllowed = false;
 
-            if (visitor.IsSeated == false && visitor.SignedOnTime == true && visitor.IfEventFullIsVisitorAllowed == true)
+            if (visitor.IsSeated == false && visitor.SignedOnTime == true && visitor.FirstComeFirstServe == true)
             {
                 return isAllowed = true;
             }

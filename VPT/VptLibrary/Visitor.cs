@@ -17,7 +17,7 @@ namespace VptLibrary
         public bool IsAdult { get; set; }
         public bool IsSeated { get; set; } = false;
         public bool HasBeenProcessed { get; set; } = false;
-        public bool IfEventFullIsVisitorAllowed { get; set; } = true;
+        public bool FirstComeFirstServe { get; set; } = true;
         public bool IsVisitorAllowedInBasedOnAge { get; set; } = false;
         public int GroupNumber { get; set; }
 

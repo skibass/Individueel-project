@@ -171,7 +171,7 @@ namespace VptLibrary
                 // If count exceeds limit
                 if (count > VisitorLimit)
                 {
-                    visitor.IfEventFullIsVisitorAllowed = false;
+                    visitor.FirstComeFirstServe = false;
                 }
                 count++;
             }

@@ -54,16 +54,16 @@ namespace VptLibrary
 
         private bool RowIsReady(Row row, List<Visitor> allVisitors)
         {
-            // Count of valid visitors based on age, signed on time, and seating
+            // Count of valid visitors based on age, signed on time, and if seated
             var validVisitorsCount = allVisitors.Count(v =>
                 v.IsVisitorAllowedInBasedOnAge && v.SignedOnTime && v.IsSeated);
 
             // Count of taken chairs in the row
             var takenChairsCount = row.Chairs.Count(chair => chair.IsTaken);
 
-            // Count of valid visitors based on age, signed on time, and if allowed when the event is full
+            // Count of valid visitors based on age, if signed on time, and if allowed when the event is full
             var validVisitorsForFullEventCount = allVisitors.Count(v =>
-                v.IsVisitorAllowedInBasedOnAge && v.SignedOnTime && v.IfEventFullIsVisitorAllowed);
+                v.IsVisitorAllowedInBasedOnAge && v.SignedOnTime && v.FirstComeFirstServe);
 
             // Check conditions for row readiness
             if (validVisitorsCount == validVisitorsForFullEventCount)
