@@ -14,7 +14,7 @@ namespace VptLibrary
         public string EventRowName { get; set; }
         public int AmountOfChairs { get; set; }
         public bool IsRowFull { get; set; }
-        private bool IsRowInFront { get; set; }
+        private bool RowIsInFront { get; set; }
         public List<Chair> Chairs { get; set; }
 
         public Row(char letter, int rowNr, int amountOfChairs)
@@ -23,7 +23,7 @@ namespace VptLibrary
             AmountOfChairs = amountOfChairs;
             EventRowName = letter + "" + rowNr;
             GetChairs();
-            IsRowInFront = CheckIfRowIsFront(rowNr);
+            RowIsInFront = CheckIfRowIsFront(rowNr);
         }
 
         public void GetChairs()
@@ -36,67 +36,61 @@ namespace VptLibrary
                 Chairs.Add(chair);
             }
         }
-        public void PlaceGrouplessVisitors(List<Visitor> grouplessVisitors, ref bool rdy)
+
+        public void PlaceVisitors(List<Visitor> allVisitors)
         {
             foreach (var chair in Chairs)
             {
-                if (chair.IsTaken == false)
+                if (!chair.IsTaken)
                 {
-                    foreach (var visitor in grouplessVisitors)
+                    foreach (var visitor in allVisitors)
                     {
-                        if (visitor.IsAdult == true && IsVisitorAllowed(visitor) == true)
+                        if (CanPlaceVisitor(visitor))
                         {
-                            chair.Visitor = visitor;
-                            visitor.IsSeated = true;
-                            chair.IsTaken = true;
+                            PlaceVisitor(chair, visitor);
                             break;
                         }
                     }
-                }                 
+                }
             }
         }
 
-        public void PlaceGroups(List<Group> groups, ref bool rdy)
+        private bool CanPlaceVisitor(Visitor visitor)
         {
-            foreach (var group in groups)
+            // If visitor is in a group
+            if (visitor.GroupNumber != 0)
             {
-                foreach (var chair in Chairs)
+                if (RowIsInFront && !visitor.IsAdult && IsVisitorAllowed(visitor))
                 {
-                    if (chair.IsTaken == false)
-                    {                      
-                        foreach (var visitor in group.groupVisitors)
-                        {
-                            // Fix this shit
-                            if (IsRowInFront == true)
-                            {
-                                if (visitor.IsAdult == false && IsVisitorAllowed(visitor) == true)
-                                {
-                                    chair.Visitor = visitor;
-                                    visitor.IsSeated = true;
-                                    chair.IsTaken = true;
-                                    break;
-                                }
-                            }
-                            if (visitor.IsAdult == true && IsVisitorAllowed(visitor) == true)
-                            {
-                                chair.Visitor = visitor;
-                                visitor.IsSeated = true;
-                                chair.IsTaken = true;
-                                break;
-                            }
-                            // If visitor is a child and there is already an adult in the row, its allowed
-                            else if (visitor.IsAdult == false && IsVisitorAllowed(visitor) == true)
-                            {
-                                chair.Visitor = visitor;
-                                visitor.IsSeated = true;
-                                chair.IsTaken = true;
-                                break;
-                            }
-                        }
-                    }
+                    return true;
                 }
-            }          
+                else if (visitor.IsAdult && IsVisitorAllowed(visitor))
+                {
+                    return true;
+                }
+                else if (!visitor.IsAdult && IsVisitorAllowed(visitor))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (visitor.IsAdult && IsVisitorAllowed(visitor))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
+
+        private void PlaceVisitor(Chair chair, Visitor visitor)
+        {
+            chair.Visitor = visitor;
+            visitor.IsSeated = true;
+            chair.IsTaken = true;
+        }
+
         private bool CheckIfRowIsFront(int rowNr)
         {
             if (rowNr == 1)
@@ -111,7 +105,7 @@ namespace VptLibrary
             bool isAllowed = false;
 
             if (visitor.IsSeated == false && visitor.SignedOnTime == true && visitor.IfEventFullIsVisitorAllowed == true)
-            {               
+            {
                 return isAllowed = true;
             }
             return isAllowed;

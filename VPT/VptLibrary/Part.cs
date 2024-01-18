@@ -47,8 +47,10 @@ namespace VptLibrary
 
                     while (!RowIsReady(item, allVisitors))
                     {
-                        item.PlaceGroups(groups, ref readyForNextRow);
-                        item.PlaceGrouplessVisitors(grouplessVisitors, ref readyForNextRow);
+                        //item.PlaceGroups(groups, ref readyForNextRow);
+                        //item.PlaceGrouplessVisitors(grouplessVisitors, ref readyForNextRow);
+
+                        item.PlaceVisitors(allVisitors);
                         var t = item.Chairs.Count(v => v.IsTaken == true);
                         var f = allVisitors.Any(v => v.IsVisitorAllowedInBasedOnAge);
                     }

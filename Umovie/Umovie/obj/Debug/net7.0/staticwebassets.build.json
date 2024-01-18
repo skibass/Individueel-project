@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NTxIlxHAh/XaZa2Sa6XQq7fARgoI8YvQ98lEviH8GKg=",
+  "Hash": "/arS/apsSadLy+nuyinBKL5mTU6IuXlU03H6a/LaZcA=",
   "Source": "Umovie",
   "BasePath": "_content/Umovie",
   "Mode": "Default",
@@ -1647,6 +1647,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\MovieImages\\c2286610-9b2d-4c1f-b9a7-889e623989b0download.jpg"
+    },
+    {
+      "Identity": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\c2d12ea0-f8e9-4eb9-b667-de08e4e4c390yours.gif",
+      "SourceId": "Umovie",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\",
+      "BasePath": "_content/Umovie",
+      "RelativePath": "MovieImages/c2d12ea0-f8e9-4eb9-b667-de08e4e4c390yours.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MovieImages\\c2d12ea0-f8e9-4eb9-b667-de08e4e4c390yours.gif"
     },
     {
       "Identity": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\c426736e-2b7b-484d-89d4-f8d443cd4635download.jpg",

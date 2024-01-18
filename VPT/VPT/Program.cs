@@ -2,7 +2,16 @@
 using VptLibrary;
 EventSpace eventSpace = new EventSpace();
 
-Console.WriteLine("");
+Console.WriteLine("-------------------------------");
+Console.WriteLine($"|| Event date: {eventSpace.LastSignUpDatePossibility}");
+Console.WriteLine($"|| Visitor limit: {eventSpace.VisitorLimit}");
+Console.WriteLine($"|| Visitors who signed up: {eventSpace.AllVisitors.Count()}");
+Console.WriteLine($"|| Visitors who signed up on time: {eventSpace.AllVisitors.Count(a => a.SignedOnTime)}");
+
+// Did not add chairs based on visitor limit so this amount can sometimes be more than are seated because there isnt enough space
+Console.WriteLine($"|| Visitors who signed up on time and are allowed: {eventSpace.AllVisitors.Count(a => a.SignedOnTime && a.IsVisitorAllowedInBasedOnAge)}");
+Console.WriteLine($"|| Visitors who are seated: {eventSpace.AllVisitors.Count(a => a.IsSeated)}");
+
 
 foreach (var part in eventSpace.Parts)
 {
