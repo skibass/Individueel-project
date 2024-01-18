@@ -108,7 +108,7 @@ namespace VptLibrary
                 }
             }
         }
-        private void GetAllVisitors()
+        public void GetAllVisitors()
         {
             foreach (var visitor in Groups)
             {

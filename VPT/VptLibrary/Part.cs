@@ -37,44 +37,45 @@ namespace VptLibrary
         }
 
         public void SetupRows(List<Visitor> grouplessVisitors, List<Group> groups, List<Visitor> allVisitors)
-        {          
-            if (allVisitors.Count(v => v.SignedOnTime) > 0)
+        {
+            if (allVisitors.Any(v => v.SignedOnTime))
             {
-                foreach (var item in Rows)
+                foreach (var row in Rows)
                 {
-                    while (!RowIsReady(item, allVisitors))
+                    while (!RowIsReady(row, allVisitors))
                     {
-                        item.PlaceVisitors(allVisitors);
-                        var t = item.Chairs.Count(v => v.IsTaken == true);
-                        var f = allVisitors.Any(v => v.IsVisitorAllowedInBasedOnAge);
+                        row.PlaceVisitors(allVisitors);
                     }
 
-                    if (item.Chairs.Count(v => v.IsTaken == true) == item.Chairs.Count())
-                    {
-                        item.IsRowFull = true;
-                    }
+                    row.IsRowFull = row.Chairs.All(chair => chair.IsTaken);
                 }
             }
-
         }
-        private bool RowIsReady(Row item, List<Visitor> allVisitors)
-        {
-            var g = allVisitors.Count(v => v.IsVisitorAllowedInBasedOnAge && v.SignedOnTime && v.IsSeated);
-			var t = item.Chairs.Count(v => v.IsTaken == true);
-            // Added && iseventfullvisitorallowed to the condition to make the validation also validate the visitors based on if its allowed when the event is full
-			var f = allVisitors.Count(v => v.IsVisitorAllowedInBasedOnAge && v.SignedOnTime && v.IfEventFullIsVisitorAllowed);
 
-			// if the amount of available valid visitors that are seated is equal to the amount of total valid visitors
-			if (g == f)
+        private bool RowIsReady(Row row, List<Visitor> allVisitors)
+        {
+            // Count of valid visitors based on age, signed on time, and seating
+            var validVisitorsCount = allVisitors.Count(v =>
+                v.IsVisitorAllowedInBasedOnAge && v.SignedOnTime && v.IsSeated);
+
+            // Count of taken chairs in the row
+            var takenChairsCount = row.Chairs.Count(chair => chair.IsTaken);
+
+            // Count of valid visitors based on age, signed on time, and if allowed when the event is full
+            var validVisitorsForFullEventCount = allVisitors.Count(v =>
+                v.IsVisitorAllowedInBasedOnAge && v.SignedOnTime && v.IfEventFullIsVisitorAllowed);
+
+            // Check conditions for row readiness
+            if (validVisitorsCount == validVisitorsForFullEventCount)
             {
                 return true;
             }
-            // if amaount of taken chairs is less that available chairs in row
-            else if (item.Chairs.Count(v => v.IsTaken == true) < item.Chairs.Count())
+            else if (takenChairsCount < row.Chairs.Count())
             {
                 return false;
-            }       
+            }
+
             return true;
-        }        
+        }     
     }
 }
