@@ -38,18 +38,12 @@ namespace VptLibrary
 
         public void SetupRows(List<Visitor> grouplessVisitors, List<Group> groups, List<Visitor> allVisitors)
         {          
-            // TODO: Sometimes stays stuck in loop because of certain conditions, fix this
             if (allVisitors.Count(v => v.SignedOnTime) > 0)
             {
                 foreach (var item in Rows)
                 {
-                    bool readyForNextRow = false;
-
                     while (!RowIsReady(item, allVisitors))
                     {
-                        //item.PlaceGroups(groups, ref readyForNextRow);
-                        //item.PlaceGrouplessVisitors(grouplessVisitors, ref readyForNextRow);
-
                         item.PlaceVisitors(allVisitors);
                         var t = item.Chairs.Count(v => v.IsTaken == true);
                         var f = allVisitors.Any(v => v.IsVisitorAllowedInBasedOnAge);
