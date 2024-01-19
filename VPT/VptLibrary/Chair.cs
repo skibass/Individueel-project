@@ -16,5 +16,11 @@ namespace VptLibrary
         { 
             EventChairName = eventRowName + "-" + chairNr;
         }
+        public void PlaceVisitor(Visitor visitor)
+        {
+            this.Visitor = visitor;
+            visitor.IsSeated = true;
+            this.IsTaken = true;
+        }
     }
 }

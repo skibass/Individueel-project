@@ -47,6 +47,8 @@ namespace VptTests
             Assert.IsTrue(canPlace || noOnTimeVisitors, "Visitors cannot be placed based on first come, first serve criteria.");
         }
 
+       
+
         [TestMethod]
         public void CanCreatePartsWithEqualRows()
         {
@@ -143,7 +145,8 @@ namespace VptTests
                 visitors.Add(new Visitor(0));
             }
 
-            amountOfChildrenAllowed = visitors.Count(v => v.IsAdult == false && v.IsVisitorAllowedInBasedOnAge == true);
+            // Is child and allowed should be 0 because children are never allowed in this event
+            amountOfChildrenAllowed = visitors.Count(v => v.IsAdult == false && v.IsVisitorAllowedInBasedOnAge);
 
             // Assert
             Assert.IsTrue(amountOfChildrenAllowed == 0);

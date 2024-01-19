@@ -47,7 +47,7 @@ namespace VptLibrary
                     {
                         if (CanPlaceVisitor(visitor))
                         {
-                            PlaceVisitor(chair, visitor);
+                            chair.PlaceVisitor(visitor);
                             break;
                         }
                     }
@@ -82,14 +82,7 @@ namespace VptLibrary
             }
 
             return false;
-        }
-
-        private void PlaceVisitor(Chair chair, Visitor visitor)
-        {
-            chair.Visitor = visitor;
-            visitor.IsSeated = true;
-            chair.IsTaken = true;
-        }
+        }      
 
         private bool CheckIfRowIsFront(int rowNr)
         {
