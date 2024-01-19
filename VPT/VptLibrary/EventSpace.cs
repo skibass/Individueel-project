@@ -134,7 +134,6 @@ namespace VptLibrary
                 {
                     visitor.SignedOnTime = true;
                 }
-
             }
         }
         private void CheckSpotsAvailable()

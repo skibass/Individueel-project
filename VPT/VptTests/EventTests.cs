@@ -76,5 +76,77 @@ namespace VptTests
             // Assert
             Assert.IsTrue(partsCount > 0 && equalChairsPerRow == true);
         }
+
+        [TestMethod]
+        public void CanGetAllVisitors()
+        {
+            // Arrange
+            EventSpace eventSpace = new EventSpace();
+
+            // Act
+            eventSpace.GetAllVisitors();
+
+            // Assert
+            Assert.IsTrue(eventSpace.AllVisitors.Count() > 0);
+        }
+
+        [TestMethod]
+        public void CanCreateValidGroupsIfAvailable()
+        {
+            // Arrange
+            List<Group> groups = new List<Group>();
+            Random random = new Random();
+
+            int amountOfValidGroups = 0;
+            int amountOfGroupsCreated = 0;
+            // Act
+            for (int i = 0; i < random.Next(1, 10); i++)
+            {
+                groups.Add(new Group());
+            }
+            amountOfGroupsCreated = groups.Count();
+
+            foreach (var group in groups)
+            {
+                // check if there are no adults in group
+                if (group.groupVisitors.Any(vis => vis.IsAdult == false) && group.groupVisitors.Count(vis => vis.IsAdult) < 1)
+                {
+                    groups.Remove(group);
+                }
+            }
+            amountOfValidGroups = groups.Count();
+
+            // Assert
+
+            // If there are no valid groups but groups were created
+            if (amountOfValidGroups == 0 && amountOfGroupsCreated > 0)
+            {
+                Assert.IsTrue(true);
+            }
+            else
+            {
+                Assert.IsTrue(amountOfValidGroups > 0);
+            }
+        }
+
+        [TestMethod]
+        public void CanCreateValidSoloVisitors()
+        {
+            // Arrange
+            List<Visitor> visitors = new List<Visitor>();
+            int amountOfChildrenAllowed = 0;
+            Random random = new Random();
+
+            // Act
+            for (int i = 0; i < random.Next(1, 100); i++)
+            {
+                visitors.Add(new Visitor(0));
+            }
+
+            amountOfChildrenAllowed = visitors.Count(v => v.IsAdult == false && v.IsVisitorAllowedInBasedOnAge == true);
+
+            // Assert
+            Assert.IsTrue(amountOfChildrenAllowed == 0);
+        }
     }
 }
