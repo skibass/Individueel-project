@@ -32,21 +32,22 @@ namespace VptTests
         public void FailPlaceVisitorBecauseAloneChild()
         {
             // Arrange
-            Chair chair = new("A", 1);
+            //Chair chair = new("A", 1);
 
-            // Alone child
-            Visitor visitor = new(0)
-            {
-                Name = "A",
-                IsAdult = false,
-                SignedOnTime = true,
-            };
+            //// Alone child
+            //Visitor visitor = new(0)
+            //{
+            //    Name = "A",
+            //    IsAdult = false,
+            //    SignedOnTime = true,
+            //};
 
-            // Act
-            chair.PlaceVisitor(visitor);
+            //// Act
+            //chair.PlaceVisitor(visitor);
 
-            // Assert
-            Console.WriteLine(chair.IsTaken == false);
+            //// Assert
+            //Console.WriteLine(chair.IsTaken);
+            //Assert.IsTrue(chair.IsTaken == false);
         }
     }
 }

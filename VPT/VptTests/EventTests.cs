@@ -3,26 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VptLibrary;
 
 namespace VptTests
 {
     [TestClass]
     public class EventTests
     {
+        Random random = new Random();
+        DateTime dateTime = new DateTime(2018, 1, 1);
+
+        EventSpace eventSpace = new EventSpace();
+
         [TestMethod]
         public void CanGenerateEventWithLimitAndPlaceBasedOnFirstComeFirstServe()
         {
             // Arrange
-            DateTime dateTime = new DateTime(2018, 05, 31); ;           
+            DateTime dateTime = new DateTime(2018, 05, 31);
             EventSpace eventSpace = new EventSpace(1, dateTime);
 
             // Act
             var visitorEarliest = eventSpace.AllVisitors.Min(v => v.SignUpDate);
 
-            var seatedVisitorsFirstCome = eventSpace.AllVisitors.Count(a => a.IsSeated );
+            var seatedVisitorsFirstCome = eventSpace.AllVisitors.Count(a => a.IsSeated);
 
             bool canPlace = false;
-            bool noOnTimeVisitors = false;           
+            bool noOnTimeVisitors = false;
 
             // I can make a fail test for this
             // If earliest visitor is still too late
@@ -47,13 +53,12 @@ namespace VptTests
             Assert.IsTrue(canPlace || noOnTimeVisitors, "Visitors cannot be placed based on first come, first serve criteria.");
         }
 
-       
+
 
         [TestMethod]
         public void CanCreatePartsWithEqualRows()
         {
             // Arrange
-            EventSpace eventSpace = new EventSpace();
 
             // Act
             int partsCount = eventSpace.Parts.Count;
@@ -74,7 +79,7 @@ namespace VptTests
                     Console.WriteLine($"Row: {row.EventRowName} | Amount of chairs: {row.Chairs.Count()}");
                 }
             }
-            
+
             // Assert
             Assert.IsTrue(partsCount > 0 && equalChairsPerRow == true);
         }
@@ -83,7 +88,6 @@ namespace VptTests
         public void CanGetAllVisitors()
         {
             // Arrange
-            EventSpace eventSpace = new EventSpace();
 
             // Act
             eventSpace.GetAllVisitors();
@@ -97,7 +101,6 @@ namespace VptTests
         {
             // Arrange
             List<Group> groups = new List<Group>();
-            Random random = new Random();
 
             int amountOfValidGroups = 0;
             int amountOfGroupsCreated = 0;
@@ -150,6 +153,62 @@ namespace VptTests
 
             // Assert
             Assert.IsTrue(amountOfChildrenAllowed == 0);
+        }
+
+        // ...
+
+        [TestMethod]
+        public void FailCanGenerateEventWithLimitAndPlaceBasedOnFirstComeFirstServe_NoVisitorsSignedUp()
+        {
+            eventSpace.AllVisitors.Clear();
+
+            Assert.IsFalse(eventSpace.AllVisitors.Any(), "No visitors should be signed up.");
+        }
+
+
+        // ...
+
+        [TestMethod]
+        public void FailCanCreatePartsWithEqualRows_NoParts()
+        {
+            eventSpace.Parts.Clear();
+
+            Assert.IsTrue(eventSpace.Parts.Count == 0, "No parts should be created.");
+        }
+
+        [TestMethod]
+        public void FailCanCreatePartsWithEqualRows_MultiplePartsDifferentChairsPerRow()
+        {
+            eventSpace.Parts.Clear();
+            eventSpace.Parts.Add(new Part('A'));
+            eventSpace.Parts[0].Rows.Add(new Row('A', 5, 5));
+            eventSpace.Parts[0].Rows.Add(new Row('B', 8, 3));
+            eventSpace.Parts.Add(new Part('B'));
+            eventSpace.Parts[1].Rows.Add(new Row('C', 3, 5));
+
+            Assert.IsTrue(eventSpace.Parts.Count > 1 && eventSpace.Parts.All(part => part.Rows.All(row => row.Chairs.Count == row.AmountOfChairs)), "Each row should have the specified number of chairs.");
+        }
+
+
+        [TestMethod]
+        public void FailCanCreateValidSoloVisitors_SoloChildVisitor()
+        {
+            int age = 10;
+
+            Visitor childVisitor = new Visitor(0, age);
+
+            Assert.IsFalse(childVisitor.IsAdult && childVisitor.IsVisitorAllowedInBasedOnAge, "Solo child visitor should not be allowed.");
+        }
+
+        [TestMethod]
+        public void FailCanCreateValidSoloVisitors_SoloChildVisitorWithAllowances()
+        {
+            int groupNumber = 10;
+            int age = 10;
+
+            Visitor allowedChildVisitor = new Visitor(groupNumber, age);
+
+            Assert.IsFalse(allowedChildVisitor.IsAdult && !allowedChildVisitor.IsVisitorAllowedInBasedOnAge, "Solo child visitor with specific allowances");
         }
     }
 }

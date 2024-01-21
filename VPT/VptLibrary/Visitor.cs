@@ -30,6 +30,15 @@ namespace VptLibrary
             Id = GetRandomVisitorId();
             IsVisitorAllowedInBasedOnAge = IsVisitorAllowedCheck(groupNumber);            
         }
+        public Visitor(int groupNumber, int age)
+        {
+            this.GroupNumber = groupNumber;
+            Age = age;
+            GetRandomName();
+            SignUpDate = GetRandomSignUpDate();
+            Id = GetRandomVisitorId();
+            IsVisitorAllowedInBasedOnAge = IsVisitorAllowedCheck(groupNumber);
+        }
 
         private void GetBirthDateAndAge()
         {

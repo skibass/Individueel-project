@@ -15,8 +15,8 @@ Console.WriteLine($"|| Visitors who are seated: {eventSpace.AllVisitors.Count(a 
 
 foreach (var part in eventSpace.Parts)
 {
-    if (part.IsPartInUse == true)
-    {
+    //if (part.IsPartInUse == true)
+    //{
 		Console.WriteLine("-------------------------------");
 		Console.WriteLine(part.Letter);
 
@@ -47,6 +47,6 @@ foreach (var part in eventSpace.Parts)
 			}
 		}
 		Console.WriteLine("");
-	}   
+	//}   
 }
 
