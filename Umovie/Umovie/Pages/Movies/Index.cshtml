@@ -45,7 +45,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.movieService.TryGetMovies())
+                    @foreach (var item in Model.AllMovies)
                     {
                         <tr class="vote-info">
                             <th><img class="movieimage" src="~/movieimages/@item.MovieImagePath" /></th>

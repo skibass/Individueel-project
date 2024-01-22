@@ -19,12 +19,23 @@ namespace Umovie.Pages.Movies
         [BindProperty]
         public required MovieRating rating { get; set; }
 
+        [BindProperty]
+        public List<Movie> AllMovies { get; set; }
+
         public IActionResult OnGet()
         {
             if (HttpContext.Session.GetString("uId") == null)
             {
                 return RedirectToPage("../Account/Login");
             }
+            AllMovies = movieService.TryGetMovies();
+
+            //foreach (var movie in AllMovies)
+            //{
+            //    movie.Rating = movieService.TryGetAverageRating(movie.MovieId);
+            //    movie.Categories = movieService.TryGetCategories(movie.MovieId);
+            //    movie.Favorites = movieService.TryGetAmountOfFavorites(movie.MovieId);
+            //}
             return null;
         }
         public IActionResult OnPostTryFavoriteMovie()

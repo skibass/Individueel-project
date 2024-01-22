@@ -13,7 +13,6 @@ namespace VptTests
         Random random = new Random();
         DateTime dateTime = new DateTime(2018, 1, 1);
 
-        EventSpace eventSpace = new EventSpace();
 
         [TestMethod]
         public void CanGenerateEventWithLimitAndPlaceBasedOnFirstComeFirstServe()
@@ -59,6 +58,7 @@ namespace VptTests
         public void CanCreatePartsWithEqualRows()
         {
             // Arrange
+            EventSpace eventSpace = new EventSpace();
 
             // Act
             int partsCount = eventSpace.Parts.Count;
@@ -88,6 +88,7 @@ namespace VptTests
         public void CanGetAllVisitors()
         {
             // Arrange
+            EventSpace eventSpace = new EventSpace();
 
             // Act
             eventSpace.GetAllVisitors();
@@ -160,6 +161,8 @@ namespace VptTests
         [TestMethod]
         public void FailCanGenerateEventWithLimitAndPlaceBasedOnFirstComeFirstServe_NoVisitorsSignedUp()
         {
+            EventSpace eventSpace = new EventSpace();
+
             eventSpace.AllVisitors.Clear();
 
             Assert.IsFalse(eventSpace.AllVisitors.Any(), "No visitors should be signed up.");
@@ -171,6 +174,8 @@ namespace VptTests
         [TestMethod]
         public void FailCanCreatePartsWithEqualRows_NoParts()
         {
+            EventSpace eventSpace = new EventSpace();
+
             eventSpace.Parts.Clear();
 
             Assert.IsTrue(eventSpace.Parts.Count == 0, "No parts should be created.");
@@ -179,6 +184,8 @@ namespace VptTests
         [TestMethod]
         public void FailCanCreatePartsWithEqualRows_MultiplePartsDifferentChairsPerRow()
         {
+            EventSpace eventSpace = new EventSpace();
+
             eventSpace.Parts.Clear();
             eventSpace.Parts.Add(new Part('A'));
             eventSpace.Parts[0].Rows.Add(new Row('A', 5, 5));
