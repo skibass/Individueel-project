@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SZki+hwQjmYcs1oPGJinYLl+vtcBaYcuRUnkMC5w3i0=",
+  "Hash": "i6LIZd2Yumdp5naXRRygagGP4T078H9Y/gxLwn1OrUQ=",
   "Source": "Umovie",
   "BasePath": "_content/Umovie",
   "Mode": "Default",
@@ -1188,6 +1188,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\MovieImages\\185b7cd2-e5e9-4199-9970-9b212bb35bd4download.jpg"
+    },
+    {
+      "Identity": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\1e1e323a-423f-40bc-96df-6c00a85216ce20230514_164510.jpg",
+      "SourceId": "Umovie",
+      "SourceType": "Discovered",
+      "ContentRoot": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\",
+      "BasePath": "_content/Umovie",
+      "RelativePath": "MovieImages/1e1e323a-423f-40bc-96df-6c00a85216ce20230514_164510.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\MovieImages\\1e1e323a-423f-40bc-96df-6c00a85216ce20230514_164510.jpg"
     },
     {
       "Identity": "G:\\Fontys_S2\\Individueel\\skibass\\Individueel-project\\Umovie\\Umovie\\wwwroot\\MovieImages\\20bda7fb-bc57-4106-99cd-2c7f29d67fe0p_findingnemo_19752_05271d3f.jpeg",
