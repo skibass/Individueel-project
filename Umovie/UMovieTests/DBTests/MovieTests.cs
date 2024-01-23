@@ -9,11 +9,12 @@ namespace UMovieTests.DBTests
     [TestClass]
     public class MovieTests
     {
+        // TODO: Add more layers to project including DTO's and interfaces to make transaction scopes work.
         Random random = new();
         private MockMovie_Service CreateMovieServiceWithMockContext()
         {
             var options = new DbContextOptionsBuilder<MockUmovieContext>()
-                .UseInMemoryDatabase(databaseName: "TestDatabase_" + Guid.NewGuid().ToString())
+                .UseInMemoryDatabase(databaseName: "TestDatabase_")
                 .Options;
 
             var mockContext = new MockUmovieContext(options);
