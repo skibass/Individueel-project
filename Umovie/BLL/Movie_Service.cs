@@ -15,8 +15,18 @@ namespace BLL
 
     public class Movie_Service
     {
-        UmovieContext context = new UmovieContext();
+        public UmovieContext context = new UmovieContext();
         Movie_Repository repository = new();
+
+        private readonly UmovieContext _context;
+
+        public Movie_Service()
+        {          
+        }
+        public Movie_Service(UmovieContext context)
+        {
+            _context = context;
+        }
         public List<Movie> TryGetMovies()
         {
             return repository.GetMovies();
@@ -67,24 +77,32 @@ namespace BLL
             return categories;
         }
 
-        public async Task TryAddMovie(Movie movie, List<string> chosenCategories, string path, IFormFile Upload)
+        public async Task TryAddMovie(Movie movie, List<string?> chosenCategories, string path, IFormFile Upload)
         {
-            foreach (string category in chosenCategories)
+            if (chosenCategories != null)
             {
-                MovieCategory movieCat = new();
-                movieCat.MovieId = movie.MovieId;
-                movieCat.CategorieId = int.Parse(category);
-                movie.MovieCategories.Add(movieCat);
+                foreach (string category in chosenCategories)
+                {
+                    MovieCategory movieCat = new();
+                    movieCat.MovieId = movie.MovieId;
+                    movieCat.CategorieId = int.Parse(category);
+                    movie.MovieCategories.Add(movieCat);
+                }
             }
 
-            string Guidstring = Guid.NewGuid().ToString();
-            string UploadName = Path.Combine(path, Guidstring + Upload.FileName);
-
-            using (var fileStream = new FileStream(UploadName, FileMode.Create))
+            if (Upload != null)
             {
-                await Upload.CopyToAsync(fileStream);
+                string Guidstring = Guid.NewGuid().ToString();
+                string UploadName = Path.Combine(path, Guidstring + Upload.FileName);
+
+                using (var fileStream = new FileStream(UploadName, FileMode.Create))
+                {
+                    await Upload.CopyToAsync(fileStream);
+                }
+
+                movie.MovieImagePath = Guidstring + Upload.FileName;
             }
-            movie.MovieImagePath = Guidstring + Upload.FileName;
+
             await AddMovie(movie);
         }
         public async Task TryEditMovie(Movie movie, List<string> chosenCategories, string path, IFormFile Upload)
@@ -108,18 +126,22 @@ namespace BLL
                     await Upload.CopyToAsync(fileStream);
                 }
                 movie1.MovieImagePath = Guidstring + Upload.FileName;
-            }         
+            }
 
-            foreach (string category in chosenCategories)
+            if (chosenCategories != null)
             {
-                if (!movie1.MovieCategories.Any(mc => mc.CategorieId == int.Parse(category)))
+                foreach (string category in chosenCategories)
                 {
-                    MovieCategory movieCat = new MovieCategory();
-                    movieCat.MovieId = movie1.MovieId;
-                    movieCat.CategorieId = int.Parse(category);
-                    movie1.MovieCategories.Add(movieCat);
+                    if (!movie1.MovieCategories.Any(mc => mc.CategorieId == int.Parse(category)))
+                    {
+                        MovieCategory movieCat = new MovieCategory();
+                        movieCat.MovieId = movie1.MovieId;
+                        movieCat.CategorieId = int.Parse(category);
+                        movie1.MovieCategories.Add(movieCat);
+                    }
                 }
             }
+           
             context.SaveChanges();
         }
         public void DeleteMovie(int movieId)
@@ -133,8 +155,8 @@ namespace BLL
 
         private async Task AddMovie(Movie movie)
         {
-            context.Movies.Add(movie);
-            context.SaveChanges();
+            _context.Movies.Add(movie);
+            _context.SaveChanges();
         }
     }
 }

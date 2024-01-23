@@ -472,3 +472,15 @@ C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Umovie\obj\Debug\n
 C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Umovie\obj\Debug\net7.0\Umovie.pdb
 C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Umovie\obj\Debug\net7.0\Umovie.genruntimeconfig.cache
 C:\Fontys_S2\Projecten\Individueel\Individueel-project\Umovie\Umovie\obj\Debug\net7.0\ref\Umovie.dll
+G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll
+G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\Microsoft.Extensions.Configuration.dll
+G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Abstractions.dll
+G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Json.dll
+G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Physical.dll
+G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\Microsoft.Extensions.FileSystemGlobbing.dll
+G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
+G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\System.Text.Encodings.Web.dll
+G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\System.Text.Json.dll
+G:\Fontys_S2\Individueel\skibass\Individueel-project\Umovie\Umovie\bin\Debug\net7.0\runtimes\browser\lib\net7.0\System.Text.Encodings.Web.dll
