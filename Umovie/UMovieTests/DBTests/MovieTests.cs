@@ -34,10 +34,9 @@ namespace UMovieTests.DBTests
                 {
                     var newMovie = new Movie
                     {
-                        MovieId = random.Next(1, 9999), // Assuming MovieId needs to be unique
+                        MovieId = random.Next(1, 9999),
                         MovieName = $"Test Movie {i}",
                         MovieDescription = $"Description {i}",
-                        // Add other properties as needed
                     };
 
                     service.TryAddMovie(newMovie, null, null, null);
@@ -137,6 +136,65 @@ namespace UMovieTests.DBTests
 
                 // Assert
                 Assert.IsFalse(retrievedMovie.MovieName == oldName);
+            }
+        }
+
+        [TestMethod]
+        public void ShouldAddRatingToMovie()
+        {
+            using (var scope = new TransactionScope())
+            {
+                // Arrange
+                var service = CreateMovieServiceWithMockContext();
+
+                // Act
+                var newMovie = new Movie
+                {
+                    MovieId = random.Next(1, 9999),
+                    MovieName = "Test Movie",
+                    MovieDescription = "Test Movie",
+                };
+
+                service.TryAddMovie(newMovie, null, null, null);
+
+                service.TryRateMovie(newMovie.MovieId, 1, 10);
+
+                var userRating = service.TryGetUserRating(newMovie.MovieId, 1);
+
+                var userRatedMovies = service.TryGetUserRatedMovies(1).Count();
+
+                var movieRating = service.TryGetAverageRating(newMovie.MovieId);
+
+                // Assert
+                Assert.IsTrue(movieRating == 10 && userRating == 10 && userRatedMovies == 1);
+            }
+        }
+
+        [TestMethod]
+        public void ShouldFavoriteMovie()
+        {
+            using (var scope = new TransactionScope())
+            {
+                // Arrange
+                var service = CreateMovieServiceWithMockContext();
+
+                // Act
+                var newMovie = new Movie
+                {
+                    MovieId = random.Next(1, 9999),
+                    MovieName = "Test Movie",
+                    MovieDescription = "Test Movie",
+                };
+
+                service.TryAddMovie(newMovie, null, null, null);
+
+                service.TryFavoriteMovie(newMovie.MovieId, 1);
+
+                var amountOfFavoritesMovie = service.TryGetAmountOfFavorites(newMovie.MovieId);
+                var userFavorites = service.TryGetFavoriteMovies(1).Count();
+
+                // Assert
+                Assert.IsTrue(amountOfFavoritesMovie == 1 && userFavorites == 1);
             }
         }
 

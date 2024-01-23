@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using DALL;
@@ -36,45 +37,119 @@ namespace BLL
             }
             return movies;
         }
-        public Movie TryGetMovie(int movieId)
-        {
-            return repository.GetMovie(movieId);
-        }
+        //public Movie TryGetMovie(int movieId)
+        //{
+        //    return repository.GetMovie(movieId);
+        //}
         public List<UserFavoriteMovie> TryGetFavoriteMovies(int id)
         {
-            return repository.GetFavoriteMovies(id);
+            List<UserFavoriteMovie> fMovies = _context.UserFavoriteMovies.Include(e => e.Movie).ThenInclude(e => e.MovieCategories).ThenInclude(e => e.Categorie).Where(x => x.UserId == id).ToList();
+
+            if (fMovies == null)
+            {
+                fMovies = new List<UserFavoriteMovie>();
+            }
+            return fMovies;
         }
 
         public double? TryGetAverageRating(int movieId)
         {
-            return repository.GetAverageRating(movieId);
+            double? avarageRating = _context.MovieRatings.Where(r => r.MovieId == movieId).Average(r => r.RatingNumber);
+
+            return avarageRating;
         }
 
         public double? TryGetAmountOfFavorites(int movieId)
         {
-            return repository.GetAmountOfFavorites(movieId);
+            double? amountOfFavorites = _context.UserFavoriteMovies.Where(r => r.MovieId == movieId).Count();
+
+            if (amountOfFavorites != null)
+            {
+                return amountOfFavorites;
+            }
+            return null;
         }
 
-        public string? TryGetCategories(int movieId)
-        {
-            return repository.GetCategories(movieId);
-        }
+        //public string? TryGetCategories(int movieId)
+        //{
+        //    return repository.GetCategories(movieId);
+        //}
 
         public bool? TryFavoriteMovie(int movieId, int userId)
         {
-            return repository.FavoriteMovie(movieId, userId);
+            bool favorite = false;
+
+            UserFavoriteMovie uF = new();
+
+            var favoriteMovie = _context.UserFavoriteMovies.Where(r => r.MovieId == movieId).Where(r => r.UserId == userId).SingleOrDefault();
+
+            // favorite
+            if (favoriteMovie == null)
+            {
+                uF.MovieId = movieId;
+                uF.UserId = userId;
+
+                _context.UserFavoriteMovies.Add(uF);
+
+                _context.SaveChanges();
+
+                favorite = true;
+            }
+            // unfavorite
+            else
+            {
+                _context.Entry(favoriteMovie).State = EntityState.Deleted;
+
+                _context.SaveChanges();
+
+                favorite = false;
+            }
+
+            return favorite;
         }
         public bool? TryRateMovie(int movieId, int userId, int rating)
         {
-            return repository.RateMovie(movieId, userId, rating);
+            MovieRating uMR = new();
+
+            var movieRating = _context.MovieRatings.Where(r => r.MovieId == movieId).Where(r => r.UserId == userId).SingleOrDefault();
+
+            // if movie has already been rated
+            if (movieRating != null)
+            {
+                _context.Entry(movieRating).State = EntityState.Deleted;
+
+                _context.SaveChanges();
+            }
+
+            uMR.MovieId = movieId;
+            uMR.UserId = userId;
+            uMR.RatingNumber = rating;
+
+            _context.MovieRatings.Add(uMR);
+
+            _context.SaveChanges();
+
+            return true;
         }
         public int? TryGetUserRating(int movieId, int userId)
         {
-            return repository.GetUserRating(movieId, userId);
+            var movieRating = _context.MovieRatings.Where(r => r.MovieId == movieId).Where(r => r.UserId == userId).SingleOrDefault();
+
+            if (movieRating != null)
+            {
+                return movieRating.RatingNumber;
+            }
+            return null;
         }
         public List<MovieRating> TryGetUserRatedMovies(int userId)
         {
-            return repository.GetUserRatedMovies(userId);
+            List<MovieRating> movies = _context.MovieRatings.Where(r => r.UserId == userId).Include(e => e.Movie).ToList();
+
+            if (movies == null)
+            {
+                movies = new List<MovieRating>();
+            }
+            return movies;
         }
         public List<Category> TryGetCategories()
         {
