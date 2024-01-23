@@ -18,15 +18,10 @@ namespace BLL
         public UmovieContext context = new UmovieContext();
         Movie_Repository repository = new();
 
-        private readonly UmovieContext _context;
-
         public Movie_Service()
         {          
         }
-        public Movie_Service(UmovieContext context)
-        {
-            _context = context;
-        }
+        
         public List<Movie> TryGetMovies()
         {
             return repository.GetMovies();
@@ -155,8 +150,8 @@ namespace BLL
 
         private async Task AddMovie(Movie movie)
         {
-            _context.Movies.Add(movie);
-            _context.SaveChanges();
+            context.Movies.Add(movie);
+            context.SaveChanges();
         }
     }
 }
